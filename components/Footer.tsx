@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-300 py-12 border-t border-slate-800">
+    <footer className="bg-[#021D3B] text-slate-300 py-12 border-t border-[#002d5c]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Brand Info */}
@@ -15,13 +15,13 @@ export default function Footer() {
                 className="object-contain object-left invert brightness-0"
               />
             </div>
-            <p className="text-sm text-slate-400 max-w-md leading-relaxed">
-              <strong>AQUVIVA: Air Mineral Murni Alami</strong> diproses melalui teknologi 7 Tahap Nano
-              Purifikasi. Program kemitraan resmi membuka peluang usaha bagi pemilik warung, kios,
-              dan agen di seluruh Indonesia.
+            <p className="text-sm text-[#CCE6FF] max-w-md leading-relaxed">
+              <strong>AQUVIVA: Air Mineral Murni Sejuk &amp; Terpercaya</strong> diproses melalui
+              teknologi 7 Tahap Nano Purifikasi pertama di Indonesia. Menjaga kemurnian air dan mineral
+              baik seimbang untuk kesehatan keluarga.
             </p>
-            <div className="text-xs text-slate-500">
-              Produk Berkualitas dari Jaringan Distribusi Wings Food.
+            <div className="text-xs text-slate-400">
+              Produk Resmi Berkualitas dari Jaringan Distribusi Wings Food Indonesia.
             </div>
           </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Navigasi Halaman
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-[#CCE6FF]">
               <li>
                 <a href="#keunggulan" className="hover:text-white transition-colors">
                   7 Tahap Nano Purifikasi
@@ -59,18 +59,40 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Support */}
+          {/* Contact Support from aquviva.co.id */}
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-              Layanan Informasi Kemitraan
+              Layanan Resmi Konsumen &amp; Mitra
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Konsultasi langsung dengan tim kemitraan untuk pengecekan rute distribusi toko Anda:
+              Pusat informasi dan layanan resmi Wings Peduli Kemitraan AQUVIVA:
             </p>
-            <div className="rounded-xl bg-slate-900 p-3.5 border border-slate-800 text-xs space-y-1.5">
-              <p className="font-semibold text-white">Hotline WhatsApp Kemitraan:</p>
-              <p className="font-mono text-emerald-400 text-sm">0812-3456-7890</p>
-              <p className="text-slate-400 text-[11px]">Senin - Sabtu: 08.00 - 17.00 WIB</p>
+            <div className="rounded-2xl bg-[#001429] p-4 border border-[#003366] text-xs space-y-2">
+              <div>
+                <p className="text-slate-400 text-[11px]">WhatsApp Care (Wings):</p>
+                <a
+                  href="https://wa.me/6281181261082"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[#08BB2C] text-sm font-bold hover:underline"
+                >
+                  +62 811-8126-1082
+                </a>
+              </div>
+              <div>
+                <p className="text-slate-400 text-[11px]">Telepon Kantor:</p>
+                <p className="font-mono text-white text-xs">+62 21-5095-7907</p>
+              </div>
+              <div className="pt-1 border-t border-slate-800">
+                <a
+                  href="https://aquviva.co.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[#FA4616] hover:underline font-bold"
+                >
+                  Kunjungi Website Resmi: aquviva.co.id &rarr;
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -19,12 +19,28 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-[#CCE6FF] bg-white/95 backdrop-blur-md shadow-xs">
+      {/* Top Banner Bar with Official Color #021D3B */}
+      <div className="bg-[#021D3B] px-4 py-1.5 text-xs text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="inline-block h-2 w-2 rounded-full bg-[#FA4616] animate-pulse" />
+            <span className="font-medium tracking-wide">
+              Official Partner Program: <strong>AQUVIVA by Wings Food</strong>
+            </span>
+          </div>
+          <div className="hidden sm:flex items-center gap-4 text-[11px] text-[#CCE6FF]">
+            <span>WhatsApp Care: +62 811-8126-1082</span>
+            <span>Referensi Resmi: aquviva.co.id</span>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
         {/* Brand Logo */}
         <a
           href="#"
-          className="flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+          className="flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
           aria-label="Kemitraan AQUVIVA Beranda"
         >
           <div className="relative h-14 w-44 sm:h-16 sm:w-52">
@@ -47,19 +63,19 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1.5 py-1"
+              className="text-sm font-semibold text-[#021D3B] hover:text-[#0762C8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] rounded px-1.5 py-1"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Desktop CTA Action */}
+        {/* Desktop CTA Action with #FA4616 */}
         <div className="hidden md:flex items-center gap-4">
           <button
             type="button"
             onClick={() => onOpenModal()}
-            className="inline-flex items-center justify-center rounded-xl bg-orange-600 hover:bg-orange-700 active:bg-orange-800 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616] focus-visible:ring-offset-2"
           >
             Daftar Kemitraan
           </button>
@@ -70,7 +86,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex items-center justify-center rounded-lg p-2.5 text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex items-center justify-center rounded-lg p-2.5 text-[#021D3B] hover:bg-[#F4FAFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
@@ -106,7 +122,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
-          className="border-b border-slate-200 bg-white px-4 pt-3 pb-6 md:hidden shadow-lg animate-in fade-in"
+          className="border-b border-[#CCE6FF] bg-white px-4 pt-3 pb-6 md:hidden shadow-lg animate-in fade-in"
         >
           <div className="flex flex-col space-y-3">
             {navLinks.map((link) => (
@@ -114,7 +130,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="rounded-lg px-3 py-2 text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                className="rounded-lg px-3 py-2 text-base font-semibold text-[#021D3B] hover:bg-[#F4FAFF] hover:text-[#0762C8] transition-colors"
               >
                 {link.label}
               </a>
@@ -126,7 +142,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenModal();
                 }}
-                className="w-full text-center rounded-xl bg-orange-600 hover:bg-orange-700 px-4 py-3 text-base font-bold text-white shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                className="w-full text-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] px-4 py-3 text-base font-bold text-white shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616]"
               >
                 Daftar Kemitraan Sekarang
               </button>
@@ -137,4 +153,3 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
     </header>
   );
 }
-

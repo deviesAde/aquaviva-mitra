@@ -30,39 +30,39 @@ export default function ProfitCalculator() {
   };
 
   return (
-    <section id="kalkulator" className="py-16 sm:py-24 bg-blue-50/60 border-b border-slate-200">
+    <section id="kalkulator" className="py-16 sm:py-24 bg-[#F4FAFF] border-b border-[#CCE6FF]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#08BB2C] bg-emerald-50 px-3.5 py-1 rounded-full border border-[#08BB2C]/30">
             Simulasi Keuntungan Usaha
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-[#021D3B] tracking-tight">
             HITUNG ESTIMASI CUAN BULANAN ANDA
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#5F6368] leading-relaxed">
             Gunakan simulasi interaktif di bawah ini untuk menghitung estimasi margin keuntungan
             penjualan air mineral dingin AQUVIVA di toko Anda.
           </p>
         </div>
 
-        <div className="mt-12 max-w-4xl mx-auto rounded-3xl bg-white p-6 sm:p-10 border border-slate-200 shadow-xl">
+        <div className="mt-12 max-w-4xl mx-auto rounded-3xl bg-white p-6 sm:p-10 border border-[#CCE6FF] shadow-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Input Controls */}
             <div className="space-y-6">
               {/* Product 1: 700ml */}
-              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200">
+              <div className="rounded-2xl bg-[#F4FAFF] p-5 border border-[#CCE6FF]">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-slate-900 text-sm sm:text-base">AQUVIVA 700 ml (Best Seller)</h3>
-                  <span className="text-xs font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+                  <h3 className="font-bold text-[#021D3B] text-sm sm:text-base">AQUVIVA 700 ml (Best Seller)</h3>
+                  <span className="text-xs font-bold text-[#0762C8] bg-white px-2.5 py-0.5 rounded-md border border-[#CCE6FF]">
                     Modal: Rp 1.250/btl
                   </span>
                 </div>
 
                 <div className="mt-4 space-y-3">
                   <div>
-                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                    <div className="flex justify-between text-xs font-medium text-[#021D3B] mb-1">
                       <label htmlFor="sales-700">Target penjualan harian:</label>
-                      <span className="font-bold text-slate-900">{dailyBottles700} botol / hari</span>
+                      <span className="font-bold text-[#0762C8]">{dailyBottles700} botol / hari</span>
                     </div>
                     <input
                       id="sales-700"
@@ -72,19 +72,19 @@ export default function ProfitCalculator() {
                       step={6}
                       value={dailyBottles700}
                       onChange={(e) => setDailyBottles700(Number(e.target.value))}
-                      className="w-full accent-blue-600"
+                      className="w-full accent-[#0762C8]"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="retail-700" className="block text-xs font-medium text-slate-700 mb-1">
+                    <label htmlFor="retail-700" className="block text-xs font-bold text-[#021D3B] mb-1">
                       Harga jual eceran toko Anda:
                     </label>
                     <select
                       id="retail-700"
                       value={retailPrice700}
                       onChange={(e) => setRetailPrice700(Number(e.target.value))}
-                      className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                      className="w-full rounded-xl border border-[#CCE6FF] bg-white px-3 py-2 text-sm font-semibold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                     >
                       <option value={2500}>Rp 2.500 (Untung Rp 1.250 / btl)</option>
                       <option value={3000}>Rp 3.000 (Untung Rp 1.750 / btl - Standar Dingin)</option>
@@ -95,19 +95,19 @@ export default function ProfitCalculator() {
               </div>
 
               {/* Product 2: 250ml */}
-              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200">
+              <div className="rounded-2xl bg-[#F4FAFF] p-5 border border-[#CCE6FF]">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-slate-900 text-sm sm:text-base">AQUVIVA 250 ml (Praktis)</h3>
-                  <span className="text-xs font-semibold text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded border border-orange-200">
+                  <h3 className="font-bold text-[#021D3B] text-sm sm:text-base">AQUVIVA 250 ml (Praktis)</h3>
+                  <span className="text-xs font-bold text-[#FA4616] bg-white px-2.5 py-0.5 rounded-md border border-[#FA4616]/30">
                     Modal: Rp 500/btl
                   </span>
                 </div>
 
                 <div className="mt-4 space-y-3">
                   <div>
-                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                    <div className="flex justify-between text-xs font-medium text-[#021D3B] mb-1">
                       <label htmlFor="sales-250">Target penjualan harian:</label>
-                      <span className="font-bold text-slate-900">{dailyBottles250} botol / hari</span>
+                      <span className="font-bold text-[#FA4616]">{dailyBottles250} botol / hari</span>
                     </div>
                     <input
                       id="sales-250"
@@ -117,19 +117,19 @@ export default function ProfitCalculator() {
                       step={12}
                       value={dailyBottles250}
                       onChange={(e) => setDailyBottles250(Number(e.target.value))}
-                      className="w-full accent-orange-600"
+                      className="w-full accent-[#FA4616]"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="retail-250" className="block text-xs font-medium text-slate-700 mb-1">
+                    <label htmlFor="retail-250" className="block text-xs font-bold text-[#021D3B] mb-1">
                       Harga jual eceran toko Anda:
                     </label>
                     <select
                       id="retail-250"
                       value={retailPrice250}
                       onChange={(e) => setRetailPrice250(Number(e.target.value))}
-                      className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                      className="w-full rounded-xl border border-[#CCE6FF] bg-white px-3 py-2 text-sm font-semibold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                     >
                       <option value={1000}>Rp 1.000 (Untung Rp 500 / btl)</option>
                       <option value={1500}>Rp 1.500 (Untung Rp 1.000 / btl - Standar)</option>
@@ -140,13 +140,13 @@ export default function ProfitCalculator() {
               </div>
             </div>
 
-            {/* Results Card */}
-            <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-950 p-6 sm:p-8 text-white h-full flex flex-col justify-between shadow-lg">
+            {/* Results Card with #021D3B and #FA4616 */}
+            <div className="rounded-3xl bg-[#021D3B] p-6 sm:p-8 text-white h-full flex flex-col justify-between shadow-lg border border-[#002d5c]">
               <div>
-                <span className="rounded-md bg-emerald-500/20 px-2.5 py-1 text-xs font-bold text-emerald-300 border border-emerald-400/30">
+                <span className="rounded-full bg-[#08BB2C]/20 px-3 py-1 text-xs font-bold text-[#08BB2C] border border-[#08BB2C]/40">
                   Hasil Simulasi Margin
                 </span>
-                <p className="mt-4 text-xs font-medium text-slate-300 uppercase tracking-wider">
+                <p className="mt-4 text-xs font-bold text-[#CCE6FF] uppercase tracking-wider">
                   Estimasi Keuntungan Kotor Harian
                 </p>
                 <p className="text-2xl sm:text-3xl font-black text-white mt-1">
@@ -154,20 +154,20 @@ export default function ProfitCalculator() {
                   <span className="text-xs font-normal text-slate-300"> / hari</span>
                 </p>
 
-                <div className="my-6 border-t border-white/10 pt-6">
-                  <p className="text-xs font-semibold text-orange-400 uppercase tracking-wider">
+                <div className="my-6 border-t border-white/15 pt-6">
+                  <p className="text-xs font-bold text-[#FA4616] uppercase tracking-wider">
                     Estimasi Cuan Tambahan Bulanan (30 Hari)
                   </p>
-                  <p className="text-3xl sm:text-4xl font-black text-orange-400 mt-1">
+                  <p className="text-3xl sm:text-4xl font-black text-[#FA4616] mt-1">
                     {formatRupiah(monthlyProfit)}
                   </p>
-                  <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                  <p className="text-xs text-[#CCE6FF] mt-2 leading-relaxed">
                     * Perhitungan berdasarkan penjualan {dailyBottles700} btl (700ml) dan {dailyBottles250} btl (250ml) per hari.
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-xl bg-white/10 p-3.5 text-xs text-blue-100 border border-white/10">
+              <div className="rounded-2xl bg-white/10 p-4 text-xs text-blue-100 border border-white/10">
                 Pajang produk dingin di showcase depan toko untuk menaikkan perputaran hingga 2x lipat!
               </div>
             </div>
@@ -177,4 +177,3 @@ export default function ProfitCalculator() {
     </section>
   );
 }
-

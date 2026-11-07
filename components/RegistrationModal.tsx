@@ -73,8 +73,8 @@ export default function RegistrationModal({
     const textMessage = encodeURIComponent(
       `Halo Tim Kemitraan AQUVIVA,\n\nSaya ingin mendaftar program kemitraan resmi:\n- Nama: ${formData.fullName}\n- Nama Toko: ${formData.storeName}\n- No. WhatsApp: ${formData.phone}\n- Lokasi: ${formData.city}\n- Pilihan Paket: ${formData.selectedPkg}\n- Catatan: ${formData.notes || "-"}\n\nMohon informasi langkah selanjutnya. Terima kasih!`
     );
-    // WhatsApp redirect
-    window.open(`https://wa.me/6281234567890?text=${textMessage}`, "_blank");
+    // WhatsApp Care (Wings Food official contact format)
+    window.open(`https://wa.me/6281181261082?text=${textMessage}`, "_blank");
   };
 
   return (
@@ -82,17 +82,17 @@ export default function RegistrationModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-xs animate-in fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#021D3B]/80 backdrop-blur-xs animate-in fade-in"
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200 overflow-hidden"
+        className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-[#CCE6FF] overflow-hidden"
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+          className="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-full bg-[#F4FAFF] text-[#021D3B] hover:bg-[#CCE6FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
           aria-label="Tutup form pendaftaran"
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
@@ -102,24 +102,24 @@ export default function RegistrationModal({
 
         {status === "success" ? (
           <div className="py-6 text-center space-y-4">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-[#08BB2C]">
               <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
             </div>
-            <h3 id="modal-title" className="text-xl sm:text-2xl font-bold text-slate-900">
+            <h3 id="modal-title" className="text-xl sm:text-2xl font-black text-[#021D3B]">
               Pendaftaran Berhasil Dicatat!
             </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-[#5F6368] leading-relaxed">
               Terima kasih, <strong>{formData.fullName}</strong>. Data pengajuan kemitraan untuk toko{" "}
               <strong>{formData.storeName}</strong> dengan pilihan <strong>{formData.selectedPkg}</strong>{" "}
-              telah siap diproses.
+              telah siap diverifikasi oleh koordinator wilayah.
             </p>
             <div className="pt-2 flex flex-col gap-3">
               <button
                 type="button"
                 onClick={handleSendToWhatsApp}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-5 font-bold shadow-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#08BB2C] hover:bg-[#069C24] text-white py-3.5 px-5 font-bold shadow-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#08BB2C]"
               >
                 <span>Lanjut Chat Tim Kemitraan via WhatsApp</span>
               </button>
@@ -129,7 +129,7 @@ export default function RegistrationModal({
                   setStatus("idle");
                   onClose();
                 }}
-                className="w-full rounded-xl border border-slate-300 py-2.5 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+                className="w-full rounded-xl border border-[#CCE6FF] py-2.5 px-4 text-sm font-bold text-[#021D3B] hover:bg-[#F4FAFF] transition-colors"
               >
                 Selesai &amp; Tutup
               </button>
@@ -138,20 +138,20 @@ export default function RegistrationModal({
         ) : (
           <div>
             <div className="mb-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2.5 py-1 rounded">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#FA4616] bg-orange-50 px-2.5 py-1 rounded-md border border-[#FA4616]/30">
                 Formulir Resmi
               </span>
-              <h3 id="modal-title" className="mt-2 text-xl font-bold text-slate-900">
+              <h3 id="modal-title" className="mt-2 text-xl font-black text-[#021D3B]">
                 Pendaftaran Kemitraan AQUVIVA
               </h3>
-              <p className="mt-1 text-xs sm:text-sm text-slate-600">
+              <p className="mt-1 text-xs sm:text-sm text-[#5F6368]">
                 Isi data di bawah ini untuk diverifikasi oleh tim logistik dan kanvaser wilayah Anda.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="fullName" className="block text-xs font-bold text-slate-800 mb-1">
+                <label htmlFor="fullName" className="block text-xs font-bold text-[#021D3B] mb-1">
                   Nama Lengkap Pemilik Usaha <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -160,8 +160,8 @@ export default function RegistrationModal({
                   placeholder="Contoh: Bpk. Hendra Gunawan"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
-                    errors.fullName ? "border-red-500 bg-red-50/50" : "border-slate-300 bg-slate-50/50"
+                  className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] ${
+                    errors.fullName ? "border-red-500 bg-red-50/50" : "border-[#CCE6FF] bg-[#F4FAFF]"
                   }`}
                 />
                 {errors.fullName && <p className="mt-1 text-xs text-red-600 font-medium">{errors.fullName}</p>}
@@ -169,7 +169,7 @@ export default function RegistrationModal({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label htmlFor="storeName" className="block text-xs font-bold text-slate-800 mb-1">
+                  <label htmlFor="storeName" className="block text-xs font-bold text-[#021D3B] mb-1">
                     Nama Toko / Kios <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -178,8 +178,8 @@ export default function RegistrationModal({
                     placeholder="Contoh: Toko Berkah Jaya"
                     value={formData.storeName}
                     onChange={(e) => setFormData({ ...formData, storeName: e.target.value })}
-                    className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
-                      errors.storeName ? "border-red-500 bg-red-50/50" : "border-slate-300 bg-slate-50/50"
+                    className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] ${
+                      errors.storeName ? "border-red-500 bg-red-50/50" : "border-[#CCE6FF] bg-[#F4FAFF]"
                     }`}
                   />
                   {errors.storeName && (
@@ -188,7 +188,7 @@ export default function RegistrationModal({
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-bold text-slate-800 mb-1">
+                  <label htmlFor="phone" className="block text-xs font-bold text-[#021D3B] mb-1">
                     Nomor WhatsApp <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -197,8 +197,8 @@ export default function RegistrationModal({
                     placeholder="081234567890"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
-                      errors.phone ? "border-red-500 bg-red-50/50" : "border-slate-300 bg-slate-50/50"
+                    className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] ${
+                      errors.phone ? "border-red-500 bg-red-50/50" : "border-[#CCE6FF] bg-[#F4FAFF]"
                     }`}
                   />
                   {errors.phone && <p className="mt-1 text-xs text-red-600 font-medium">{errors.phone}</p>}
@@ -207,7 +207,7 @@ export default function RegistrationModal({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label htmlFor="city" className="block text-xs font-bold text-slate-800 mb-1">
+                  <label htmlFor="city" className="block text-xs font-bold text-[#021D3B] mb-1">
                     Kota / Kabupaten <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -216,22 +216,22 @@ export default function RegistrationModal({
                     placeholder="Contoh: Surabaya, Sidoarjo, dll."
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
-                      errors.city ? "border-red-500 bg-red-50/50" : "border-slate-300 bg-slate-50/50"
+                    className={`w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] ${
+                      errors.city ? "border-red-500 bg-red-50/50" : "border-[#CCE6FF] bg-[#F4FAFF]"
                     }`}
                   />
                   {errors.city && <p className="mt-1 text-xs text-red-600 font-medium">{errors.city}</p>}
                 </div>
 
                 <div>
-                  <label htmlFor="selectedPkg" className="block text-xs font-bold text-slate-800 mb-1">
+                  <label htmlFor="selectedPkg" className="block text-xs font-bold text-[#021D3B] mb-1">
                     Pilihan Paket Kemitraan
                   </label>
                   <select
                     id="selectedPkg"
                     value={formData.selectedPkg}
                     onChange={(e) => setFormData({ ...formData, selectedPkg: e.target.value })}
-                    className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2.5 text-sm font-semibold text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                    className="w-full rounded-xl border border-[#CCE6FF] bg-[#F4FAFF] px-3 py-2.5 text-sm font-bold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                   >
                     <option value="PAKET PEMULA AQUVIVA">Paket Pemula (Rp 1.000.000)</option>
                     <option value="PAKET JURAGAN AQUVIVA">Paket Juragan (Rp 2.000.000)</option>
@@ -241,7 +241,7 @@ export default function RegistrationModal({
               </div>
 
               <div>
-                <label htmlFor="notes" className="block text-xs font-bold text-slate-800 mb-1">
+                <label htmlFor="notes" className="block text-xs font-bold text-[#021D3B] mb-1">
                   Catatan Tambahan (Opsional)
                 </label>
                 <textarea
@@ -250,7 +250,7 @@ export default function RegistrationModal({
                   placeholder="Contoh: Lokasi dekat area kampus/sekolah..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 py-2 text-sm font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="w-full rounded-xl border border-[#CCE6FF] bg-[#F4FAFF] px-3.5 py-2 text-sm font-medium text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                 />
               </div>
 
@@ -258,7 +258,7 @@ export default function RegistrationModal({
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full rounded-xl bg-orange-600 hover:bg-orange-700 active:bg-orange-800 text-white py-3.5 px-4 font-bold shadow-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 disabled:opacity-50"
+                  className="w-full rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] text-white py-3.5 px-4 font-bold shadow-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616] disabled:opacity-50"
                 >
                   {status === "loading" ? "Memproses Data..." : "Kirim Pengajuan Kemitraan"}
                 </button>
@@ -270,4 +270,3 @@ export default function RegistrationModal({
     </div>
   );
 }
-

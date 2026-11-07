@@ -64,16 +64,16 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
   ];
 
   return (
-    <section id="pilihan-paket" className="py-16 sm:py-24 bg-white border-b border-slate-200">
+    <section id="pilihan-paket" className="py-16 sm:py-24 bg-white border-b border-[#CCE6FF]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/90 px-3.5 py-1 rounded-full border border-blue-200">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8] bg-[#ECF5FF] px-3.5 py-1 rounded-full border border-[#CCE6FF]">
             Investasi Kemitraan Resmi
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-[#021D3B] tracking-tight">
             PILIHAN PAKET KEMITRAAN AQUVIVA
           </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
+          <p className="text-base text-[#5F6368] leading-relaxed">
             Pilih paket yang sesuai dengan kapasitas toko dan target perputaran usaha Anda. Setiap
             paket sudah dilengkapi fasilitas display pendingin dan materi promosi siap pakai.
           </p>
@@ -86,8 +86,8 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
               key={pkg.id}
               className={`relative flex flex-col justify-between rounded-3xl p-7 transition-all ${
                 pkg.featured
-                  ? "bg-gradient-to-b from-blue-900 via-blue-950 to-slate-950 text-white shadow-2xl ring-4 ring-orange-500/50"
-                  : "bg-slate-50 border border-slate-200 text-slate-900 hover:shadow-lg"
+                  ? "bg-gradient-to-b from-[#021D3B] via-[#002d5c] to-[#021D3B] text-white shadow-2xl ring-4 ring-[#FA4616]/70"
+                  : "bg-[#F4FAFF] border border-[#CCE6FF] text-[#021D3B] hover:shadow-lg"
               }`}
             >
               <div>
@@ -96,15 +96,15 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                   <span
                     className={`rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide ${
                       pkg.featured
-                        ? "bg-orange-500 text-white"
-                        : "bg-blue-100 text-blue-800 border border-blue-200"
+                        ? "bg-[#FA4616] text-white"
+                        : "bg-[#ECF5FF] text-[#0762C8] border border-[#CCE6FF]"
                     }`}
                   >
                     {pkg.badge}
                   </span>
                   <span
                     className={`text-xs font-medium ${
-                      pkg.featured ? "text-blue-200" : "text-slate-500"
+                      pkg.featured ? "text-[#CCE6FF]" : "text-[#5F6368]"
                     }`}
                   >
                     Fasilitas Lengkap
@@ -114,14 +114,14 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                 {/* Package Name */}
                 <h3
                   className={`mt-4 text-xl sm:text-2xl font-black ${
-                    pkg.featured ? "text-white" : "text-slate-900"
+                    pkg.featured ? "text-white" : "text-[#021D3B]"
                   }`}
                 >
                   {pkg.name}
                 </h3>
                 <p
                   className={`mt-1 text-xs sm:text-sm font-medium leading-relaxed ${
-                    pkg.featured ? "text-blue-100" : "text-slate-600"
+                    pkg.featured ? "text-blue-100" : "text-[#5F6368]"
                   }`}
                 >
                   {pkg.tagline}
@@ -143,19 +143,19 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                   className={`rounded-2xl p-4 text-center border ${
                     pkg.featured
                       ? "bg-white/10 border-white/20"
-                      : "bg-white border-slate-200 shadow-xs"
+                      : "bg-white border-[#CCE6FF] shadow-xs"
                   }`}
                 >
                   <p
-                    className={`text-xs font-semibold uppercase tracking-wider ${
-                      pkg.featured ? "text-blue-200" : "text-slate-500"
+                    className={`text-xs font-bold uppercase tracking-wider ${
+                      pkg.featured ? "text-[#CCE6FF]" : "text-[#5F6368]"
                     }`}
                   >
                     Biaya Paket Investasi
                   </p>
                   <p
                     className={`text-2xl sm:text-3xl font-black mt-0.5 ${
-                      pkg.featured ? "text-orange-400" : "text-blue-700"
+                      pkg.featured ? "text-[#FA4616]" : "text-[#0762C8]"
                     }`}
                   >
                     {pkg.price}
@@ -166,7 +166,7 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                 <div className="mt-6 space-y-3">
                   <p
                     className={`text-xs font-bold uppercase tracking-wider ${
-                      pkg.featured ? "text-blue-200" : "text-slate-500"
+                      pkg.featured ? "text-[#CCE6FF]" : "text-[#5F6368]"
                     }`}
                   >
                     Fasilitas &amp; Produk Paket:
@@ -176,7 +176,7 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                       <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm">
                         <svg
                           className={`h-5 w-5 shrink-0 ${
-                            pkg.featured ? "text-orange-400" : "text-emerald-600"
+                            pkg.featured ? "text-[#FA4616]" : "text-[#08BB2C]"
                           }`}
                           fill="none"
                           viewBox="0 0 24 24"
@@ -192,7 +192,7 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                         </svg>
                         <span
                           className={`leading-relaxed ${
-                            pkg.featured ? "text-slate-100" : "text-slate-700"
+                            pkg.featured ? "text-slate-100" : "text-[#021D3B]"
                           }`}
                         >
                           {benefit}
@@ -207,7 +207,7 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
               <div className="mt-8 pt-4 border-t border-slate-200/20">
                 <p
                   className={`text-xs mb-3 text-center italic ${
-                    pkg.featured ? "text-blue-200" : "text-slate-500"
+                    pkg.featured ? "text-[#CCE6FF]" : "text-[#5F6368]"
                   }`}
                 >
                   {pkg.targetDesc}
@@ -217,8 +217,8 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                   onClick={() => onOpenModal(pkg.name)}
                   className={`w-full rounded-xl py-3.5 px-5 text-sm sm:text-base font-extrabold transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                     pkg.featured
-                      ? "bg-orange-500 hover:bg-orange-600 text-white focus-visible:ring-orange-400"
-                      : "bg-blue-700 hover:bg-blue-800 text-white focus-visible:ring-blue-600"
+                      ? "bg-[#FA4616] hover:bg-[#D83508] text-white focus-visible:ring-[#FA4616]"
+                      : "bg-[#0762C8] hover:bg-[#004EA8] text-white focus-visible:ring-[#0762C8]"
                   }`}
                 >
                   Pilih {pkg.name.replace("AQUVIVA", "").trim()}
@@ -229,10 +229,10 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
         </div>
 
         {/* Merchandise & Collateral Showcase Row */}
-        <div className="mt-14 rounded-2xl bg-slate-50 p-6 sm:p-8 border border-slate-200">
+        <div className="mt-14 rounded-3xl bg-[#F4FAFF] p-6 sm:p-8 border border-[#CCE6FF]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
             <div className="flex items-center gap-4">
-              <div className="relative h-20 w-20 shrink-0 rounded-xl bg-white p-2 border border-slate-200">
+              <div className="relative h-20 w-20 shrink-0 rounded-2xl bg-white p-2 border border-[#CCE6FF]">
                 <Image
                   src="/Component/7EEE37C3-1D1A-4E8F-B970-ABA5446EC896.PNG"
                   alt="Kaos Resmi Mitra AQUVIVA"
@@ -241,15 +241,15 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                 />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900">Kaos Resmi Mitra</h4>
-                <p className="text-xs text-slate-600 mt-0.5">
+                <h4 className="text-sm font-bold text-[#021D3B]">Kaos Resmi Mitra</h4>
+                <p className="text-xs text-[#5F6368] mt-0.5">
                   Seragam operasional eksklusif untuk staf dan pemilik toko.
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="relative h-20 w-20 shrink-0 rounded-xl bg-white p-2 border border-slate-200">
+              <div className="relative h-20 w-20 shrink-0 rounded-2xl bg-white p-2 border border-[#CCE6FF]">
                 <Image
                   src="/Component/BEE0113A-61DB-4D20-8452-93C2297CDCD0.PNG"
                   alt="Troli Operasional AQUVIVA"
@@ -258,15 +258,15 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                 />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900">Troli Logistik Mitra</h4>
-                <p className="text-xs text-slate-600 mt-0.5">
+                <h4 className="text-sm font-bold text-[#021D3B]">Troli Logistik Mitra</h4>
+                <p className="text-xs text-[#5F6368] mt-0.5">
                   Kemudahan mobilitas bongkar muat karton air ke rak pajang.
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="relative h-20 w-20 shrink-0 rounded-xl bg-white p-2 border border-slate-200">
+              <div className="relative h-20 w-20 shrink-0 rounded-2xl bg-white p-2 border border-[#CCE6FF]">
                 <Image
                   src="/Logo/0F87EAE0-8919-4878-ABDE-654696C43401.PNG"
                   alt="Banner Nama Toko Mitra AQUVIVA"
@@ -275,8 +275,8 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                 />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900">Banner Nama Toko</h4>
-                <p className="text-xs text-slate-600 mt-0.5">
+                <h4 className="text-sm font-bold text-[#021D3B]">Banner Nama Toko</h4>
+                <p className="text-xs text-[#5F6368] mt-0.5">
                   Cetak spanduk nama toko Anda dengan branding resmi AQUVIVA.
                 </p>
               </div>
@@ -287,4 +287,3 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
     </section>
   );
 }
-

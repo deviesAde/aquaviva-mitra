@@ -1,9 +1,29 @@
 @import "tailwindcss";
 
 :root {
+  --color-aquaviva-orange: #fa4616;
+  --color-aquaviva-orange-hover: #d83508;
+  --color-aquaviva-blue: #0762c8;
+  --color-aquaviva-blue-dark: #004ea8;
+  --color-aquaviva-dark: #021d3b;
+  --color-aquaviva-ice: #f4faff;
+  --color-aquaviva-ice-alt: #ecf5ff;
+  --color-aquaviva-border: #cce6ff;
+  --color-aquaviva-green: #08bb2c;
+
+  --color-aquaviva-orange: #fa4616;
+  --color-aquaviva-orange-hover: #d83508;
+  --color-aquaviva-blue: #0762c8;
+  --color-aquaviva-blue-dark: #004ea8;
+  --color-aquaviva-dark: #021d3b;
+  --color-aquaviva-ice: #f4faff;
+  --color-aquaviva-ice-alt: #ecf5ff;
+  --color-aquaviva-border: #cce6ff;
+  --color-aquaviva-green: #08bb2c;
+
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #021d3b;
 }
 
 body {
@@ -19,6 +39,32 @@ a, button, summary, select, [role="button"], [role="tab"] {
 
 :disabled, [aria-disabled="true"] {
   cursor: not-allowed;
+}
+
+/* Gradients directly reverse-engineered from aquviva.co.id */
+.bg-aquaviva-hero {
+  background: linear-gradient(249.73deg, #f4faff 0%, #ffffff 27.12%, #ecf5ff 100%);
+}
+
+.bg-aquaviva-card {
+  background: linear-gradient(214.39deg, #ecf5ff 0%, #ffffff 52.89%, #f4faff 100%);
+}
+
+.bg-aquaviva-accent {
+  background: linear-gradient(120deg, #e6f1fb 0%, #c4e0f7 50%, #e6f1fb 100%);
+}
+
+/* Gradients directly reverse-engineered from aquviva.co.id */
+.bg-aquaviva-hero {
+  background: linear-gradient(249.73deg, #f4faff 0%, #ffffff 27.12%, #ecf5ff 100%);
+}
+
+.bg-aquaviva-card {
+  background: linear-gradient(214.39deg, #ecf5ff 0%, #ffffff 52.89%, #f4faff 100%);
+}
+
+.bg-aquaviva-accent {
+  background: linear-gradient(120deg, #e6f1fb 0%, #c4e0f7 50%, #e6f1fb 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

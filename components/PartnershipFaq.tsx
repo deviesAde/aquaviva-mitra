@@ -29,16 +29,16 @@ export default function PartnershipFaq() {
   ];
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white border-b border-slate-200">
+    <section id="faq" className="py-16 sm:py-24 bg-white border-b border-[#CCE6FF]">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/90 px-3.5 py-1 rounded-full border border-blue-200">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8] bg-[#ECF5FF] px-3.5 py-1 rounded-full border border-[#CCE6FF]">
             Pusat Informasi Mitra
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-[#021D3B] tracking-tight">
             PERTANYAAN SEPUTAR KEMITRAAN AQUVIVA
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
+          <p className="text-sm sm:text-base text-[#5F6368]">
             Berikut jawaban lengkap seputar proses pendaftaran, operasional, dan pengiriman paket kemitraan.
           </p>
         </div>
@@ -49,19 +49,19 @@ export default function PartnershipFaq() {
             return (
               <div
                 key={index}
-                className="rounded-2xl border border-slate-200 bg-slate-50/70 overflow-hidden transition-colors"
+                className="rounded-2xl border border-[#CCE6FF] bg-[#F4FAFF] overflow-hidden transition-colors"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left text-sm sm:text-base font-bold text-slate-900 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="w-full flex items-center justify-between gap-4 p-5 text-left text-sm sm:text-base font-bold text-[#021D3B] hover:text-[#0762C8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                 >
                   <span>{faq.q}</span>
                   <span
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white border border-slate-300 text-slate-700 transition-transform ${
-                      isOpen ? "rotate-180 bg-blue-50 text-blue-700" : ""
+                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white border border-[#CCE6FF] text-[#021D3B] transition-transform ${
+                      isOpen ? "rotate-180 bg-[#ECF5FF] text-[#0762C8]" : ""
                     }`}
                     aria-hidden="true"
                   >
@@ -80,7 +80,7 @@ export default function PartnershipFaq() {
                 {isOpen && (
                   <div
                     id={`faq-answer-${index}`}
-                    className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 bg-white"
+                    className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#5F6368] leading-relaxed border-t border-[#CCE6FF] bg-white"
                   >
                     {faq.a}
                   </div>
@@ -93,4 +93,3 @@ export default function PartnershipFaq() {
     </section>
   );
 }
-

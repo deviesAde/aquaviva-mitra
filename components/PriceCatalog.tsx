@@ -22,7 +22,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
       price: "Rp 15.000",
       unitPrice: "Rp 1.250 / botol",
       suggestedRetail: "Rp 3.000 - Rp 3.500",
-      desc: "Pilihan utama pelanggan untuk hidrasi harian, cocok dipajang di showcase dingin depan toko.",
+      desc: "Pilihan utama hidrasi harian metode 3-2-1. Sangat pas dipajang di showcase dingin depan toko Anda.",
       image: "/Component/3D4E3669-4A6B-4E93-B2ED-E6BEF210887B.PNG",
       tag: "Best Seller Dingin",
       popular: true,
@@ -40,19 +40,19 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
   ];
 
   return (
-    <section id="harga-mitra" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+    <section id="harga-mitra" className="py-16 sm:py-24 bg-[#F4FAFF] border-b border-[#CCE6FF]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-orange-700 bg-orange-100/90 px-3.5 py-1 rounded-full border border-orange-200">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#FA4616] bg-orange-50 px-3.5 py-1 rounded-full border border-[#FA4616]/30">
             Daftar Produk &amp; Harga Grosir
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-[#021D3B] tracking-tight">
             HARGA KHUSUS MITRA AQUVIVA
           </h2>
-          <p className="text-base sm:text-lg font-semibold text-blue-800">
+          <p className="text-base sm:text-lg font-bold text-[#0762C8]">
             Harga Spesial untuk Mendukung Usaha Anda!
           </p>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#5F6368] leading-relaxed">
             Dapatkan pilihan produk AQUVIVA dalam berbagai ukuran dengan penawaran harga khusus
             bagi mitra yang telah terdaftar. Modal rendah dengan margin keuntungan maksimal untuk
             setiap botol yang terjual.
@@ -64,23 +64,23 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
           {products.map((p) => (
             <div
               key={p.size}
-              className={`relative flex flex-col justify-between rounded-2xl bg-white p-6 sm:p-7 border shadow-sm transition-all hover:shadow-lg ${
-                p.popular ? "border-blue-600 ring-2 ring-blue-600/20" : "border-slate-200"
+              className={`relative flex flex-col justify-between rounded-3xl bg-white p-6 sm:p-7 border shadow-sm transition-all hover:shadow-lg ${
+                p.popular ? "border-[#0762C8] ring-2 ring-[#0762C8]/30" : "border-[#CCE6FF]"
               }`}
             >
               <div>
                 {/* Header Tag */}
                 <div className="flex items-center justify-between gap-2">
                   <span
-                    className={`rounded-md px-2.5 py-1 text-xs font-bold ${
+                    className={`rounded-lg px-3 py-1 text-xs font-bold ${
                       p.popular
-                        ? "bg-blue-600 text-white"
-                        : "bg-slate-100 text-slate-700 border border-slate-200"
+                        ? "bg-[#0762C8] text-white"
+                        : "bg-[#ECF5FF] text-[#0762C8] border border-[#CCE6FF]"
                     }`}
                   >
                     {p.tag}
                   </span>
-                  <span className="text-xs font-semibold text-slate-500">{p.packInfo}</span>
+                  <span className="text-xs font-semibold text-[#5F6368]">{p.packInfo}</span>
                 </div>
 
                 {/* Product Image */}
@@ -95,34 +95,34 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
                 </div>
 
                 {/* Title and Specs */}
-                <h3 className="text-xl font-bold text-slate-900">AQUVIVA {p.size}</h3>
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <h3 className="text-xl font-black text-[#021D3B]">AQUVIVA {p.size}</h3>
+                <p className="mt-2 text-xs sm:text-sm text-[#5F6368] leading-relaxed">
                   {p.desc}
                 </p>
 
                 {/* Pricing Box */}
-                <div className="mt-5 rounded-xl bg-blue-50/70 p-4 border border-blue-100">
+                <div className="mt-5 rounded-2xl bg-[#F4FAFF] p-4 border border-[#CCE6FF]">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-xs font-semibold text-blue-900">Harga Khusus Mitra:</span>
-                    <span className="text-xl font-extrabold text-blue-900">{p.price}</span>
+                    <span className="text-xs font-bold text-[#021D3B]">Harga Khusus Mitra:</span>
+                    <span className="text-xl font-black text-[#0762C8]">{p.price}</span>
                   </div>
-                  <div className="mt-1.5 flex items-center justify-between text-xs text-slate-600 border-t border-blue-200/50 pt-2">
+                  <div className="mt-1.5 flex items-center justify-between text-xs text-[#5F6368] border-t border-[#CCE6FF] pt-2">
                     <span>Estimasi modal per botol:</span>
-                    <span className="font-bold text-slate-900">{p.unitPrice}</span>
+                    <span className="font-bold text-[#021D3B]">{p.unitPrice}</span>
                   </div>
-                  <div className="mt-1 flex items-center justify-between text-xs text-emerald-800">
-                    <span>Saran harga jual toko:</span>
+                  <div className="mt-1 flex items-center justify-between text-xs text-[#08BB2C]">
+                    <span className="font-medium">Saran harga jual toko:</span>
                     <span className="font-bold">{p.suggestedRetail}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Order Button */}
+              {/* Order Button with #FA4616 */}
               <div className="mt-6 pt-2">
                 <button
                   type="button"
                   onClick={() => onOpenModal()}
-                  className="w-full rounded-xl bg-slate-900 hover:bg-orange-600 hover:border-orange-600 text-white py-2.5 px-4 text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="w-full rounded-xl bg-[#021D3B] hover:bg-[#FA4616] text-white py-3 px-4 text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                 >
                   Pesan Stok Ukuran Ini
                 </button>
@@ -133,7 +133,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
 
         {/* Disclaimer / Note */}
         <div className="mt-8 text-center">
-          <p className="text-xs sm:text-sm text-slate-500 italic">
+          <p className="text-xs sm:text-sm text-[#5F6368] italic">
             * Harga berlaku sesuai ketentuan program dan dapat berubah sewaktu-waktu.
           </p>
         </div>
@@ -141,4 +141,3 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
     </section>
   );
 }
-
