@@ -20,21 +20,6 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#CCE6FF] bg-white/95 backdrop-blur-md shadow-xs">
-      {/* Top Banner Bar with Official Color #021D3B */}
-      <div className="bg-[#021D3B] px-4 py-1.5 text-xs text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-[#FA4616] animate-pulse" />
-            <span className="font-medium tracking-wide">
-              Official Partner Program: <strong>AQUVIVA by Wings Food</strong>
-            </span>
-          </div>
-          <div className="hidden sm:flex items-center gap-4 text-[11px] text-[#CCE6FF]">
-            <span>WhatsApp Care: +62 811-8126-1082</span>
-            <span>Referensi Resmi: aquviva.co.id</span>
-          </div>
-        </div>
-      </div>
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
         {/* Brand Logo */}

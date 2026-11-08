@@ -233,9 +233,9 @@ export default function RegistrationModal({
                     onChange={(e) => setFormData({ ...formData, selectedPkg: e.target.value })}
                     className="w-full rounded-xl border border-[#CCE6FF] bg-[#F4FAFF] px-3 py-2.5 text-sm font-bold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                   >
-                    <option value="PAKET PEMULA AQUVIVA">Paket Pemula (Rp 1.000.000)</option>
-                    <option value="PAKET JURAGAN AQUVIVA">Paket Juragan (Rp 2.000.000)</option>
-                    <option value="PAKET DISTRIBUTOR AQUVIVA">Paket Distributor (Rp 5.000.000)</option>
+                    <option value="PAKET PEMULA AQUVIVA">01 | Paket Pemula (Rp 1.000.000)</option>
+                    <option value="PAKET JURAGAN AQUVIVA">02 | Paket Juragan (Rp 2.500.000)</option>
+                    <option value="PAKET DISTRIBUTOR AQUVIVA">03 | Paket Distributor (Rp 5.000.000)</option>
                   </select>
                 </div>
               </div>

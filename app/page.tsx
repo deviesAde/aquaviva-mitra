@@ -4,8 +4,8 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import PurificationSection from "@/components/PurificationSection";
+import MitraSpecialPricing from "@/components/MitraSpecialPricing";
 import PriceCatalog from "@/components/PriceCatalog";
-import PackagesSection from "@/components/PackagesSection";
 import ProfitCalculator from "@/components/ProfitCalculator";
 import PartnershipFaq from "@/components/PartnershipFaq";
 import RegistrationModal from "@/components/RegistrationModal";
@@ -39,11 +39,11 @@ export default function Home() {
         {/* 7 Tahap Nano Purifikasi */}
         <PurificationSection />
 
-        {/* Harga Khusus Mitra AQUVIVA */}
-        <PriceCatalog onOpenModal={handleOpenModal} />
+        {/* Harga Khusus Mitra AQUVIVA (Horizontal Expanding Cards) */}
+        <MitraSpecialPricing />
 
-        {/* Paket Kemitraan: Pemula, Juragan, Distributor */}
-        <PackagesSection onOpenModal={handleOpenModal} />
+        {/* Gabung Kemitraan AQUVIVA & Pilihan Paket Usaha */}
+        <PriceCatalog onOpenModal={handleOpenModal} />
 
         {/* Kalkulator Cuan & Simulasi Margin */}
         <ProfitCalculator />

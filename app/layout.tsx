@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Alan_Sans } from "next/font/google";
 import "./globals.css";
+
+const alanSans = Alan_Sans({
+  subsets: ["latin"],
+  variable: "--font-alan-sans",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Kemitraan AQUVIVA | Segarnya Aquviva, Peluangnya untuk Usahamu!",
@@ -13,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="h-full scroll-smooth antialiased">
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 selection:bg-orange-500 selection:text-white">
+    <html lang="id" className={`h-full scroll-smooth antialiased ${alanSans.variable}`}>
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 selection:bg-orange-500 selection:text-white font-sans">
         {children}
       </body>
     </html>
