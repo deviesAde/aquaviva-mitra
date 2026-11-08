@@ -17,6 +17,16 @@ interface MitraProduct {
   waMessage: string;
 }
 
+function highlightAquviva(text: string) {
+  if (!text || !text.includes("AQUVIVA")) return text;
+  return text.split("AQUVIVA").map((part, i, arr) => (
+    <span key={i}>
+      {part}
+      {i < arr.length - 1 && <span className="font-bold text-[#FA4616]">AQUVIVA</span>}
+    </span>
+  ));
+}
+
 export default function MitraSpecialPricing() {
   // Default active card is AQUVIVA 700 ml as requested
   const [activeId, setActiveId] = useState<string>("700ml");
@@ -69,7 +79,7 @@ export default function MitraSpecialPricing() {
   return (
     <section
       id="harga-mitra"
-      className="relative py-16 sm:py-24 bg-[#FAFCFF] border-b border-[#CCE6FF] font-alan-sans overflow-hidden"
+      className="relative py-16 sm:py-24 bg-[#FAFCFF] font-alan-sans overflow-hidden"
     >
       {/* Background Subtle Contour Wave Decoration from Brand Identity */}
       <div className="absolute inset-0 pointer-events-none opacity-30 overflow-hidden">
@@ -89,7 +99,7 @@ export default function MitraSpecialPricing() {
         {/* 1. Header Section */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <p className="text-xs font-bold uppercase tracking-widest text-[#0762C8]">
-            HARGA KHUSUS MITRA AQUVIVA
+            HARGA KHUSUS MITRA <span className="text-[#FA4616]">AQUVIVA</span>
           </p>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#021D3B] tracking-tight leading-tight">
             Harga Spesial untuk{" "}
@@ -97,7 +107,7 @@ export default function MitraSpecialPricing() {
           </h2>
           <p className="text-sm sm:text-base font-normal text-slate-600 leading-relaxed max-w-2xl mx-auto">
             Dapatkan pilihan produk{" "}
-            <span className="font-sans font-black text-[#0762C8]">AQUVIVA</span>{" "}
+            <span className="font-sans font-black text-[#FA4616]">AQUVIVA</span>{" "}
             dalam berbagai ukuran dengan penawaran harga khusus bagi mitra yang telah terdaftar.
           </p>
         </div>
@@ -110,6 +120,7 @@ export default function MitraSpecialPricing() {
             return (
               <div
                 key={item.id}
+                onMouseEnter={() => setActiveId(item.id)}
                 onClick={() => setActiveId(item.id)}
                 className={`relative rounded-2xl overflow-hidden transition-[flex,box-shadow,border-color] duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] flex ${
                   isActive
@@ -210,7 +221,7 @@ export default function MitraSpecialPricing() {
                             </span>
                           </div>
                           <h3 className="text-2xl lg:text-3xl font-extrabold text-[#021D3B] tracking-tight mt-1">
-                            {item.name}
+                            {highlightAquviva(item.name)}
                           </h3>
                         </div>
 
@@ -287,7 +298,7 @@ export default function MitraSpecialPricing() {
                     {/* Information Footer */}
                     <div className="w-full pt-4 border-t border-slate-100 space-y-1">
                       <h4 className="text-base font-bold text-[#021D3B] truncate">
-                        {item.name}
+                        {highlightAquviva(item.name)}
                       </h4>
                       <p className="text-xs text-slate-500 font-medium">
                         {item.bottlesPerPack}
@@ -350,7 +361,7 @@ export default function MitraSpecialPricing() {
                         )}
                       </div>
                       <h4 className="text-base font-bold text-[#021D3B]">
-                        {item.name}
+                        {highlightAquviva(item.name)}
                       </h4>
                       <p className="text-xs text-slate-500">
                         {item.bottlesPerPack}

@@ -16,7 +16,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm text-[#CCE6FF] max-w-md leading-relaxed">
-              <strong>AQUVIVA: Air Mineral Murni Sejuk &amp; Terpercaya</strong> diproses melalui
+              <strong><span className="text-[#FA4616]">AQUVIVA</span>: Air Mineral Murni Sejuk &amp; Terpercaya</strong> diproses melalui
               teknologi 7 Tahap Nano Purifikasi pertama di Indonesia. Menjaga kemurnian air dan mineral
               baik seimbang untuk kesehatan keluarga.
             </p>

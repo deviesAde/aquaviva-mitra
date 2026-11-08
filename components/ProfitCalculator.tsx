@@ -41,7 +41,7 @@ export default function ProfitCalculator() {
           </h2>
           <p className="text-sm sm:text-base text-[#5F6368] leading-relaxed">
             Gunakan simulasi interaktif di bawah ini untuk menghitung estimasi margin keuntungan
-            penjualan air mineral dingin AQUVIVA di toko Anda.
+            penjualan air mineral dingin <span className="font-bold text-[#FA4616]">AQUVIVA</span> di toko Anda.
           </p>
         </div>
 
@@ -52,7 +52,9 @@ export default function ProfitCalculator() {
               {/* Product 1: 700ml */}
               <div className="rounded-2xl bg-[#F4FAFF] p-5 border border-[#CCE6FF]">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-[#021D3B] text-sm sm:text-base">AQUVIVA 700 ml (Best Seller)</h3>
+                  <h3 className="font-bold text-[#021D3B] text-sm sm:text-base">
+                    <span className="text-[#FA4616]">AQUVIVA</span> 700 ml (Best Seller)
+                  </h3>
                   <span className="text-xs font-bold text-[#0762C8] bg-white px-2.5 py-0.5 rounded-md border border-[#CCE6FF]">
                     Modal: Rp 1.250/btl
                   </span>
@@ -97,7 +99,9 @@ export default function ProfitCalculator() {
               {/* Product 2: 250ml */}
               <div className="rounded-2xl bg-[#F4FAFF] p-5 border border-[#CCE6FF]">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-[#021D3B] text-sm sm:text-base">AQUVIVA 250 ml (Praktis)</h3>
+                  <h3 className="font-bold text-[#021D3B] text-sm sm:text-base">
+                    <span className="text-[#FA4616]">AQUVIVA</span> 250 ml (Praktis)
+                  </h3>
                   <span className="text-xs font-bold text-[#FA4616] bg-white px-2.5 py-0.5 rounded-md border border-[#FA4616]/30">
                     Modal: Rp 500/btl
                   </span>

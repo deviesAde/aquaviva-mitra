@@ -11,7 +11,6 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Keunggulan", href: "#keunggulan" },
     { label: "Harga Mitra", href: "#harga-mitra" },
     { label: "Pilihan Paket", href: "#pilihan-paket" },
     { label: "Kalkulator Cuan", href: "#kalkulator" },

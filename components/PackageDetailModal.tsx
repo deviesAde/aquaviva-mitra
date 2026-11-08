@@ -39,6 +39,16 @@ interface PackageDetailModalProps {
   onSelectPackage: (pkgName: string) => void;
 }
 
+function highlightAquviva(text: string) {
+  if (!text || !text.includes("AQUVIVA")) return text;
+  return text.split("AQUVIVA").map((part, i, arr) => (
+    <span key={i}>
+      {part}
+      {i < arr.length - 1 && <span className="font-bold text-[#FA4616]">AQUVIVA</span>}
+    </span>
+  ));
+}
+
 export default function PackageDetailModal({
   pkg,
   isOpen,
@@ -145,7 +155,7 @@ export default function PackageDetailModal({
                 </div>
               </div>
               <p className="mt-2 text-center text-xs font-normal text-slate-500">
-                Poster Resmi Kemitraan <span className="font-sans font-bold text-slate-800">AQUVIVA</span> by Wings Food
+                Poster Resmi Kemitraan <span className="font-sans font-bold text-[#FA4616]">AQUVIVA</span> by Wings Food
               </p>
             </div>
 
@@ -229,8 +239,8 @@ export default function PackageDetailModal({
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     <div className="leading-snug">
-                      <span className="font-bold text-[#021D3B]">{item.label}:</span>{" "}
-                      <span className="font-normal text-slate-700">{item.detail}</span>
+                      <span className="font-bold text-[#021D3B]">{highlightAquviva(item.label)}:</span>{" "}
+                      <span className="font-normal text-slate-700">{highlightAquviva(item.detail)}</span>
                     </div>
                   </li>
                 ))}
@@ -307,7 +317,7 @@ export default function PackageDetailModal({
               />
             </div>
             <p className="mt-2 text-xs font-normal text-slate-500 text-center">
-              Poster Resmi {pkg.name} — Program Kemitraan AQUVIVA by Wings Food
+              Poster Resmi {pkg.name} — Program Kemitraan <span className="font-bold text-[#FA4616]">AQUVIVA</span> by Wings Food
             </p>
           </div>
         </div>

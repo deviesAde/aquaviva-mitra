@@ -2,6 +2,16 @@
 
 import { useState } from "react";
 
+function highlightAquviva(text: string) {
+  if (!text || !text.includes("AQUVIVA")) return text;
+  return text.split("AQUVIVA").map((part, i, arr) => (
+    <span key={i}>
+      {part}
+      {i < arr.length - 1 && <span className="font-bold text-[#FA4616]">AQUVIVA</span>}
+    </span>
+  ));
+}
+
 export default function PartnershipFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -36,7 +46,7 @@ export default function PartnershipFaq() {
             Pusat Informasi Mitra
           </span>
           <h2 className="text-2xl sm:text-4xl font-black text-[#021D3B] tracking-tight">
-            PERTANYAAN SEPUTAR KEMITRAAN AQUVIVA
+            PERTANYAAN SEPUTAR KEMITRAAN <span className="text-[#FA4616]">AQUVIVA</span>
           </h2>
           <p className="text-sm sm:text-base text-[#5F6368]">
             Berikut jawaban lengkap seputar proses pendaftaran, operasional, dan pengiriman paket kemitraan.
@@ -58,7 +68,7 @@ export default function PartnershipFaq() {
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                 >
-                  <span>{faq.q}</span>
+                  <span>{highlightAquviva(faq.q)}</span>
                   <span
                     className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white border border-[#CCE6FF] text-[#021D3B] transition-transform ${
                       isOpen ? "rotate-180 bg-[#ECF5FF] text-[#0762C8]" : ""
@@ -82,7 +92,7 @@ export default function PartnershipFaq() {
                     id={`faq-answer-${index}`}
                     className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#5F6368] leading-relaxed border-t border-[#CCE6FF] bg-white"
                   >
-                    {faq.a}
+                    {highlightAquviva(faq.a)}
                   </div>
                 )}
               </div>

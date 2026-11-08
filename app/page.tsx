@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import PurificationSection from "@/components/PurificationSection";
 import MitraSpecialPricing from "@/components/MitraSpecialPricing";
 import PriceCatalog from "@/components/PriceCatalog";
 import ProfitCalculator from "@/components/ProfitCalculator";
@@ -35,9 +34,6 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <Hero onOpenModal={handleOpenModal} />
-
-        {/* 7 Tahap Nano Purifikasi */}
-        <PurificationSection />
 
         {/* Harga Khusus Mitra AQUVIVA (Horizontal Expanding Cards) */}
         <MitraSpecialPricing />

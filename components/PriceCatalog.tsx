@@ -112,6 +112,16 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
   ];
 
 
+function highlightAquviva(text: string) {
+  if (!text || !text.includes("AQUVIVA")) return text;
+  return text.split("AQUVIVA").map((part, i, arr) => (
+    <span key={i}>
+      {part}
+      {i < arr.length - 1 && <span className="font-bold text-[#FA4616]">AQUVIVA</span>}
+    </span>
+  ));
+}
+
   const handleCardClick = (pkg: PartnershipPackage) => {
     setSelectedPackageId(pkg.id);
   };
@@ -122,48 +132,18 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
   };
 
   return (
-    <section id="pilihan-paket" className="relative py-16 sm:py-24 scroll-mt-20 bg-[#F4FAFF] border-b border-[#CCE6FF] font-alan-sans overflow-hidden">
-      {/* Decorative High-Clarity Background Image with Thick Top/Bottom Blends & Subtle Lateral Edges */}
-      <div className="absolute top-0 inset-x-0 h-[600px] sm:h-[660px] lg:h-[700px] pointer-events-none overflow-hidden select-none">
-        <div className="relative w-full h-full max-w-[1600px] mx-auto">
-          {/* Main Background Image - High Clarity & Natural Visibility */}
-          <Image
-            src="/Component/kemitraan.jpeg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[18%_center] sm:object-[22%_center] opacity-95 filter saturate-[1.15] contrast-[1.04]"
-          />
-
-          {/* 1. Gradasi Bagian Atas Tebal: Linear-gradient tebal dari #F4FAFF memudar halus agar menyambung sempurna dengan section sebelumnya */}
-          <div className="absolute inset-x-0 top-0 h-40 sm:h-52 lg:h-60 bg-gradient-to-b from-[#F4FAFF] via-[#F4FAFF]/80 via-35% to-transparent" />
-
-          {/* 2. Gradasi Sisi Kiri (Sedikit Saja): Soft edge tipis di pinggir kiri agar gambar tetap luas & jelas */}
-          <div className="absolute inset-y-0 left-0 w-6 sm:w-12 lg:w-16 bg-gradient-to-r from-[#F4FAFF] via-[#F4FAFF]/40 to-transparent" />
-
-          {/* 3. Gradasi Sisi Kanan (Sedikit Saja): Soft edge tipis di pinggir kanan simetris */}
-          <div className="absolute inset-y-0 right-0 w-6 sm:w-12 lg:w-16 bg-gradient-to-l from-[#F4FAFF] via-[#F4FAFF]/40 to-transparent" />
-
-          {/* 4. Gradasi Bagian Bawah Tebal: Linear-gradient tebal yang memudar halus menuju background section sebelum kartu paket */}
-          <div className="absolute inset-x-0 bottom-0 h-52 sm:h-72 lg:h-80 bg-gradient-to-t from-[#F4FAFF] via-[#F4FAFF]/90 via-40% to-transparent" />
-
-          {/* 5. Gradasi Bagian Tengah & Kanan: Menutupi teks poster bawaan gambar agar headline tetap tajam & mudah dibaca */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_78%_85%_at_62%_42%,rgba(244,250,255,1)_0%,rgba(244,250,255,0.98)_52%,rgba(244,250,255,0.75)_68%,rgba(244,250,255,0)_90%)]" />
-        </div>
-      </div>
-
+    <section id="pilihan-paket" className="relative py-16 sm:py-24 scroll-mt-20 bg-white border-b border-[#CCE6FF] font-alan-sans overflow-hidden">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#0762C8] bg-white/90 backdrop-blur-xs px-3.5 py-1 rounded-full border border-[#CCE6FF] shadow-2xs">
+          <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#0762C8] bg-white px-3.5 py-1 rounded-full border border-[#CCE6FF] shadow-2xs">
             Pilihan Paket Usaha
           </span>
-          <h2 className="text-2xl sm:text-4xl font-bold text-[#021D3B] tracking-tight">
-            GABUNG KEMITRAAN <br className="hidden sm:inline" />
-            <span className="font-sans font-black text-[#FA4616]">AQUVIVA</span>
-            <span className="text-slate-400 font-normal mx-1.5">-</span>
-            <span className="text-[#E5242A] font-bold">WINGS Food</span>
+          <h2 className="text-[1.375rem] leading-snug sm:text-4xl font-bold text-[#021D3B] tracking-tight text-balance">
+            <span className="block sm:inline">GABUNG KEMITRAAN</span>{" "}
+            <span className="block sm:inline whitespace-nowrap text-[#FA4616] font-bold">
+              AQUVIVA - WINGS Food
+            </span>
           </h2>
           <p className="text-base sm:text-lg font-bold text-[#FA4616]">
             Hadirkan Kesegaran, Kembangkan Peluang Usaha Anda
@@ -283,7 +263,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
                           >
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                           </svg>
-                          <span className="leading-snug">{highlight}</span>
+                          <span className="leading-snug">{highlightAquviva(highlight)}</span>
                         </li>
                       ))}
                     </ul>
@@ -332,65 +312,195 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
         </div>
 
 
-        {/* Supporting Merchandise Highlight */}
-        <div className="mt-12 rounded-2xl bg-white p-6 sm:p-7 border border-[#CCE6FF] shadow-xs">
-          <div className="text-center max-w-xl mx-auto mb-6">
-            <h4 className="text-base font-semibold text-[#021D3B]">
+        {/* Supporting Merchandise & Store Equipment Showcase */}
+        <div className="mt-16 rounded-3xl bg-white p-6 sm:p-10 border border-[#CCE6FF] shadow-xs">
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#0762C8] bg-[#F0F7FF] px-3.5 py-1 rounded-full border border-[#CCE6FF]">
+              Fasilitas &amp; Inventaris Siap Pakai
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-[#021D3B] tracking-tight">
               Perlengkapan Pendukung Kemitraan Resmi{" "}
-              <span className="font-sans font-bold text-[#0762C8]">AQUVIVA</span>
-            </h4>
-            <p className="text-xs font-normal text-slate-500 mt-1">
-              Seluruh paket sudah termasuk sarana display pendingin, branding toko, dan perlengkapan operasional siap jualan
+              <span className="font-sans font-black text-[#FA4616]">AQUVIVA</span>
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Seluruh paket sudah termasuk sarana display pendingin, branding toko, dan perlengkapan operasional siap jualan. Menjadi aset hak milik toko mitra sepenuhnya tanpa sistem sewa.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center">
-            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#F4FAFF] border border-[#CCE6FF]">
-              <div className="relative h-14 w-14 shrink-0 rounded-lg bg-white p-1 border border-[#CCE6FF]">
-                <Image
-                  src="/Component/7EEE37C3-1D1A-4E8F-B970-ABA5446EC896.PNG"
-                  alt="Kaos Resmi Mitra AQUVIVA"
-                  fill
-                  className="object-contain p-1"
-                />
-              </div>
+
+          {/* 4 Tangible Equipment Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+            {/* Card 1: Showcase Pendingin Polytron */}
+            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
               <div>
-                <h5 className="text-xs font-semibold text-[#021D3B]">Baju Kaos Resmi</h5>
-                <p className="text-xs font-normal text-slate-500 mt-0.5">
-                  Seragam operasional eksklusif untuk staf dan pemilik toko.
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
+                    Sarana Pendingin
+                  </span>
+                  <span className="text-[10px] font-semibold text-[#08BB2C] bg-[#EBF7EE] px-2 py-0.5 rounded-full">
+                    Hak Milik
+                  </span>
+                </div>
+
+                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
+                  <Image
+                    src="/Component/showcase-1-pintu-trans.png"
+                    alt="Showcase Pendingin Polytron Kemitraan AQUVIVA"
+                    fill
+                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+
+                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
+                  Showcase Polytron
+                </h4>
+                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
+                  Unit pendingin resmi Polytron 4–5 rak hemat daya listrik untuk menyajikan kesegaran dingin maksimal.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+                <span className="text-[#08BB2C]">✓</span> Bergaransi Servis Resmi
+              </div>
+            </div>
+
+            {/* Card 2: Banner Nama Toko Custom */}
+            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
+                    Branding Toko
+                  </span>
+                  <span className="text-[10px] font-semibold text-[#0762C8] bg-[#ECF5FF] px-2 py-0.5 rounded-full">
+                    Custom Nama
+                  </span>
+                </div>
+
+                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
+                  <Image
+                    src="/Component/banner-nama-toko-mockup.png"
+                    alt="Spanduk Banner Nama Toko Mitra AQUVIVA"
+                    fill
+                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+
+                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
+                  Banner Nama Toko
+                </h4>
+                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
+                  Spanduk bahan tebal anti-luntur dicetak eksklusif mencantumkan nama toko Anda dan identitas resmi <span className="font-bold text-[#FA4616]">AQUVIVA</span>.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+                <span className="text-[#08BB2C]">✓</span> Gratis Desain &amp; Cetak
+              </div>
+            </div>
+
+            {/* Card 3: Kaos Seragam Operasional */}
+            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
+                    Seragam Mitra
+                  </span>
+                  <span className="text-[10px] font-semibold text-[#FA4616] bg-[#FFF3EE] px-2 py-0.5 rounded-full">
+                    Official Merch
+                  </span>
+                </div>
+
+                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
+                  <Image
+                    src="/Component/kaos-aquaviva-trans.png"
+                    alt="Kaos Seragam Resmi Mitra AQUVIVA by Wings Food"
+                    fill
+                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+
+                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
+                  Kaos Seragam Resmi
+                </h4>
+                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
+                  Baju seragam operasional bahan katun sejuk dan rapi untuk pemilik toko serta staf penjualan.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+                <span className="text-[#08BB2C]">✓</span> Bahan Katun Berkualitas
+              </div>
+            </div>
+
+            {/* Card 4: Troli Lipat Logistik Toko */}
+            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
+                    Alat Angkut
+                  </span>
+                  <span className="text-[10px] font-semibold text-[#08BB2C] bg-[#EBF7EE] px-2 py-0.5 rounded-full">
+                    Beban 150 kg
+                  </span>
+                </div>
+
+                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
+                  <Image
+                    src="/Component/troli-aquaviva-trans.png"
+                    alt="Troli Lipat Logistik Toko Mitra AQUVIVA"
+                    fill
+                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+
+                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
+                  Troli Lipat Logistik
+                </h4>
+                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
+                  Memudahkan mobilisasi dan pemindahan dus air mineral dengan aman, praktis, dan tanpa menguras tenaga.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+                <span className="text-[#08BB2C]">✓</span> Rangka Baja Kokoh &amp; Lipat
+              </div>
+            </div>
+          </div>
+
+          {/* 3 Partnership Commitments Strip */}
+          <div className="mt-8 pt-6 border-t border-[#CCE6FF]/60 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
+            <div className="flex items-start gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EBF7EE] text-[#08BB2C] font-bold text-xs mt-0.5">
+                ✓
+              </span>
+              <div>
+                <h5 className="text-xs font-bold text-[#021D3B]">100% Hak Milik Mitra</h5>
+                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                  Tidak ada sistem sewa, bagi hasil, atau biaya bulanan. Seluruh unit menjadi aset toko Anda.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#F4FAFF] border border-[#CCE6FF]">
-              <div className="relative h-14 w-14 shrink-0 rounded-lg bg-white p-1 border border-[#CCE6FF]">
-                <Image
-                  src="/Logo/0F87EAE0-8919-4878-ABDE-654696C43401.PNG"
-                  alt="Banner Nama Toko Mitra AQUVIVA"
-                  fill
-                  className="object-contain p-1"
-                />
-              </div>
+            <div className="flex items-start gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ECF5FF] text-[#0762C8] font-bold text-xs mt-0.5">
+                ✓
+              </span>
               <div>
-                <h5 className="text-xs font-semibold text-[#021D3B]">Banner Nama Toko</h5>
-                <p className="text-xs font-normal text-slate-500 mt-0.5">
-                  Spanduk nama toko Anda dengan identitas resmi AQUVIVA.
+                <h5 className="text-xs font-bold text-[#021D3B]">Pengiriman Armada Resmi</h5>
+                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                  Unit showcase dan seluruh stok diantar aman langsung oleh armada logistik resmi WINGS Food.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#F4FAFF] border border-[#CCE6FF]">
-              <div className="relative h-14 w-14 shrink-0 rounded-lg bg-white p-1 border border-[#CCE6FF]">
-                <Image
-                  src="/Component/BEE0113A-61DB-4D20-8452-93C2297CDCD0.PNG"
-                  alt="Troli Operasional AQUVIVA"
-                  fill
-                  className="object-contain p-1"
-                />
-              </div>
+            <div className="flex items-start gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FFF3EE] text-[#FA4616] font-bold text-xs mt-0.5">
+                ✓
+              </span>
               <div>
-                <h5 className="text-xs font-semibold text-[#021D3B]">Troli Lipat Logistik</h5>
-                <p className="text-xs font-normal text-slate-500 mt-0.5">
-                  Memudahkan mobilisasi dan bongkar muat dus air mineral.
+                <h5 className="text-xs font-bold text-[#021D3B]">Dukungan Servis Resmi</h5>
+                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                  Unit showcase bergaransi resmi dengan kesiapan teknisi untuk menjaga kelancaran usaha mitra.
                 </p>
               </div>
             </div>
@@ -400,7 +510,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
         {/* Disclaimer / Note */}
         <div className="mt-8 text-center">
           <p className="text-xs font-normal text-slate-500 italic">
-            * Seluruh fasilitas, produk, dan perlengkapan sesuai dengan ketentuan resmi Program Kemitraan AQUVIVA by Wings Food.
+            * Seluruh fasilitas, produk, dan perlengkapan sesuai dengan ketentuan resmi Program Kemitraan <span className="font-bold text-[#FA4616]">AQUVIVA</span> by Wings Food.
           </p>
         </div>
       </div>

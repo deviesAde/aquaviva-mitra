@@ -142,7 +142,7 @@ export default function RegistrationModal({
                 Formulir Resmi
               </span>
               <h3 id="modal-title" className="mt-2 text-xl font-black text-[#021D3B]">
-                Pendaftaran Kemitraan AQUVIVA
+                Pendaftaran Kemitraan <span className="text-[#FA4616]">AQUVIVA</span>
               </h3>
               <p className="mt-1 text-xs sm:text-sm text-[#5F6368]">
                 Isi data di bawah ini untuk diverifikasi oleh tim logistik dan kanvaser wilayah Anda.
