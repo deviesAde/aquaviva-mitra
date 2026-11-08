@@ -243,24 +243,18 @@ export default function Hero({ onOpenModal }: HeroProps) {
             {/* Supporting Information Under CTA Buttons */}
             <div className="pt-2 sm:pt-3 border-t border-[#CCE6FF]/50 max-w-xl">
               <div className="flex flex-wrap items-center gap-y-2 gap-x-3 text-xs sm:text-sm font-semibold text-[#5F6368]">
-                <span className="inline-flex items-center gap-1.5 text-[#021D3B]">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#EBF7EE] text-[#08BB2C]">
-                    ✓
-                  </span>
+                <span className="inline-flex items-center gap-2 text-[#021D3B]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8]" />
                   Program kemitraan resmi
                 </span>
                 <span className="text-[#CCE6FF] hidden sm:inline">•</span>
-                <span className="inline-flex items-center gap-1.5 text-[#021D3B]">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#EBF7EE] text-[#08BB2C]">
-                    ✓
-                  </span>
+                <span className="inline-flex items-center gap-2 text-[#021D3B]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8]" />
                   Showcase resmi &amp; bergaransi
                 </span>
                 <span className="text-[#CCE6FF] hidden sm:inline">•</span>
-                <span className="inline-flex items-center gap-1.5 text-[#021D3B]">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#EBF7EE] text-[#08BB2C]">
-                    ✓
-                  </span>
+                <span className="inline-flex items-center gap-2 text-[#021D3B]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8]" />
                   Dukungan promosi toko
                 </span>
               </div>

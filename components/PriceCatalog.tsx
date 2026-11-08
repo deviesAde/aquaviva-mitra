@@ -149,366 +149,247 @@ function highlightAquviva(text: string) {
             Hadirkan Kesegaran, Kembangkan Peluang Usaha Anda
           </p>
           <p className="text-sm sm:text-base font-normal text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Bagi Anda yang ingin mengembangkan usaha penjualan air mineral, tersedia beberapa pilihan paket pengadaan produk yang dapat disesuaikan dengan kebutuhan dan skala usaha.
+            Bagi Anda yang ingin mengembangkan usaha penjualan air mineral, setiap paket kemitraan resmi sudah langsung dilengkapi sarana display pendingin serta fasilitas inventaris operasional resmi siap jualan.
           </p>
         </div>
 
-        {/* Interactive Clickable Package Cards Grid */}
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {packages.map((pkg) => {
-            const isSelected = selectedPackageId === pkg.id;
+        {/* Perlengkapan Resmi Kemitraan: Official Graphic + Penjelasan Detail Gambar */}
+        <div className="mt-8 sm:mt-10 max-w-5xl mx-auto">
+          {/* Main Visual: image.png */}
+          <div className="relative w-full aspect-[2172/724] overflow-hidden">
+            <Image
+              src="/Component/image.png"
+              alt="Perlengkapan Resmi Kemitraan AQUVIVA: Baju Kaos, Banner Nama Toko, dan Troli Lipat"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1100px"
+              className="object-contain"
+            />
+          </div>
 
-            return (
-              <div
-                key={pkg.id}
-                onClick={() => handleCardClick(pkg)}
-                className={`group relative flex flex-col justify-between rounded-3xl p-6 sm:p-7 transition-all duration-200 cursor-pointer ${
-                  isSelected
-                    ? "bg-white border-2 border-[#0762C8] ring-4 ring-[#0762C8]/15 shadow-xl scale-[1.01]"
-                    : "bg-white border border-[#CCE6FF] shadow-xs hover:border-[#0762C8]/50 hover:shadow-md"
-                }`}
-              >
-                <div className="flex flex-col">
-                  {/* Top Interactive Selection Bar */}
-                  <div className="flex items-center justify-between gap-2 pb-2">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                      {pkg.code} | PAKET USAHA
-                    </span>
+          {/* Penjelasan Detail 3 Perlengkapan Resmi Sesuai Gambar */}
+          <div className="mt-6 sm:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            {/* 1. Baju Kaos */}
+            <div className="rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] p-5 sm:p-6 hover:bg-white hover:border-[#0762C8]/40 transition-all shadow-2xs hover:shadow-sm">
+              <h3 className="text-base sm:text-lg font-bold text-[#021D3B]">
+                Baju Kaos Kemitraan
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Kaos seragam operasional bahan katun sejuk dan rapi untuk pemilik toko serta staf penjualan, memperkuat identitas resmi mitra terpercaya di mata pelanggan.
+              </p>
+            </div>
 
-                    {/* Active Selection Indicator */}
-                    {isSelected ? (
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ECF5FF] border border-[#0762C8] px-3 py-0.5 text-xs font-semibold text-[#0762C8] shadow-xs">
-                        <svg className="w-3.5 h-3.5 text-[#08BB2C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                        Paket Terpilih
-                      </span>
-                    ) : (
-                      <span className="text-xs font-normal text-slate-400 group-hover:text-[#0762C8] transition-colors flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full border border-slate-300 group-hover:border-[#0762C8]" />
-                        Klik untuk Memilih
-                      </span>
-                    )}
-                  </div>
+            {/* 2. Banner Nama Toko */}
+            <div className="rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] p-5 sm:p-6 hover:bg-white hover:border-[#0762C8]/40 transition-all shadow-2xs hover:shadow-sm">
+              <h3 className="text-base sm:text-lg font-bold text-[#021D3B]">
+                Banner Spanduk Toko
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Spanduk bahan tebal anti-luntur dicetak khusus mencantumkan nama toko usaha Anda berdampingan dengan identitas resmi <span className="font-bold text-[#FA4616]">AQUVIVA</span> Air Mineral Murni Alami.
+              </p>
+            </div>
 
-                  {/* Poster Thumbnail (Aspect-Square + Object-Contain, 100% Uncropped) */}
-                  <div
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleCardClick(pkg);
-                      setActivePackageDetail(pkg);
-                    }}
-                    className={`relative my-4 aspect-square w-full rounded-2xl overflow-hidden bg-white border p-2 cursor-pointer transition-all ${
-                      isSelected
-                        ? "border-[#0762C8]/50 shadow-xs"
-                        : "border-slate-200 group-hover:border-[#0762C8]/40"
-                    }`}
-                    title={`Klik untuk melihat detail lengkap ${pkg.name}`}
-                  >
-                    <Image
-                      src={pkg.image}
-                      alt={`Poster Resmi ${pkg.name}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 380px"
-                      className="object-contain p-1 transition-transform duration-200 group-hover:scale-[1.02]"
-                      priority
-                    />
-                    <div className="absolute bottom-3 right-3 rounded-md bg-slate-900/80 px-2.5 py-1 text-[11px] font-normal text-white flex items-center gap-1.5 backdrop-blur-xs opacity-90 group-hover:opacity-100 transition-opacity">
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                      Lihat Detail
-                    </div>
-                  </div>
+            {/* 3. Troli Lipat */}
+            <div className="rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] p-5 sm:p-6 hover:bg-white hover:border-[#0762C8]/40 transition-all shadow-2xs hover:shadow-sm">
+              <h3 className="text-base sm:text-lg font-bold text-[#021D3B]">
+                Troli Lipat Logistik
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Alat angkut lipat berdaya beban hingga 150 kg dengan rangka baja kokoh untuk mempermudah mobilisasi, pemindahan, dan penataan dus air mineral di toko tanpa menguras tenaga.
+              </p>
+            </div>
+          </div>
 
-                  {/* Package Name & Price */}
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#021D3B] tracking-tight">
-                      {pkg.name}
-                    </h3>
-                    <div className="mt-2 flex items-baseline justify-between rounded-xl bg-[#F4FAFF] px-3.5 py-2.5 border border-[#CCE6FF]">
-                      <span className="text-xs font-normal text-slate-500 uppercase">
-                        Biaya Investasi:
-                      </span>
-                      <span
-                        className={`text-xl font-bold ${
-                          isSelected ? "text-[#FA4616]" : "text-[#0762C8]"
-                        }`}
-                      >
-                        {pkg.price}
-                      </span>
-                    </div>
-                  </div>
+          {/* 3 Komitmen Kepemilikan & Dukungan */}
+          <div className="mt-6 pt-6 border-t border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
+            <div>
+              <h4 className="text-xs sm:text-sm font-bold text-[#021D3B]">100% Hak Milik Mitra</h4>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Tidak ada sistem sewa atau bagi hasil. Seluruh unit &amp; perlengkapan menjadi aset toko Anda.
+              </p>
+            </div>
 
-                  {/* Description (Exact text from user) */}
-                  <p className="mt-3 text-xs sm:text-sm font-normal text-slate-600 leading-relaxed min-h-[48px]">
-                    {pkg.shortSummary}
-                  </p>
+            <div>
+              <h4 className="text-xs sm:text-sm font-bold text-[#021D3B]">Pengiriman Armada Resmi</h4>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Unit showcase dan seluruh stok diantar aman langsung oleh armada logistik resmi WINGS Food.
+              </p>
+            </div>
 
-                  {/* Max 3-4 Key Highlights (Alan Sans Regular) */}
-                  <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
-                    <span className="text-xs font-semibold text-slate-700 block">
-                      Fasilitas Utama:
-                    </span>
-                    <ul className="space-y-2">
-                      {pkg.cardHighlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs font-normal text-slate-700">
-                          <svg
-                            className="h-4 w-4 shrink-0 text-[#08BB2C] mt-0.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="2.5"
-                            stroke="currentColor"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                          </svg>
-                          <span className="leading-snug">{highlightAquviva(highlight)}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Card Actions */}
-                <div className="mt-6 pt-4 border-t border-slate-100 space-y-2.5">
-                  {/* Button 1: Lihat Detail Paket */}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleCardClick(pkg);
-                      setActivePackageDetail(pkg);
-                    }}
-                    className="w-full rounded-xl py-2.5 px-4 text-xs sm:text-sm font-medium border border-slate-300 hover:bg-slate-50 text-slate-700 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-                  >
-                    <span>Lihat Detail Paket</span>
-                    <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-
-                  {/* Button 2: Pilih / Lanjut Daftar */}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleSelectAndRegister(pkg);
-                    }}
-                    className={`w-full rounded-xl py-2.5 px-4 text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                      isSelected
-                        ? "bg-[#FA4616] hover:bg-[#D83508] text-white shadow-sm"
-                        : "bg-[#0762C8] hover:bg-[#004EA8] text-white"
-                    }`}
-                  >
-                    <span>{isSelected ? "Pilih & Lanjut Daftar" : "Pilih Paket Ini"}</span>
-                    <span className="font-normal opacity-90">({pkg.price})</span>
-                    <span>&rarr;</span>
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+            <div>
+              <h4 className="text-xs sm:text-sm font-bold text-[#021D3B]">Dukungan Servis Resmi</h4>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Unit showcase bergaransi resmi dengan teknisi siap siaga menjaga kelancaran usaha mitra.
+              </p>
+            </div>
+          </div>
         </div>
 
-
-        {/* Supporting Merchandise & Store Equipment Showcase */}
-        <div className="mt-16 rounded-3xl bg-white p-6 sm:p-10 border border-[#CCE6FF] shadow-xs">
-          {/* Header */}
+        {/* Pilihan Paket Pengadaan Produk */}
+        <div className="mt-14 sm:mt-18 pt-10 border-t border-[#CCE6FF]/80">
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#0762C8] bg-[#F0F7FF] px-3.5 py-1 rounded-full border border-[#CCE6FF]">
-              Fasilitas &amp; Inventaris Siap Pakai
+            <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#0762C8] bg-white px-3.5 py-1 rounded-full border border-[#CCE6FF] shadow-2xs">
+              Pilihan Paket Investasi
             </span>
             <h3 className="text-2xl sm:text-3xl font-black text-[#021D3B] tracking-tight">
-              Perlengkapan Pendukung Kemitraan Resmi{" "}
-              <span className="font-sans font-black text-[#FA4616]">AQUVIVA</span>
+              Pilihan Skala Paket Pengadaan Produk
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Seluruh paket sudah termasuk sarana display pendingin, branding toko, dan perlengkapan operasional siap jualan. Menjadi aset hak milik toko mitra sepenuhnya tanpa sistem sewa.
+              Tentukan paket yang sesuai dengan modal dan kapasitas penjualan toko Anda. Seluruh paket sudah termasuk sarana display pendingin serta fasilitas perlengkapan resmi di atas.
             </p>
           </div>
 
-          {/* 4 Tangible Equipment Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
-            {/* Card 1: Showcase Pendingin Polytron */}
-            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
-                    Sarana Pendingin
-                  </span>
-                  <span className="text-[10px] font-semibold text-[#08BB2C] bg-[#EBF7EE] px-2 py-0.5 rounded-full">
-                    Hak Milik
-                  </span>
+          {/* Interactive Clickable Package Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {packages.map((pkg) => {
+              const isSelected = selectedPackageId === pkg.id;
+
+              return (
+                <div
+                  key={pkg.id}
+                  onClick={() => handleCardClick(pkg)}
+                  className={`group relative flex flex-col justify-between rounded-3xl p-6 sm:p-7 transition-all duration-200 cursor-pointer ${
+                    isSelected
+                      ? "bg-white border-2 border-[#0762C8] ring-4 ring-[#0762C8]/15 shadow-xl scale-[1.01]"
+                      : "bg-white border border-[#CCE6FF] shadow-xs hover:border-[#0762C8]/50 hover:shadow-md"
+                  }`}
+                >
+                  <div className="flex flex-col">
+                    {/* Top Interactive Selection Bar */}
+                    <div className="flex items-center justify-between gap-2 pb-2">
+                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        {pkg.code} | PAKET USAHA
+                      </span>
+
+                      {/* Active Selection Indicator */}
+                      {isSelected ? (
+                        <span className="inline-flex items-center rounded-full bg-[#ECF5FF] border border-[#0762C8] px-3 py-0.5 text-xs font-semibold text-[#0762C8] shadow-xs">
+                          Paket Terpilih
+                        </span>
+                      ) : (
+                        <span className="text-xs font-normal text-slate-400 group-hover:text-[#0762C8] transition-colors flex items-center gap-1">
+                          <span className="w-2 h-2 rounded-full border border-slate-300 group-hover:border-[#0762C8]" />
+                          Klik untuk Memilih
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Poster Thumbnail (Aspect-Square + Object-Contain, 100% Uncropped) */}
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCardClick(pkg);
+                        setActivePackageDetail(pkg);
+                      }}
+                      className={`relative my-4 aspect-square w-full rounded-2xl overflow-hidden bg-white border p-2 cursor-pointer transition-all ${
+                        isSelected
+                          ? "border-[#0762C8]/50 shadow-xs"
+                          : "border-slate-200 group-hover:border-[#0762C8]/40"
+                      }`}
+                      title={`Klik untuk melihat detail lengkap ${pkg.name}`}
+                    >
+                      <Image
+                        src={pkg.image}
+                        alt={`Poster Resmi ${pkg.name}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 380px"
+                        className="object-contain p-1 transition-transform duration-200 group-hover:scale-[1.02]"
+                        priority
+                      />
+                      <div className="absolute bottom-3 right-3 rounded-md bg-slate-900/80 px-2.5 py-1 text-[11px] font-normal text-white flex items-center gap-1.5 backdrop-blur-xs opacity-90 group-hover:opacity-100 transition-opacity">
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Lihat Detail
+                      </div>
+                    </div>
+
+                    {/* Package Name & Price */}
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#021D3B] tracking-tight">
+                        {pkg.name}
+                      </h3>
+                      <div className="mt-2 flex items-baseline justify-between rounded-xl bg-[#F4FAFF] px-3.5 py-2.5 border border-[#CCE6FF]">
+                        <span className="text-xs font-normal text-slate-500 uppercase">
+                          Biaya Investasi:
+                        </span>
+                        <span
+                          className={`text-xl font-bold ${
+                            isSelected ? "text-[#FA4616]" : "text-[#0762C8]"
+                          }`}
+                        >
+                          {pkg.price}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Description (Exact text from user) */}
+                    <p className="mt-3 text-xs sm:text-sm font-normal text-slate-600 leading-relaxed min-h-[48px]">
+                      {pkg.shortSummary}
+                    </p>
+
+                    {/* Max 3-4 Key Highlights (Alan Sans Regular) */}
+                    <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
+                      <span className="text-xs font-semibold text-slate-700 block">
+                        Fasilitas Utama:
+                      </span>
+                      <ul className="space-y-2">
+                        {pkg.cardHighlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs font-normal text-slate-700">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8] mt-1.5 shrink-0" />
+                            <span className="leading-snug">{highlightAquviva(highlight)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Card Actions */}
+                  <div className="mt-6 pt-4 border-t border-slate-100 space-y-2.5">
+                    {/* Button 1: Lihat Detail Paket */}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCardClick(pkg);
+                        setActivePackageDetail(pkg);
+                      }}
+                      className="w-full rounded-xl py-2.5 px-4 text-xs sm:text-sm font-medium border border-slate-300 hover:bg-slate-50 text-slate-700 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                    >
+                      <span>Lihat Detail Paket</span>
+                      <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+
+                    {/* Button 2: Pilih / Lanjut Daftar */}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleSelectAndRegister(pkg);
+                      }}
+                      className={`w-full rounded-xl py-2.5 px-4 text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                        isSelected
+                          ? "bg-[#FA4616] hover:bg-[#D83508] text-white shadow-sm"
+                          : "bg-[#0762C8] hover:bg-[#004EA8] text-white"
+                      }`}
+                    >
+                      <span>{isSelected ? "Pilih & Lanjut Daftar" : "Pilih Paket Ini"}</span>
+                      <span className="font-normal opacity-90">({pkg.price})</span>
+                      <span>&rarr;</span>
+                    </button>
+                  </div>
                 </div>
-
-                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
-                  <Image
-                    src="/Component/showcase-1-pintu-trans.png"
-                    alt="Showcase Pendingin Polytron Kemitraan AQUVIVA"
-                    fill
-                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-
-                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
-                  Showcase Polytron
-                </h4>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Unit pendingin resmi Polytron 4–5 rak hemat daya listrik untuk menyajikan kesegaran dingin maksimal.
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-                <span className="text-[#08BB2C]">✓</span> Bergaransi Servis Resmi
-              </div>
-            </div>
-
-            {/* Card 2: Banner Nama Toko Custom */}
-            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
-                    Branding Toko
-                  </span>
-                  <span className="text-[10px] font-semibold text-[#0762C8] bg-[#ECF5FF] px-2 py-0.5 rounded-full">
-                    Custom Nama
-                  </span>
-                </div>
-
-                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
-                  <Image
-                    src="/Component/banner-nama-toko-mockup.png"
-                    alt="Spanduk Banner Nama Toko Mitra AQUVIVA"
-                    fill
-                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-
-                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
-                  Banner Nama Toko
-                </h4>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Spanduk bahan tebal anti-luntur dicetak eksklusif mencantumkan nama toko Anda dan identitas resmi <span className="font-bold text-[#FA4616]">AQUVIVA</span>.
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-                <span className="text-[#08BB2C]">✓</span> Gratis Desain &amp; Cetak
-              </div>
-            </div>
-
-            {/* Card 3: Kaos Seragam Operasional */}
-            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
-                    Seragam Mitra
-                  </span>
-                  <span className="text-[10px] font-semibold text-[#FA4616] bg-[#FFF3EE] px-2 py-0.5 rounded-full">
-                    Official Merch
-                  </span>
-                </div>
-
-                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
-                  <Image
-                    src="/Component/kaos-aquaviva-trans.png"
-                    alt="Kaos Seragam Resmi Mitra AQUVIVA by Wings Food"
-                    fill
-                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-
-                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
-                  Kaos Seragam Resmi
-                </h4>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Baju seragam operasional bahan katun sejuk dan rapi untuk pemilik toko serta staf penjualan.
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-                <span className="text-[#08BB2C]">✓</span> Bahan Katun Berkualitas
-              </div>
-            </div>
-
-            {/* Card 4: Troli Lipat Logistik Toko */}
-            <div className="group rounded-2xl bg-[#F8FBFE] border border-[#CCE6FF] hover:border-[#0762C8]/50 p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:bg-white">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
-                    Alat Angkut
-                  </span>
-                  <span className="text-[10px] font-semibold text-[#08BB2C] bg-[#EBF7EE] px-2 py-0.5 rounded-full">
-                    Beban 150 kg
-                  </span>
-                </div>
-
-                <div className="relative w-full h-44 rounded-xl bg-gradient-to-b from-white to-[#EEF5FB] flex items-center justify-center p-3 overflow-hidden border border-[#E2EEF9]">
-                  <Image
-                    src="/Component/troli-aquaviva-trans.png"
-                    alt="Troli Lipat Logistik Toko Mitra AQUVIVA"
-                    fill
-                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-
-                <h4 className="mt-4 text-base font-bold text-[#021D3B] group-hover:text-[#0762C8] transition-colors">
-                  Troli Lipat Logistik
-                </h4>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Memudahkan mobilisasi dan pemindahan dus air mineral dengan aman, praktis, dan tanpa menguras tenaga.
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-                <span className="text-[#08BB2C]">✓</span> Rangka Baja Kokoh &amp; Lipat
-              </div>
-            </div>
-          </div>
-
-          {/* 3 Partnership Commitments Strip */}
-          <div className="mt-8 pt-6 border-t border-[#CCE6FF]/60 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
-            <div className="flex items-start gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EBF7EE] text-[#08BB2C] font-bold text-xs mt-0.5">
-                ✓
-              </span>
-              <div>
-                <h5 className="text-xs font-bold text-[#021D3B]">100% Hak Milik Mitra</h5>
-                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                  Tidak ada sistem sewa, bagi hasil, atau biaya bulanan. Seluruh unit menjadi aset toko Anda.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ECF5FF] text-[#0762C8] font-bold text-xs mt-0.5">
-                ✓
-              </span>
-              <div>
-                <h5 className="text-xs font-bold text-[#021D3B]">Pengiriman Armada Resmi</h5>
-                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                  Unit showcase dan seluruh stok diantar aman langsung oleh armada logistik resmi WINGS Food.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FFF3EE] text-[#FA4616] font-bold text-xs mt-0.5">
-                ✓
-              </span>
-              <div>
-                <h5 className="text-xs font-bold text-[#021D3B]">Dukungan Servis Resmi</h5>
-                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                  Unit showcase bergaransi resmi dengan kesiapan teknisi untuk menjaga kelancaran usaha mitra.
-                </p>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
 
+
         {/* Disclaimer / Note */}
-        <div className="mt-8 text-center">
+        <div className="mt-12 text-center">
           <p className="text-xs font-normal text-slate-500 italic">
             * Seluruh fasilitas, produk, dan perlengkapan sesuai dengan ketentuan resmi Program Kemitraan <span className="font-bold text-[#FA4616]">AQUVIVA</span> by Wings Food.
           </p>

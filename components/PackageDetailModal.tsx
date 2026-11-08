@@ -229,15 +229,7 @@ export default function PackageDetailModal({
                     key={idx}
                     className="flex items-start gap-3 p-3.5 sm:px-4 hover:bg-[#F4FAFF]/60 transition-colors text-xs sm:text-sm"
                   >
-                    <svg
-                      className="w-4 h-4 text-[#08BB2C] mt-0.5 shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8] mt-1.5 sm:mt-2 shrink-0" />
                     <div className="leading-snug">
                       <span className="font-bold text-[#021D3B]">{highlightAquviva(item.label)}:</span>{" "}
                       <span className="font-normal text-slate-700">{highlightAquviva(item.detail)}</span>
