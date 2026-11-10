@@ -13,6 +13,17 @@ export const metadata: Metadata = {
   title: "Kemitraan AQUVIVA | Segarnya Aquviva, Peluangnya untuk Usahamu!",
   description:
     "Program kemitraan resmi air mineral AQUVIVA: Murni Alami dengan 7 Tahap Nano Purifikasi. Fasilitas lengkap showcase pendingin, stok produk, spanduk toko, dan harga khusus mitra.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+    ],
+  },
 };
 
 export default function RootLayout({

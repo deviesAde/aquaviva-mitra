@@ -53,7 +53,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
       modalPackageName: "PAKET JURAGAN AQUVIVA",
       price: "Rp2.500.000",
       tagline: "Pilihan Tepat untuk Memperluas Jangkauan dan Mengembangkan Usaha Anda!",
-      image: "/Poster/paket-2-juta.png",
+      image: "/Poster/pake 2 1 of 1.png",
       shortSummary: "Pilihan bagi pelaku usaha yang ingin memperluas persediaan produk dan jangkauan penjualan.",
       cardHighlights: [
         "Showcase Pendingin: 1 pintu dengan 5 rak",
@@ -227,14 +227,15 @@ function highlightAquviva(text: string) {
 
         {/* Pilihan Paket Pengadaan Produk */}
         <div className="mt-14 sm:mt-18 pt-10 border-t border-[#CCE6FF]/80">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-            <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#0762C8] bg-white px-3.5 py-1 rounded-full border border-[#CCE6FF] shadow-2xs">
-              Pilihan Paket Investasi
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-[#021D3B] tracking-tight">
-              Pilihan Skala Paket Pengadaan Produk
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 space-y-3 sm:space-y-4">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#0762C8]">
+              PILIHAN PAKET INVESTASI <span className="text-[#FA4616]">AQUVIVA</span>
+            </p>
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#021D3B] tracking-tight leading-tight">
+              Pilihan Skala Paket{" "}
+              <span className="text-[#FA4616]">Pengadaan Produk</span>
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm sm:text-base font-normal text-slate-600 leading-relaxed max-w-2xl mx-auto">
               Tentukan paket yang sesuai dengan modal dan kapasitas penjualan toko Anda. Seluruh paket sudah termasuk sarana display pendingin serta fasilitas perlengkapan resmi di atas.
             </p>
           </div>

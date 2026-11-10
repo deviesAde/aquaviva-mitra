@@ -42,7 +42,7 @@ export default function Home() {
         <PriceCatalog onOpenModal={handleOpenModal} />
 
         {/* Kalkulator Cuan & Simulasi Margin */}
-        <ProfitCalculator />
+        <ProfitCalculator onOpenModal={handleOpenModal} />
 
         {/* Tanya Jawab Kemitraan */}
         <PartnershipFaq />

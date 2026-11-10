@@ -309,7 +309,7 @@ export default function PackageDetailModal({
               />
             </div>
             <p className="mt-2 text-xs font-normal text-slate-500 text-center">
-              Poster Resmi {pkg.name} — Program Kemitraan <span className="font-bold text-[#FA4616]">AQUVIVA</span> by Wings Food
+              Poster Resmi {pkg.name} | Program Kemitraan <span className="font-bold text-[#FA4616]">AQUVIVA</span> by Wings Food
             </p>
           </div>
         </div>
