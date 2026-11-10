@@ -9,6 +9,7 @@ interface NavbarProps {
 
 export default function Navbar({ onOpenModal }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(true);
 
   const navLinks = [
     { label: "Harga Mitra", href: "#harga-mitra" },
@@ -18,8 +19,35 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#CCE6FF] bg-white/95 backdrop-blur-md shadow-xs">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#CCE6FF] transition-all">
+      {/* Top Bar Announcement: Credibility and Fraud Prevention from aquviva.co.id */}
+      {bannerVisible && (
+        <div className="bg-[#0762C8] text-white px-4 py-2 text-xs sm:text-sm font-medium transition-all">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+            <div className="flex items-center gap-2 min-w-0">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/20 text-white font-bold text-xs" aria-hidden="true">
+                !
+              </span>
+              <p className="truncate text-xs sm:text-[13px]">
+                <strong className="font-semibold text-white">Program Kemitraan Resmi WINGS Food:</strong>{" "}
+                <span className="text-white/90">Waspada penipuan. Pendaftaran dan verifikasi resmi tidak dipungut biaya perantara.</span>
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setBannerVisible(false)}
+              className="text-white/80 hover:text-white shrink-0 p-1 rounded hover:bg-white/10 transition-colors"
+              aria-label="Tutup pengumuman"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
 
+      {/* Main Navbar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
         {/* Brand Logo */}
         <a
@@ -38,63 +66,58 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           </div>
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation Links */}
         <nav
-          className="hidden md:flex items-center gap-8"
+          className="hidden lg:flex items-center gap-7"
           aria-label="Navigasi Utama"
         >
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-[#021D3B] hover:text-[#0762C8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] rounded px-1.5 py-1"
+              className="text-sm font-semibold text-[#021D3B] hover:text-[#0762C8] transition-colors relative py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] rounded"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Desktop CTA Action with #FA4616 */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Action Buttons */}
+        <div className="hidden sm:flex items-center gap-3">
+          <a
+            href="https://wa.me/6281181261082?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20tertarik%20untuk%20bergabung%20menjadi%20mitra%20usaha."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden xl:inline-flex items-center gap-1.5 rounded-xl border border-[#CCE6FF] bg-white hover:bg-[#F4FAFF] px-4 py-2.5 text-sm font-bold text-[#0762C8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
+          >
+            <span className="h-2 w-2 rounded-full bg-[#08BB2C]" aria-hidden="true" />
+            WhatsApp Hotline
+          </a>
           <button
             type="button"
             onClick={() => onOpenModal()}
-            className="inline-flex items-center justify-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616] focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] px-5 py-2.5 text-sm font-bold text-white shadow-sm shadow-[#FA4616]/20 transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616] focus-visible:ring-offset-2"
           >
             Daftar Kemitraan
           </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex md:hidden">
+        <div className="flex lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex items-center justify-center rounded-lg p-2.5 text-[#021D3B] hover:bg-[#F4FAFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
+            className="inline-flex items-center justify-center rounded-xl p-2.5 text-[#021D3B] hover:bg-[#F4FAFF] border border-[#CCE6FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
           >
             {mobileMenuOpen ? (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
@@ -102,34 +125,43 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
-          className="border-b border-[#CCE6FF] bg-white px-4 pt-3 pb-6 md:hidden shadow-lg animate-in fade-in"
+          className="border-b border-[#CCE6FF] bg-white px-5 pt-3 pb-6 lg:hidden shadow-xl animate-fadeIn"
         >
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="rounded-lg px-3 py-2 text-base font-semibold text-[#021D3B] hover:bg-[#F4FAFF] hover:text-[#0762C8] transition-colors"
+                className="rounded-xl px-4 py-3 text-base font-semibold text-[#021D3B] hover:bg-[#F4FAFF] hover:text-[#0762C8] transition-colors"
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-2">
+            <div className="pt-3 space-y-2 border-t border-[#CCE6FF]/60">
               <button
                 type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenModal();
                 }}
-                className="w-full text-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] px-4 py-3 text-base font-bold text-white shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616]"
+                className="w-full text-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] px-4 py-3.5 text-base font-bold text-white shadow-md shadow-[#FA4616]/20 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616]"
               >
                 Daftar Kemitraan Sekarang
               </button>
+              <a
+                href="https://wa.me/6281181261082?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20tertarik%20untuk%20bergabung%20menjadi%20mitra%20usaha."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-[#CCE6FF] bg-[#F4FAFF] px-4 py-3 text-sm font-bold text-[#0762C8]"
+              >
+                <span className="h-2 w-2 rounded-full bg-[#08BB2C]" aria-hidden="true" />
+                Hubungi via WhatsApp (+62 811-8126-1082)
+              </a>
             </div>
           </div>
         </div>

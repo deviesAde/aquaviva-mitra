@@ -26,32 +26,32 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      {/* Navigation */}
+    <div className="flex min-h-screen flex-col bg-white selection:bg-[#FA4616] selection:text-white">
+      {/* 1. Sticky Navigation Bar */}
       <Navbar onOpenModal={handleOpenModal} />
 
-      {/* Main Content */}
+      {/* Main Content Sections */}
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* 2. Hero Section: Peluang Bisnis Kemitraan & Showcase Preview */}
         <Hero onOpenModal={handleOpenModal} />
 
-        {/* Harga Khusus Mitra AQUVIVA (Horizontal Expanding Cards) */}
+        {/* 3. Harga Grosir Khusus Mitra AQUVIVA (250ml, 700ml, 1,6L) */}
         <MitraSpecialPricing />
 
-        {/* Gabung Kemitraan AQUVIVA & Pilihan Paket Usaha */}
+        {/* 5. Pilihan Skala Paket Usaha (Pemula, Juragan, Distributor) */}
         <PriceCatalog onOpenModal={handleOpenModal} />
 
-        {/* Kalkulator Cuan & Simulasi Margin */}
+        {/* 6. Kalkulator Simulasi Cuan & Margin Keuntungan Toko */}
         <ProfitCalculator onOpenModal={handleOpenModal} />
 
-        {/* Tanya Jawab Kemitraan */}
+        {/* 7. Pusat Informasi & Tanya Jawab Kemitraan */}
         <PartnershipFaq />
       </main>
 
-      {/* Footer */}
+      {/* 8. Footer Resmi WINGS Food */}
       <Footer />
 
-      {/* Registration & Order Modal Dialog */}
+      {/* 9. Interactive Registration & Ordering Modal */}
       <RegistrationModal
         isOpen={modalOpen}
         onClose={handleCloseModal}

@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Alan_Sans } from "next/font/google";
+import { Alan_Sans, Yellowtail } from "next/font/google";
 import "./globals.css";
 
 const alanSans = Alan_Sans({
   subsets: ["latin"],
   variable: "--font-alan-sans",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const yellowtail = Yellowtail({
+  subsets: ["latin"],
+  variable: "--font-yellowtail",
+  weight: "400",
   display: "swap",
 });
 
@@ -32,8 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`h-full scroll-smooth antialiased ${alanSans.variable}`}>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 selection:bg-orange-500 selection:text-white font-sans">
+    <html
+      lang="id"
+      className={`h-full scroll-smooth antialiased ${alanSans.variable} ${yellowtail.variable}`}
+    >
+      <body className="min-h-full flex flex-col bg-white text-[#021D3B] selection:bg-[#FA4616] selection:text-white font-sans">
         {children}
       </body>
     </html>

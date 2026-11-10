@@ -8,7 +8,6 @@ interface ProfitCalculatorProps {
 }
 
 export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps) {
-  // Active bottle size tab: "all" | "700" | "250" | "1600"
   const [activeSizeTab, setActiveSizeTab] = useState<"all" | "700" | "250" | "1600">("all");
 
   // Daily bottle sales volume
@@ -16,15 +15,12 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
   const [dailyBottles250, setDailyBottles250] = useState<number>(48); // 2 pack
   const [dailyBottles1600, setDailyBottles1600] = useState<number>(12); // 2 pack
 
-  // Retail selling prices (custom input capable)
+  // Retail selling prices
   const [retailPrice700, setRetailPrice700] = useState<number>(3000);
   const [retailPrice250, setRetailPrice250] = useState<number>(1500);
   const [retailPrice1600, setRetailPrice1600] = useState<number>(6000);
 
-  // Wholesale cost per bottle:
-  // 700ml: Rp 15.000 / 12 = Rp 1.250
-  // 250ml: Rp 12.000 / 24 = Rp 500
-  // 1.6L: Rp 24.000 / 6 = Rp 4.000
+  // Wholesale cost per bottle
   const cost700 = 1250;
   const cost250 = 500;
   const cost1600 = 4000;
@@ -33,7 +29,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
   const profitPerBottle250 = Math.max(0, retailPrice250 - cost250);
   const profitPerBottle1600 = Math.max(0, retailPrice1600 - cost1600);
 
-  // Active check in calculation based on tab
   const show700 = activeSizeTab === "all" || activeSizeTab === "700";
   const show250 = activeSizeTab === "all" || activeSizeTab === "250";
   const show1600 = activeSizeTab === "all" || activeSizeTab === "1600";
@@ -67,23 +62,22 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
     { label: "30 btl (5 Pack)", value: 30 },
   ];
 
-  // Quick price presets
   const prices700 = [
-    { price: 2500, label: "Rp 2.500" },
-    { price: 3000, label: "Rp 3.000" },
-    { price: 3500, label: "Rp 3.500" },
+    { price: 2500, label: "Rp2.500" },
+    { price: 3000, label: "Rp3.000" },
+    { price: 3500, label: "Rp3.500" },
   ];
 
   const prices250 = [
-    { price: 1000, label: "Rp 1.000" },
-    { price: 1500, label: "Rp 1.500" },
-    { price: 2000, label: "Rp 2.000" },
+    { price: 1000, label: "Rp1.000" },
+    { price: 1500, label: "Rp1.500" },
+    { price: 2000, label: "Rp2.000" },
   ];
 
   const prices1600 = [
-    { price: 5000, label: "Rp 5.000" },
-    { price: 6000, label: "Rp 6.000" },
-    { price: 7000, label: "Rp 7.000" },
+    { price: 5000, label: "Rp5.000" },
+    { price: 6000, label: "Rp6.000" },
+    { price: 7000, label: "Rp7.000" },
   ];
 
   const formatRupiah = (val: number) => {
@@ -98,9 +92,9 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
   const daysToRecoup2M = dailyProfit > 0 ? Math.ceil(2500000 / dailyProfit) : 0;
 
   return (
-    <section id="kalkulator" className="relative py-16 sm:py-24 bg-[#FAFCFF] border-b border-[#CCE6FF] font-alan-sans overflow-hidden">
-      {/* Background Decorative Mountain Silhouette */}
-      <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden" aria-hidden="true">
+    <section id="kalkulator" className="relative py-16 sm:py-24 bg-white border-b border-[#CCE6FF]/70 overflow-hidden">
+      {/* Background Subtle Contour */}
+      <div className="absolute inset-0 pointer-events-none opacity-25 select-none overflow-hidden" aria-hidden="true">
         <svg
           className="absolute -top-12 left-1/2 -translate-x-1/2 w-[1300px] h-60 text-[#CCE6FF]"
           fill="none"
@@ -115,42 +109,46 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#0762C8]">
-            SIMULASI KEUNTUNGAN MITRA <span className="text-[#FA4616]">AQUVIVA</span>
-          </p>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#021D3B] tracking-tight leading-tight">
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#CCE6FF] bg-[#F4FAFF] px-4 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8]">
+              Simulasi Cuan & Margin Keuntungan
+            </span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#021D3B] tracking-tight leading-tight">
             Hitung Estimasi Cuan{" "}
             <span className="text-[#FA4616]">Bulanan Toko Anda</span>
           </h2>
+
           <p className="text-sm sm:text-base font-normal text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Simulasikan potensi laba bersih penjualan air mineral dingin AQUVIVA. Anda dapat memilih ukuran botol, menentukan target penjualan, dan mengisi harga eceran sesuai toko Anda.
+            Simulasikan potensi laba bersih penjualan air mineral dingin AQUVIVA. Anda dapat memilih ukuran botol, menentukan target penjualan, dan menyesuaikan harga eceran toko Anda.
           </p>
         </div>
 
-        {/* Main Interactive Calculator Grid */}
-        <div className="mt-12 sm:mt-14 max-w-5xl mx-auto rounded-3xl bg-white p-5 sm:p-8 lg:p-10 border border-[#CCE6FF] shadow-[0_16px_40px_rgba(7,98,200,0.08)]">
-          {/* Bottle Size Selector Bar */}
+        {/* Main Interactive Card */}
+        <div className="mt-12 max-w-5xl mx-auto rounded-3xl bg-white p-6 sm:p-8 lg:p-10 border border-[#CCE6FF] shadow-lg shadow-[#0762C8]/5">
+          {/* Size Selector Tabs */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#CCE6FF]">
             <span className="text-xs font-bold uppercase tracking-wider text-[#021D3B]">
-              PILIHAN UKURAN BOTOL:
+              Filter Ukuran Botol:
             </span>
             <div className="inline-flex rounded-xl bg-[#F0F6FD] p-1 border border-[#CCE6FF] gap-1 self-start sm:self-auto">
               <button
                 type="button"
                 onClick={() => setActiveSizeTab("all")}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeSizeTab === "all"
                     ? "bg-[#0762C8] text-white shadow-xs"
                     : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
                 }`}
               >
-                Semua Ukuran
+                Semua Varian
               </button>
               <button
                 type="button"
                 onClick={() => setActiveSizeTab("700")}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeSizeTab === "700"
                     ? "bg-[#0762C8] text-white shadow-xs"
                     : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
@@ -161,7 +159,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
               <button
                 type="button"
                 onClick={() => setActiveSizeTab("250")}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeSizeTab === "250"
                     ? "bg-[#0762C8] text-white shadow-xs"
                     : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
@@ -172,7 +170,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
               <button
                 type="button"
                 onClick={() => setActiveSizeTab("1600")}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeSizeTab === "1600"
                     ? "bg-[#0762C8] text-white shadow-xs"
                     : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
@@ -184,12 +182,11 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-6">
-            {/* Left Column: Interactive Inputs (7 cols on lg) */}
+            {/* Left Column: Parameter Controls */}
             <div className="lg:col-span-7 space-y-6">
               {/* Product 1: 700ml */}
               {show700 && (
-                <div className="rounded-2xl bg-[#F8FBFE] p-5 sm:p-6 border border-[#CCE6FF] transition-all hover:border-[#0762C8]/50 shadow-2xs">
-                  {/* Header Card */}
+                <div className="rounded-2xl bg-[#F8FBFE] p-5 sm:p-6 border border-[#CCE6FF] transition-all hover:border-[#0762C8]/50 shadow-xs">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <div className="relative w-9 h-14 shrink-0">
@@ -204,7 +201,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                         <span className="text-xs font-semibold text-slate-500 block">
                           12 Botol / Pack
                         </span>
-                        <h3 className="font-extrabold text-[#021D3B] text-base sm:text-lg">
+                        <h3 className="font-bold text-[#021D3B] text-base sm:text-lg">
                           <span className="text-[#FA4616]">AQUVIVA</span> 700 ml
                         </h3>
                       </div>
@@ -213,12 +210,11 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                     <div className="text-right shrink-0">
                       <span className="text-[11px] font-medium text-slate-500 block">Modal Grosir</span>
                       <span className="inline-block text-xs font-bold text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
-                        Rp 1.250 / btl
+                        Rp1.250 / btl
                       </span>
                     </div>
                   </div>
 
-                  {/* Sales Volume Control */}
                   <div className="mt-5 space-y-3">
                     <div className="flex items-center justify-between text-xs sm:text-sm">
                       <label htmlFor="sales-700" className="font-bold text-[#021D3B]">
@@ -229,7 +225,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       </span>
                     </div>
 
-                    {/* Range Slider */}
                     <input
                       id="sales-700"
                       type="range"
@@ -241,7 +236,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0762C8]"
                     />
 
-                    {/* Quick Select Presets */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                       {presets700.map((preset) => {
                         const isSelected = dailyBottles700 === preset.value;
@@ -250,7 +244,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                             key={preset.value}
                             type="button"
                             onClick={() => setDailyBottles700(preset.value)}
-                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border text-center ${
+                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all border text-center ${
                               isSelected
                                 ? "bg-[#0762C8] text-white border-[#0762C8] shadow-xs"
                                 : "bg-white text-slate-600 border-slate-200 hover:border-[#0762C8]/50"
@@ -262,18 +256,16 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       })}
                     </div>
 
-                    {/* Retail Price Selection & Custom Input */}
                     <div className="pt-2 space-y-2">
                       <div className="flex items-center justify-between">
                         <label htmlFor="custom-retail-700" className="text-xs font-bold text-[#021D3B]">
-                          Harga Jual Eceran Toko Anda:
+                          Harga Jual Eceran Toko:
                         </label>
                         <span className="text-[11px] font-bold text-[#08BB2C]">
-                          Untung: +Rp {profitPerBottle700.toLocaleString("id-ID")}/btl
+                          Margin: +Rp {profitPerBottle700.toLocaleString("id-ID")}/btl
                         </span>
                       </div>
 
-                      {/* Quick Presets */}
                       <div className="grid grid-cols-3 gap-2">
                         {prices700.map((p) => {
                           const isSelected = retailPrice700 === p.price;
@@ -282,7 +274,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                               key={p.price}
                               type="button"
                               onClick={() => setRetailPrice700(p.price)}
-                              className={`py-2 px-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+                              className={`py-2 px-2.5 rounded-xl border text-center transition-all ${
                                 isSelected
                                   ? "bg-[#0762C8] text-white border-[#0762C8] shadow-xs"
                                   : "bg-white text-slate-700 border-slate-200 hover:border-[#0762C8]/50"
@@ -297,7 +289,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                         })}
                       </div>
 
-                      {/* Custom Input */}
                       <div className="flex items-center gap-2 pt-1">
                         <div className="relative flex-1">
                           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-xs font-bold text-slate-400">
@@ -310,7 +301,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                             step={100}
                             value={retailPrice700 || ""}
                             onChange={(e) => setRetailPrice700(Math.max(0, Number(e.target.value)))}
-                            placeholder="Atau ketik harga custom..."
+                            placeholder="Ketik harga eceran..."
                             className="w-full rounded-xl border border-[#CCE6FF] bg-white pl-9 pr-3 py-2 text-xs sm:text-sm font-bold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                           />
                         </div>
@@ -323,8 +314,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
               {/* Product 2: 250ml */}
               {show250 && (
-                <div className="rounded-2xl bg-[#F8FBFE] p-5 sm:p-6 border border-[#CCE6FF] transition-all hover:border-[#FA4616]/50 shadow-2xs">
-                  {/* Header Card */}
+                <div className="rounded-2xl bg-[#F8FBFE] p-5 sm:p-6 border border-[#CCE6FF] transition-all hover:border-[#0762C8]/50 shadow-xs">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <div className="relative w-8 h-12 shrink-0">
@@ -339,7 +329,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                         <span className="text-xs font-semibold text-slate-500 block">
                           24 Botol / Pack
                         </span>
-                        <h3 className="font-extrabold text-[#021D3B] text-base sm:text-lg">
+                        <h3 className="font-bold text-[#021D3B] text-base sm:text-lg">
                           <span className="text-[#FA4616]">AQUVIVA</span> 250 ml
                         </h3>
                       </div>
@@ -347,24 +337,22 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
                     <div className="text-right shrink-0">
                       <span className="text-[11px] font-medium text-slate-500 block">Modal Grosir</span>
-                      <span className="inline-block text-xs font-bold text-[#FA4616] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
-                        Rp 500 / btl
+                      <span className="inline-block text-xs font-bold text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
+                        Rp500 / btl
                       </span>
                     </div>
                   </div>
 
-                  {/* Sales Volume Control */}
                   <div className="mt-5 space-y-3">
                     <div className="flex items-center justify-between text-xs sm:text-sm">
                       <label htmlFor="sales-250" className="font-bold text-[#021D3B]">
                         Target Penjualan Harian:
                       </label>
-                      <span className="font-extrabold text-[#FA4616] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
+                      <span className="font-extrabold text-[#0762C8] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
                         {dailyBottles250} Botol <span className="text-slate-400 font-normal">({(dailyBottles250 / 24).toFixed(1)} Pack)</span>
                       </span>
                     </div>
 
-                    {/* Range Slider */}
                     <input
                       id="sales-250"
                       type="range"
@@ -373,10 +361,9 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       step={12}
                       value={dailyBottles250}
                       onChange={(e) => setDailyBottles250(Number(e.target.value))}
-                      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#FA4616]"
+                      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0762C8]"
                     />
 
-                    {/* Quick Select Presets */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                       {presets250.map((preset) => {
                         const isSelected = dailyBottles250 === preset.value;
@@ -385,10 +372,10 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                             key={preset.value}
                             type="button"
                             onClick={() => setDailyBottles250(preset.value)}
-                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border text-center ${
+                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all border text-center ${
                               isSelected
-                                ? "bg-[#FA4616] text-white border-[#FA4616] shadow-xs"
-                                : "bg-white text-slate-600 border-slate-200 hover:border-[#FA4616]/50"
+                                ? "bg-[#0762C8] text-white border-[#0762C8] shadow-xs"
+                                : "bg-white text-slate-600 border-slate-200 hover:border-[#0762C8]/50"
                             }`}
                           >
                             {preset.label}
@@ -397,18 +384,16 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       })}
                     </div>
 
-                    {/* Retail Price Selection & Custom Input */}
                     <div className="pt-2 space-y-2">
                       <div className="flex items-center justify-between">
                         <label htmlFor="custom-retail-250" className="text-xs font-bold text-[#021D3B]">
-                          Harga Jual Eceran Toko Anda:
+                          Harga Jual Eceran Toko:
                         </label>
                         <span className="text-[11px] font-bold text-[#08BB2C]">
-                          Untung: +Rp {profitPerBottle250.toLocaleString("id-ID")}/btl
+                          Margin: +Rp {profitPerBottle250.toLocaleString("id-ID")}/btl
                         </span>
                       </div>
 
-                      {/* Quick Presets */}
                       <div className="grid grid-cols-3 gap-2">
                         {prices250.map((p) => {
                           const isSelected = retailPrice250 === p.price;
@@ -417,14 +402,14 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                               key={p.price}
                               type="button"
                               onClick={() => setRetailPrice250(p.price)}
-                              className={`py-2 px-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+                              className={`py-2 px-2.5 rounded-xl border text-center transition-all ${
                                 isSelected
-                                  ? "bg-[#FA4616] text-white border-[#FA4616] shadow-xs"
-                                  : "bg-white text-slate-700 border-slate-200 hover:border-[#FA4616]/50"
+                                  ? "bg-[#0762C8] text-white border-[#0762C8] shadow-xs"
+                                  : "bg-white text-slate-700 border-slate-200 hover:border-[#0762C8]/50"
                               }`}
                             >
                               <span className="block text-xs font-bold">{p.label}</span>
-                              <span className={`block text-[10px] mt-0.5 ${isSelected ? "text-orange-100" : "text-[#08BB2C]"}`}>
+                              <span className={`block text-[10px] mt-0.5 ${isSelected ? "text-blue-100" : "text-[#08BB2C]"}`}>
                                 +Rp {(p.price - cost250).toLocaleString("id-ID")}
                               </span>
                             </button>
@@ -432,7 +417,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                         })}
                       </div>
 
-                      {/* Custom Input */}
                       <div className="flex items-center gap-2 pt-1">
                         <div className="relative flex-1">
                           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-xs font-bold text-slate-400">
@@ -445,8 +429,8 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                             step={100}
                             value={retailPrice250 || ""}
                             onChange={(e) => setRetailPrice250(Math.max(0, Number(e.target.value)))}
-                            placeholder="Atau ketik harga custom..."
-                            className="w-full rounded-xl border border-[#CCE6FF] bg-white pl-9 pr-3 py-2 text-xs sm:text-sm font-bold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616]"
+                            placeholder="Ketik harga eceran..."
+                            className="w-full rounded-xl border border-[#CCE6FF] bg-white pl-9 pr-3 py-2 text-xs sm:text-sm font-bold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                           />
                         </div>
                         <span className="text-xs font-semibold text-slate-500 shrink-0">/ btl (Custom)</span>
@@ -458,8 +442,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
               {/* Product 3: 1,6 Liter */}
               {show1600 && (
-                <div className="rounded-2xl bg-[#F8FBFE] p-5 sm:p-6 border border-[#CCE6FF] transition-all hover:border-[#0762C8]/50 shadow-2xs">
-                  {/* Header Card */}
+                <div className="rounded-2xl bg-[#F8FBFE] p-5 sm:p-6 border border-[#CCE6FF] transition-all hover:border-[#0762C8]/50 shadow-xs">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <div className="relative w-9 h-14 shrink-0">
@@ -474,7 +457,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                         <span className="text-xs font-semibold text-slate-500 block">
                           6 Botol / Pack
                         </span>
-                        <h3 className="font-extrabold text-[#021D3B] text-base sm:text-lg">
+                        <h3 className="font-bold text-[#021D3B] text-base sm:text-lg">
                           <span className="text-[#FA4616]">AQUVIVA</span> 1,6 Liter
                         </h3>
                       </div>
@@ -483,12 +466,11 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                     <div className="text-right shrink-0">
                       <span className="text-[11px] font-medium text-slate-500 block">Modal Grosir</span>
                       <span className="inline-block text-xs font-bold text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
-                        Rp 4.000 / btl
+                        Rp4.000 / btl
                       </span>
                     </div>
                   </div>
 
-                  {/* Sales Volume Control */}
                   <div className="mt-5 space-y-3">
                     <div className="flex items-center justify-between text-xs sm:text-sm">
                       <label htmlFor="sales-1600" className="font-bold text-[#021D3B]">
@@ -499,7 +481,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       </span>
                     </div>
 
-                    {/* Range Slider */}
                     <input
                       id="sales-1600"
                       type="range"
@@ -511,7 +492,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0762C8]"
                     />
 
-                    {/* Quick Select Presets */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                       {presets1600.map((preset) => {
                         const isSelected = dailyBottles1600 === preset.value;
@@ -520,7 +500,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                             key={preset.value}
                             type="button"
                             onClick={() => setDailyBottles1600(preset.value)}
-                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer border text-center ${
+                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all border text-center ${
                               isSelected
                                 ? "bg-[#0762C8] text-white border-[#0762C8] shadow-xs"
                                 : "bg-white text-slate-600 border-slate-200 hover:border-[#0762C8]/50"
@@ -532,18 +512,16 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       })}
                     </div>
 
-                    {/* Retail Price Selection & Custom Input */}
                     <div className="pt-2 space-y-2">
                       <div className="flex items-center justify-between">
                         <label htmlFor="custom-retail-1600" className="text-xs font-bold text-[#021D3B]">
-                          Harga Jual Eceran Toko Anda:
+                          Harga Jual Eceran Toko:
                         </label>
                         <span className="text-[11px] font-bold text-[#08BB2C]">
-                          Untung: +Rp {profitPerBottle1600.toLocaleString("id-ID")}/btl
+                          Margin: +Rp {profitPerBottle1600.toLocaleString("id-ID")}/btl
                         </span>
                       </div>
 
-                      {/* Quick Presets */}
                       <div className="grid grid-cols-3 gap-2">
                         {prices1600.map((p) => {
                           const isSelected = retailPrice1600 === p.price;
@@ -552,7 +530,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                               key={p.price}
                               type="button"
                               onClick={() => setRetailPrice1600(p.price)}
-                              className={`py-2 px-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+                              className={`py-2 px-2.5 rounded-xl border text-center transition-all ${
                                 isSelected
                                   ? "bg-[#0762C8] text-white border-[#0762C8] shadow-xs"
                                   : "bg-white text-slate-700 border-slate-200 hover:border-[#0762C8]/50"
@@ -567,7 +545,6 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                         })}
                       </div>
 
-                      {/* Custom Input */}
                       <div className="flex items-center gap-2 pt-1">
                         <div className="relative flex-1">
                           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-xs font-bold text-slate-400">
@@ -580,7 +557,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                             step={100}
                             value={retailPrice1600 || ""}
                             onChange={(e) => setRetailPrice1600(Math.max(0, Number(e.target.value)))}
-                            placeholder="Atau ketik harga custom..."
+                            placeholder="Ketik harga eceran..."
                             className="w-full rounded-xl border border-[#CCE6FF] bg-white pl-9 pr-3 py-2 text-xs sm:text-sm font-bold text-[#021D3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
                           />
                         </div>
@@ -592,25 +569,14 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
               )}
             </div>
 
-            {/* Right Column: Premium Result Showcase (5 cols on lg) */}
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl bg-gradient-to-br from-[#021D3B] via-[#042852] to-[#011429] p-6 sm:p-8 text-white shadow-xl border border-[#003875] relative overflow-hidden">
-              {/* Mountain ambient contour in background */}
-              <svg
-                className="absolute -right-10 -bottom-10 w-80 h-80 text-white/5 pointer-events-none"
-                viewBox="0 0 200 200"
-                fill="currentColor"
-              >
-                <path d="M0 160 L60 80 L110 130 L160 50 L200 160 Z" />
-              </svg>
-
-              <div className="relative z-10 space-y-6">
-                {/* Result Pill Badge */}
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#08BB2C]/20 border border-[#08BB2C]/40 px-3 py-1 text-xs font-bold text-[#08BB2C]">
+            {/* Right Column: Financial Results Showcase */}
+            <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl bg-[#021D3B] p-6 sm:p-8 text-white shadow-xl border border-[#003875] relative overflow-hidden">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#08BB2C]/20 border border-[#08BB2C]/40 px-3.5 py-1 text-xs font-bold text-[#08BB2C]">
                   <span className="w-2 h-2 rounded-full bg-[#08BB2C] animate-pulse" />
                   Estimasi Laba Bersih Toko
                 </div>
 
-                {/* Monthly Primary Profit Callout */}
                 <div className="space-y-1">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#CCE6FF]">
                     Estimasi Cuan Tambahan Bulanan (30 Hari)
@@ -619,14 +585,13 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                     {formatRupiah(monthlyProfit)}
                   </div>
                   <div className="flex items-center gap-2 text-xs text-slate-300 pt-1">
-                    <span>Atau sekitar</span>
-                    <span className="font-bold text-white bg-white/10 px-2 py-0.5 rounded border border-white/15">
+                    <span>Atau setara</span>
+                    <span className="font-bold text-white bg-white/10 px-2.5 py-0.5 rounded-md border border-white/15">
                       {formatRupiah(dailyProfit)} / hari
                     </span>
                   </div>
                 </div>
 
-                {/* Calculation Detail Breakdown Box */}
                 <div className="rounded-2xl bg-white/10 p-4 border border-white/10 space-y-2 text-xs">
                   <span className="text-[11px] font-bold text-[#CCE6FF] uppercase tracking-wider block mb-1">
                     Rincian Penjualan Harian
@@ -655,36 +620,32 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                   </div>
                 </div>
 
-                {/* Projected ROI / Payback Period */}
                 {dailyProfit > 0 && (
-                  <div className="rounded-xl bg-[#0762C8]/25 border border-[#0762C8]/40 p-3.5 text-xs text-blue-100 flex items-start gap-2.5">
+                  <div className="rounded-xl bg-[#0762C8]/30 border border-[#0762C8]/50 p-4 text-xs text-blue-100 flex items-start gap-2.5">
                     <svg className="w-5 h-5 text-[#CCE6FF] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                     <div>
-                      <span className="font-bold text-white block">Proyeksi Balik Modal Cepat:</span>
+                      <span className="font-bold text-white block">Proyeksi Balik Modal Usaha:</span>
                       <p className="text-[11px] text-blue-100/90 mt-0.5 leading-relaxed">
-                        Modal Paket Juragan (Rp 2,5 Jt) dapat kembali dalam <span className="font-bold text-white">~{daysToRecoup2M} hari</span> operasional! (Paket Pemula ~{daysToRecoup1M} hari).
+                        Modal Paket Juragan (Rp 2,5 Jt) berpotensi kembali dalam <span className="font-bold text-white">~{daysToRecoup2M} hari</span> penjualan (Paket Pemula ~{daysToRecoup1M} hari).
                       </p>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Action Conversion Button */}
-              <div className="relative z-10 pt-6 mt-6 border-t border-white/15">
+              <div className="pt-6 mt-6 border-t border-white/15">
                 <button
                   type="button"
                   onClick={() => onOpenModal ? onOpenModal("PAKET JURAGAN AQUVIVA") : document.getElementById("pilihan-paket")?.scrollIntoView({ behavior: "smooth" })}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] text-white py-3.5 px-5 text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer transform hover:-translate-y-0.5"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] text-white py-4 px-5 text-sm sm:text-base font-bold shadow-lg shadow-[#FA4616]/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span>Ambil Peluang Cuan Ini Sekarang</span>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                  <span>Daftar Kemitraan Sekarang</span>
+                  <span>&rarr;</span>
                 </button>
                 <p className="text-center text-[11px] text-slate-400 mt-2">
-                  * Pajang showcase di depan toko untuk memicu pembelian impulsif pelanggan.
+                  Penempatan showcase di area depan toko memicu pembelian langsung oleh konsumen.
                 </p>
               </div>
             </div>

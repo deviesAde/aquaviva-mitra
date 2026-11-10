@@ -26,7 +26,7 @@ export default function PartnershipFaq() {
     },
     {
       q: "Bagaimana cara melakukan repeat order (pemesanan ulang) selanjutnya?",
-      a: "Mitra resmi yang telah memiliki nomor ID kemitraan berhak mendapatkan harga grosir khusus mitra (Rp 12.000/pack untuk 250ml, Rp 15.000/pack untuk 700ml, dan Rp 24.000/pack untuk 1,6L). Pemesanan ulang dapat dilakukan rutin melalui petugas kanvaser Wings Food setempat atau via kontak WhatsApp kemitraan.",
+      a: "Mitra resmi yang telah memiliki nomor ID kemitraan berhak mendapatkan harga grosir khusus mitra (Rp12.000/pack untuk 250ml, Rp15.000/pack untuk 700ml, dan Rp24.000/pack untuk 1,6L). Pemesanan ulang dapat dilakukan rutin melalui petugas kanvaser Wings Food setempat atau via kontak WhatsApp kemitraan.",
     },
     {
       q: "Apakah desain dan cetak banner nama toko benar-benar gratis?",
@@ -39,39 +39,47 @@ export default function PartnershipFaq() {
   ];
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white border-b border-[#CCE6FF]">
+    <section id="faq" className="py-16 sm:py-24 bg-[#FAFCFF] border-b border-[#CCE6FF]/70">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8] bg-[#ECF5FF] px-3.5 py-1 rounded-full border border-[#CCE6FF]">
-            Pusat Informasi Mitra
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-black text-[#021D3B] tracking-tight">
-            PERTANYAAN SEPUTAR KEMITRAAN <span className="text-[#FA4616]">AQUVIVA</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#CCE6FF] bg-white px-4 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8]">
+              Pusat Informasi & Tanya Jawab
+            </span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#021D3B] tracking-tight">
+            Tanya Jawab Kemitraan <span className="text-[#FA4616]">AQUVIVA</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#5F6368]">
-            Berikut jawaban lengkap seputar proses pendaftaran, operasional, dan pengiriman paket kemitraan.
+
+          <p className="text-sm sm:text-base text-[#5F6368] max-w-2xl mx-auto">
+            Jawaban lengkap seputar persyaratan, sistem kepemilikan unit, pengiriman, dan pemesanan ulang grosir.
           </p>
         </div>
 
+        {/* Accordions */}
         <div className="mt-12 space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="rounded-2xl border border-[#CCE6FF] bg-[#F4FAFF] overflow-hidden transition-colors"
+                className="rounded-2xl border border-[#CCE6FF] bg-white overflow-hidden shadow-xs hover:border-[#0762C8]/50 transition-colors"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left text-sm sm:text-base font-bold text-[#021D3B] hover:text-[#0762C8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
+                  className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left text-sm sm:text-base font-bold text-[#021D3B] hover:text-[#0762C8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] cursor-pointer"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                 >
-                  <span>{highlightAquviva(faq.q)}</span>
+                  <span className="pr-2">{highlightAquviva(faq.q)}</span>
                   <span
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white border border-[#CCE6FF] text-[#021D3B] transition-transform ${
-                      isOpen ? "rotate-180 bg-[#ECF5FF] text-[#0762C8]" : ""
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all ${
+                      isOpen
+                        ? "rotate-180 bg-[#0762C8] border-[#0762C8] text-white"
+                        : "bg-[#F4FAFF] border-[#CCE6FF] text-[#021D3B]"
                     }`}
                     aria-hidden="true"
                   >
@@ -90,7 +98,7 @@ export default function PartnershipFaq() {
                 {isOpen && (
                   <div
                     id={`faq-answer-${index}`}
-                    className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#5F6368] leading-relaxed border-t border-[#CCE6FF] bg-white"
+                    className="px-5 sm:px-6 pb-6 pt-2 text-xs sm:text-sm text-[#484848] leading-relaxed border-t border-[#CCE6FF]/60 bg-[#FAFCFF] animate-fadeIn"
                   >
                     {highlightAquviva(faq.a)}
                   </div>
@@ -98,6 +106,21 @@ export default function PartnershipFaq() {
               </div>
             );
           })}
+        </div>
+
+        {/* Support Help Box */}
+        <div className="mt-10 rounded-2xl bg-white border border-[#CCE6FF] p-6 text-center space-y-3 shadow-xs">
+          <p className="text-xs sm:text-sm text-[#5F6368]">
+            Masih ada pertanyaan lain seputar sistem kemitraan atau rute pengiriman ke area toko Anda?
+          </p>
+          <a
+            href="https://wa.me/6281181261082?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20ingin%20berkonsultasi%20seputar%20syarat%20dan%20rute%20pengiriman%20kemitraan."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#08BB2C] hover:bg-[#079E25] text-white font-bold text-xs sm:text-sm px-5 py-3 shadow-sm transition-all"
+          >
+            <span>Hubungi WhatsApp Care Wings (+62 811-8126-1082)</span>
+          </a>
         </div>
       </div>
     </section>

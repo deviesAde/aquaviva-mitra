@@ -10,6 +10,7 @@ interface HeroProps {
 interface HeroProduct {
   id: string;
   name: string;
+  shortName: string;
   badge: string;
   image: string;
   alt: string;
@@ -21,29 +22,32 @@ export default function Hero({ onOpenModal }: HeroProps) {
   const products: HeroProduct[] = [
     {
       id: "showcase-1",
-      name: "Showcase 1 Pintu",
+      name: "Showcase Pendingin 1 Pintu Polytron",
+      shortName: "Showcase 1 Pintu",
       badge: "Paket Pemula & Juragan",
       image: "/Component/showcase-1-pintu-trans.png",
       alt: "Showcase Pendingin 1 Pintu Resmi Kemitraan AQUVIVA Polytron",
-      desc: "Unit pendingin 1 pintu 4–5 rak hemat listrik untuk toko dan kios.",
+      desc: "Unit pendingin hemat energi dengan 4 hingga 5 rak display untuk toko kelontong dan kios.",
       targetPackage: "PAKET JURAGAN AQUVIVA",
     },
     {
       id: "showcase-2",
-      name: "Showcase 2 Pintu",
+      name: "Showcase Pendingin Jumbo 2 Pintu Polytron",
+      shortName: "Showcase 2 Pintu",
       badge: "Paket Distributor",
       image: "/Component/showcase-2-pintu-trans.png",
-      alt: "Showcase Pendingin Jumbo 2 Pintu Resmi Kemitraan AQUVIVA",
-      desc: "Kapasitas jumbo 2 pintu 5 rak untuk pangkalan dan distributor grosir.",
+      alt: "Showcase Pendingin Jumbo 2 Pintu Resmi Kemitraan AQUVIVA Polytron",
+      desc: "Kapasitas ekstra besar 2 pintu 5 rak untuk perputaran stok pangkalan dan distributor grosir.",
       targetPackage: "PAKET DISTRIBUTOR AQUVIVA",
     },
     {
       id: "rak-display",
-      name: "Rak Display Toko",
+      name: "Rak Display Gondola Eksklusif AQUVIVA",
+      shortName: "Rak Gondola Toko",
       badge: "Sarana Display Resmi",
       image: "/Component/3D4E3669-4A6B-4E93-B2ED-E6BEF210887B.PNG",
       alt: "Rak Display Resmi Kemitraan AQUVIVA Air Mineral Murni Alami Wings Food",
-      desc: "Gondola display eksklusif AQUVIVA untuk penataan botol siap jualan.",
+      desc: "Gondola display resmi dengan penataan botol elegan untuk meningkatkan penjualan di kasir toko.",
       targetPackage: "PAKET PEMULA AQUVIVA",
     },
   ];
@@ -52,7 +56,6 @@ export default function Hero({ onOpenModal }: HeroProps) {
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const activeProduct = products[activeIndex];
 
-  // Touch and Mouse Drag tracking
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
   const isDragging = useRef<boolean>(false);
@@ -68,27 +71,23 @@ export default function Hero({ onOpenModal }: HeroProps) {
 
   const handleSelectProduct = (index: number) => {
     setActiveIndex(index);
-    // Restart auto-slideshow timer after manual interaction
     setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 5000);
+    setTimeout(() => setIsPaused(false), 6000);
   };
 
-  // Auto-Slideshow effect with 4-second interval
   useEffect(() => {
     if (isPaused) return;
 
-    // Check if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
     const timer = setInterval(() => {
       nextSlide();
-    }, 4000);
+    }, 4500);
 
     return () => clearInterval(timer);
   }, [isPaused, nextSlide]);
 
-  // Page visibility listener: stop slideshow when tab is hidden to save performance
   useEffect(() => {
     const handleVisibilityChange = () => {
       setIsPaused(document.hidden);
@@ -97,7 +96,6 @@ export default function Hero({ onOpenModal }: HeroProps) {
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
-  // Swipe / Drag Handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -136,55 +134,37 @@ export default function Hero({ onOpenModal }: HeroProps) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white min-h-[calc(100vh-5rem)] flex items-center border-b border-[#CCE6FF]/50 font-alan-sans">
-      {/* Background Atmosphere: Dominant White on Left, Seamless Soft Sky-Blue on Right */}
-      <div
-        className="absolute inset-0 pointer-events-none select-none overflow-hidden"
-        aria-hidden="true"
-      >
-        {/* Soft Linear Sky Gradient moving towards the Right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white to-[#E8F4FD]" />
+    <section className="relative overflow-hidden bg-white min-h-[calc(100vh-5rem)] flex items-center border-b border-[#CCE6FF]/70">
+      {/* Background Atmosphere: Soft Daylight Luminous Sky Gradient */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-[#EBF5FE]" />
 
-        {/* Ambient Sky and Mountain Fresh Mist Glows */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-[2%] w-[60%] h-[90%] bg-[radial-gradient(ellipse_at_65%_50%,_rgba(196,224,247,0.55)_0%,_rgba(232,244,253,0.3)_45%,_transparent_75%)]" />
-        <div className="absolute top-8 right-1/4 w-[40%] h-[45%] bg-[radial-gradient(circle,_rgba(204,230,255,0.4)_0%,_transparent_65%)]" />
-        <div className="absolute bottom-6 right-[12%] w-[42%] h-[35%] bg-[radial-gradient(circle,_rgba(250,70,22,0.035)_0%,_transparent_60%)]" />
+        {/* Ambient Mountain Fresh Mist Glows */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-[2%] w-[65%] h-[90%] bg-[radial-gradient(ellipse_at_70%_50%,_rgba(196,224,247,0.45)_0%,_rgba(235,245,254,0.3)_45%,_transparent_75%)]" />
+        <div className="absolute top-10 right-1/4 w-[40%] h-[40%] bg-[radial-gradient(circle,_rgba(204,230,255,0.35)_0%,_transparent_65%)]" />
 
-        {/* Delicate Aquviva Mountain Wave Topography lines */}
+        {/* Subtle Mountain Contour SVG Lines */}
         <svg
-          className="absolute -right-8 top-12 w-[720px] h-[480px] text-[#0762C8]/[0.035] stroke-current fill-none pointer-events-none"
+          className="absolute -right-6 top-10 w-[720px] h-[480px] text-[#0762C8]/[0.03] stroke-current fill-none pointer-events-none"
           viewBox="0 0 700 400"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M 0,220 C 120,170 210,270 350,200 C 490,130 570,250 700,190"
-            strokeWidth="1.5"
-            strokeDasharray="4 4"
-          />
-          <path
-            d="M 0,260 C 140,210 230,310 370,240 C 510,170 590,290 700,230"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M 0,300 C 160,250 250,350 390,280 C 530,210 610,330 700,270"
-            strokeWidth="1"
-          />
+          <path d="M 0,220 C 120,170 210,270 350,200 C 490,130 570,250 700,190" strokeWidth="1.5" strokeDasharray="4 4" />
+          <path d="M 0,260 C 140,210 230,310 370,240 C 510,170 590,290 700,230" strokeWidth="1.5" />
+          <path d="M 0,300 C 160,250 250,350 390,280 C 530,210 610,330 700,270" strokeWidth="1" />
         </svg>
 
-        {/* Crisp Pure White Transition on Left Text Area */}
-        <div className="hidden lg:block absolute inset-y-0 left-0 w-[50%] bg-gradient-to-r from-white via-white/95 to-transparent z-10" />
-
-        {/* Soft bottom edge connecting smoothly to next section */}
+        {/* Soft edge blend */}
         <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
       </div>
 
-      <div className="relative z-20 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-10">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8 items-center">
-          {/* Left Column: Eyebrow, Main Headline, Description, CTA Buttons, Supporting Info */}
-          <div className="lg:col-span-6 xl:col-span-6 space-y-5 sm:space-y-6 text-left">
-            {/* Official Wings Food Partnership Trust Lockup & Nano Purification Tagline */}
+      <div className="relative z-20 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-12">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-center">
+          {/* Left Column: Eyebrow, Main Headline, Script Tagline, Description, CTAs, Trust Proof */}
+          <div className="lg:col-span-6 xl:col-span-6 space-y-6 text-left">
+            {/* Trust Badges */}
             <div className="flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2.5 rounded-lg border border-[#CCE6FF] bg-white px-3.5 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
+              <div className="inline-flex items-center gap-2 rounded-lg border border-[#CCE6FF] bg-white px-3.5 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#021D3B]">
                   Program Kemitraan Resmi
                 </span>
@@ -199,90 +179,110 @@ export default function Hero({ onOpenModal }: HeroProps) {
                 <span className="text-xs font-bold text-[#0762C8]">
                   7 Tahap Nano Purifikasi:
                 </span>
-                <span className="text-xs font-medium text-[#021D3B]">
-                  Kemurnian Maksimal, Mineral Baik Terjaga
+                <span className="text-xs text-[#021D3B] font-semibold">
+                  Kemurnian Maksimal
                 </span>
               </div>
             </div>
 
-            {/* Main Headline with dual brand colors */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-[1.12] sm:leading-[1.15]">
-              <span className="text-[#021D3B] block font-bold">
+            {/* Main Headline with Yellowtail script accent */}
+            <div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[#021D3B] tracking-tight leading-[1.12]">
                 Mulai Peluang Bisnis
-              </span>
-              <span className="text-[#FA4616] block mt-1 sm:mt-2">
-                <span className="font-bold">Bersama </span>
-                <span className="font-sans font-black">AQUVIVA</span>
-              </span>
-            </h1>
+                <span className="block text-[#FA4616] mt-1">
+                  Bersama AQUVIVA
+                </span>
+              </h1>
+              <p className="font-script text-2xl sm:text-3xl lg:text-4xl text-[#FA4616] mt-2 lowercase font-normal tracking-wide">
+                pasti segarnya, pasti untungnya
+              </p>
+            </div>
 
-            {/* Description */}
+            {/* Value Proposition Description */}
             <p className="text-base sm:text-lg text-[#484848] leading-relaxed max-w-xl font-normal">
-              Jadikan <span className="font-sans font-bold text-[#FA4616]">AQUVIVA</span> bagian dari peluang usaha Anda. Hadirkan air mineral berkualitas
-              dengan kesegaran alami bagi pelanggan melalui teknologi <span className="font-semibold text-[#0762C8]">7 Tahap Nano Purifikasi</span>, sekaligus kembangkan bisnis melalui program
-              kemitraan resmi dengan berbagai fasilitas showcase dan display pendukung siap jualan.
+              Buka peluang usaha penjualan air mineral berkualitas dengan modal terjangkau. Menghadirkan air mineral dengan teknologi <strong className="font-semibold text-[#021D3B]">7 Tahap Nano Purifikasi: Kemurnian Maksimal</strong> pertama di Indonesia, fasilitas unit showcase pendingin Polytron resmi, stok produk lengkap, dan banner promosi siap jualan.
             </p>
 
-            {/* Primary & Secondary CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1 sm:pt-2">
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
               <button
                 type="button"
                 onClick={() => onOpenModal(activeProduct.targetPackage)}
-                className="inline-flex items-center justify-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] px-8 py-3.5 sm:py-4 text-base sm:text-lg font-bold text-white shadow-lg shadow-[#FA4616]/25 transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616] focus-visible:ring-offset-2 cursor-pointer"
+                className="inline-flex items-center justify-center rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] px-8 py-4 text-base sm:text-lg font-bold text-white shadow-lg shadow-[#FA4616]/25 transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FA4616] focus-visible:ring-offset-2"
               >
                 Daftar Jadi Mitra
               </button>
               <a
                 href="#pilihan-paket"
-                className="inline-flex items-center justify-center rounded-xl border border-[#CCE6FF] bg-white hover:bg-[#F4FAFF] hover:border-[#0762C8]/50 px-7 py-3.5 sm:py-4 text-base sm:text-lg font-bold text-[#0762C8] shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8] cursor-pointer"
+                className="inline-flex items-center justify-center rounded-xl border border-[#CCE6FF] bg-white hover:bg-[#F4FAFF] hover:border-[#0762C8]/50 px-7 py-4 text-base sm:text-lg font-bold text-[#0762C8] shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
               >
-                Lihat Paket Usaha
+                Lihat Pilihan Paket
               </a>
             </div>
 
-            {/* Supporting Information Under CTA Buttons */}
-            <div className="pt-2 sm:pt-3 border-t border-[#CCE6FF]/50 max-w-xl">
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-3 text-xs sm:text-sm font-semibold text-[#5F6368]">
+            {/* Key Trust Signals */}
+            <div className="pt-3 border-t border-[#CCE6FF]/70 max-w-xl">
+              <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm font-semibold text-[#5F6368]">
                 <span className="inline-flex items-center gap-2 text-[#021D3B]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8]" />
-                  Program kemitraan resmi
+                  <span className="w-2 h-2 rounded-full bg-[#0762C8]" />
+                  7 Tahap Nano Purifikasi: Kemurnian Maksimal
                 </span>
                 <span className="text-[#CCE6FF] hidden sm:inline">•</span>
                 <span className="inline-flex items-center gap-2 text-[#021D3B]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8]" />
-                  Showcase resmi &amp; bergaransi
+                  <span className="w-2 h-2 rounded-full bg-[#0762C8]" />
+                  Aset showcase hak milik
                 </span>
                 <span className="text-[#CCE6FF] hidden sm:inline">•</span>
                 <span className="inline-flex items-center gap-2 text-[#021D3B]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8]" />
-                  Dukungan promosi toko
+                  <span className="w-2 h-2 rounded-full bg-[#0762C8]" />
+                  Keuntungan 100% milik toko
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Minimalist Auto-Slideshow Showcase Gallery */}
+          {/* Right Column: Showcase Visual Gallery */}
           <div
             className="lg:col-span-6 xl:col-span-6 relative w-full flex flex-col items-center lg:items-end select-none"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {/* Visual Container */}
             <div className="relative w-full max-w-lg lg:max-w-none flex flex-col items-center lg:items-end">
-              {/* Soft Ambient Radial Light Behind the Visuals */}
+              {/* Soft Ambient Radial Behind the Visuals */}
               <div
-                className="absolute inset-0 bg-radial from-[#C4E0F7]/45 via-[#E6F1FB]/20 to-transparent rounded-full filter blur-2xl -z-10 pointer-events-none scale-110 translate-x-4"
+                className="absolute inset-0 bg-radial from-[#C4E0F7]/40 via-[#E6F1FB]/20 to-transparent rounded-full filter blur-2xl -z-10 pointer-events-none scale-110 translate-x-4"
                 aria-hidden="true"
               />
 
-              {/* Main Feature Display (Auto-Slideshow with Cross-Fade & Swipe) */}
+              {/* Quick Tab Switcher for Showcase Units */}
+              <div className="mb-4 flex items-center justify-center gap-1.5 p-1 rounded-xl bg-white/90 border border-[#CCE6FF] shadow-xs">
+                {products.map((p, idx) => {
+                  const isSelected = idx === activeIndex;
+                  return (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => handleSelectProduct(idx)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                        isSelected
+                          ? "bg-[#0762C8] text-white shadow-xs"
+                          : "text-[#021D3B] hover:bg-[#F4FAFF] hover:text-[#0762C8]"
+                      }`}
+                    >
+                      {p.shortName}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Main Feature Display (Cross-Fade Slideshow with Swipe & Mouse Drag) */}
               <div
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
-                className="relative w-full h-[380px] sm:h-[440px] md:h-[480px] lg:h-[500px] xl:h-[540px] flex items-center justify-center lg:justify-end cursor-grab active:cursor-grabbing"
+                className="relative w-full h-[380px] sm:h-[430px] md:h-[470px] lg:h-[490px] xl:h-[530px] flex items-center justify-center lg:justify-end cursor-grab active:cursor-grabbing"
               >
                 {products.map((p, idx) => {
                   const isActive = idx === activeIndex;
@@ -309,26 +309,20 @@ export default function Hero({ onOpenModal }: HeroProps) {
                 })}
               </div>
 
-              {/* Minimalist Information Directly Below the Main Image (No Box, No Card, No Border) */}
-              <div className="mt-4 sm:mt-5 text-center w-full max-w-md lg:max-w-lg min-h-[52px] transition-all duration-300">
+              {/* Minimalist Information Directly Below the Main Image */}
+              <div className="mt-4 text-center w-full max-w-md lg:max-w-lg min-h-[56px] transition-all duration-300">
+                <span className="inline-block text-xs font-bold text-[#0762C8] uppercase tracking-wider mb-1">
+                  {activeProduct.badge}
+                </span>
                 <h3 className="text-lg sm:text-xl font-bold text-[#021D3B] tracking-tight">
                   {activeProduct.name}
                 </h3>
                 <p className="text-xs sm:text-sm font-normal text-slate-600 mt-1 max-w-md mx-auto leading-relaxed">
-                  {activeProduct.desc.includes("AQUVIVA") ? (
-                    activeProduct.desc.split("AQUVIVA").map((part, i, arr) => (
-                      <span key={i}>
-                        {part}
-                        {i < arr.length - 1 && <span className="font-bold text-[#FA4616]">AQUVIVA</span>}
-                      </span>
-                    ))
-                  ) : (
-                    activeProduct.desc
-                  )}
+                  {activeProduct.desc}
                 </p>
               </div>
 
-              {/* Sleek Minimalist Slide Indicators (No boxes, no cards) */}
+              {/* Sleek Dot Indicators */}
               <div className="mt-4 flex items-center justify-center gap-2 z-20">
                 {products.map((p, idx) => {
                   const isSelected = idx === activeIndex;
@@ -338,7 +332,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
                       type="button"
                       onClick={() => handleSelectProduct(idx)}
                       aria-label={`Tampilkan ${p.name}`}
-                      className={`transition-all duration-300 cursor-pointer rounded-full ${
+                      className={`transition-all duration-300 rounded-full ${
                         isSelected
                           ? "w-7 h-2 bg-[#0762C8]"
                           : "w-2 h-2 bg-[#CCE6FF] hover:bg-[#0762C8]/50"

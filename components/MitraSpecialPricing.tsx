@@ -10,6 +10,7 @@ interface MitraProduct {
   sizeLabel: string;
   bottlesPerPack: string;
   price: string;
+  pricePerBottle: string;
   exactDesc: string;
   image: string;
   bottleHeightClassDesktop: string;
@@ -27,7 +28,6 @@ function highlightAquviva(text: string) {
 }
 
 export default function MitraSpecialPricing() {
-  // Default active card is AQUVIVA 700 ml as requested
   const [activeId, setActiveId] = useState<string>("700ml");
 
   const products: MitraProduct[] = [
@@ -38,9 +38,10 @@ export default function MitraSpecialPricing() {
       sizeLabel: "250 ml",
       bottlesPerPack: "Isi 24 Botol / Pack",
       price: "Rp12.000",
+      pricePerBottle: "Rp500 / botol",
       exactDesc: "250 ml | Isi 24 Botol | Rp12.000/Pack",
       image: "/Products/aquaviva-250ml.png",
-      bottleHeightClassDesktop: "h-[230px]",
+      bottleHeightClassDesktop: "h-[240px]",
       bottleHeightClassMobile: "h-[190px]",
     },
     {
@@ -50,6 +51,7 @@ export default function MitraSpecialPricing() {
       sizeLabel: "700 ml",
       bottlesPerPack: "Isi 12 Botol / Pack",
       price: "Rp15.000",
+      pricePerBottle: "Rp1.250 / botol",
       exactDesc: "700 ml | Isi 12 Botol | Rp15.000/Pack",
       image: "/Products/aquaviva-700ml.png",
       bottleHeightClassDesktop: "h-[310px]",
@@ -62,6 +64,7 @@ export default function MitraSpecialPricing() {
       sizeLabel: "1,6 Liter",
       bottlesPerPack: "Isi 6 Botol / Pack",
       price: "Rp24.000",
+      pricePerBottle: "Rp4.000 / botol",
       exactDesc: "1,6 Liter | Isi 6 Botol | Rp24.000/Pack",
       image: "/Products/aquaviva-1600ml.png",
       bottleHeightClassDesktop: "h-[320px]",
@@ -72,10 +75,10 @@ export default function MitraSpecialPricing() {
   return (
     <section
       id="harga-mitra"
-      className="relative py-16 sm:py-24 bg-[#FAFCFF] font-alan-sans overflow-hidden"
+      className="relative py-16 sm:py-24 bg-white overflow-hidden border-b border-[#CCE6FF]/70"
     >
-      {/* Background Subtle Contour Wave Decoration from Brand Identity */}
-      <div className="absolute inset-0 pointer-events-none opacity-30 overflow-hidden">
+      {/* Background Subtle Wave Texture */}
+      <div className="absolute inset-0 pointer-events-none opacity-30 select-none overflow-hidden" aria-hidden="true">
         <svg
           className="absolute -top-10 left-1/2 -translate-x-1/2 w-[1400px] h-64 text-[#CCE6FF]"
           fill="none"
@@ -89,23 +92,25 @@ export default function MitraSpecialPricing() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* 1. Header Section */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#0762C8]">
-            HARGA KHUSUS MITRA <span className="text-[#FA4616]">AQUVIVA</span>
-          </p>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#021D3B] tracking-tight leading-tight">
-            Harga Spesial untuk{" "}
-            <span className="text-[#FA4616]">Mendukung Usaha Anda!</span>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#CCE6FF] bg-[#F4FAFF] px-4 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8]">
+              Harga Khusus Mitra Terdaftar
+            </span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#021D3B] tracking-tight leading-tight">
+            Penawaran Spesial untuk{" "}
+            <span className="text-[#FA4616]">Maksimalisasi Cuan</span>
           </h2>
+
           <p className="text-sm sm:text-base font-normal text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Dapatkan pilihan produk{" "}
-            <span className="font-sans font-black text-[#FA4616]">AQUVIVA</span>{" "}
-            dalam berbagai ukuran dengan penawaran harga khusus bagi mitra yang telah terdaftar.
+            Dapatkan pasokan produk <span className="font-bold text-[#FA4616]">AQUVIVA</span> dalam berbagai ukuran dengan harga grosir resmi dari WINGS Food, siap memberikan margin keuntungan terbaik untuk toko Anda.
           </p>
         </div>
 
-        {/* 2 & 3. DESKTOP: Horizontal Expanding Cards (Smooth Flex Transition) */}
+        {/* DESKTOP: Horizontal Expanding Cards */}
         <div className="mt-12 hidden lg:flex items-stretch gap-5 h-[500px] w-full">
           {products.map((item) => {
             const isActive = activeId === item.id;
@@ -115,62 +120,23 @@ export default function MitraSpecialPricing() {
                 key={item.id}
                 onMouseEnter={() => setActiveId(item.id)}
                 onClick={() => setActiveId(item.id)}
-                className={`relative rounded-2xl overflow-hidden transition-[flex,box-shadow,border-color] duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] flex ${
+                className={`relative rounded-3xl overflow-hidden transition-[flex,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex ${
                   isActive
-                    ? "flex-[2.8] bg-white border-2 border-[#0762C8] shadow-[0_16px_40px_rgba(7,98,200,0.14)] cursor-default"
-                    : "flex-1 bg-white border border-slate-200 hover:border-[#0762C8]/60 shadow-xs hover:shadow-md cursor-pointer group"
+                    ? "flex-[2.8] bg-white border-2 border-[#0762C8] shadow-[0_16px_40px_rgba(7,98,200,0.12)] cursor-default"
+                    : "flex-1 bg-white border border-[#CCE6FF] hover:border-[#0762C8]/60 shadow-xs hover:shadow-md cursor-pointer group"
                 }`}
               >
                 {/* ACTIVE CARD LAYOUT (Expanded: 2-Column Visual + Information) */}
                 {isActive ? (
                   <div className="w-full h-full flex flex-row animate-fadeIn">
-                    {/* Area Visual (Left ~44% Width) */}
+                    {/* Visual Area (Left ~44% Width) */}
                     <div className="w-[44%] relative bg-gradient-to-b from-[#F2F8FE] via-[#EBF3FB] to-[#DFECF7] p-6 flex flex-col justify-between items-center border-r border-[#CCE6FF]/70 overflow-hidden">
-                      {/* Brand Mountain Contour Lines in Background */}
-                      <svg
-                        className="absolute inset-0 w-full h-full text-[#CCE6FF]/40 pointer-events-none"
-                        viewBox="0 0 300 400"
-                        fill="none"
-                      >
-                        <path
-                          d="M -20 180 Q 75 140 150 180 T 320 180"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M -20 220 Q 80 180 160 220 T 320 220"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M -20 260 Q 75 220 150 260 T 320 260"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                      </svg>
-
-                      {/* Header in Visual Area */}
+                      {/* Top Meta in Visual Area */}
                       <div className="w-full flex items-center justify-between z-10 text-xs">
-                        {/* AQUVIVA Mountain Logo Silhouette */}
-                        <div className="flex items-center gap-1.5">
-                          <svg
-                            viewBox="0 0 60 16"
-                            fill="none"
-                            className="w-10 h-3 text-[#0762C8]"
-                          >
-                            <path
-                              d="M2 13 C 10 13, 15 7, 22 9 C 26 10, 29 2, 36 2 C 43 2, 46 10, 51 9 C 55 8, 58 13, 60 13"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                          <span className="font-bold text-[#0762C8] tracking-wider text-[11px]">
-                            VARIAN {item.code}
-                          </span>
-                        </div>
-                        <span className="font-semibold text-slate-600 bg-white/95 px-2.5 py-0.5 rounded-md border border-[#CCE6FF] text-[11px] shadow-2xs">
+                        <span className="font-extrabold text-[#0762C8] tracking-wider text-[11px] bg-white/90 px-2.5 py-1 rounded-lg border border-[#CCE6FF]">
+                          VARIAN {item.code}
+                        </span>
+                        <span className="font-bold text-[#021D3B] bg-white px-2.5 py-1 rounded-lg border border-[#CCE6FF] text-[11px] shadow-xs">
                           {item.sizeLabel}
                         </span>
                       </div>
@@ -187,26 +153,25 @@ export default function MitraSpecialPricing() {
                             priority
                           />
                         </div>
-                        {/* Realistic Contact Shadow touching bottom of the bottle */}
                         <div className="w-32 h-2.5 bg-slate-900/15 rounded-full blur-[3px] -mt-1.5" />
                       </div>
 
                       {/* Footer Badge in Visual Area */}
                       <div className="w-full text-center z-10">
-                        <span className="inline-block px-3 py-1 rounded-md bg-white/90 border border-[#CCE6FF] text-[11px] font-medium text-slate-600">
-                          Kemasan Resmi WINGS Food
+                        <span className="inline-block px-3 py-1 rounded-lg bg-white/95 border border-[#CCE6FF] text-[11px] font-semibold text-[#021D3B]">
+                          Distribusi Resmi WINGS Food
                         </span>
                       </div>
                     </div>
 
-                    {/* Area Informasi (Right ~56% Width) */}
+                    {/* Information Area (Right ~56% Width) */}
                     <div className="w-[56%] p-8 lg:p-10 flex flex-col justify-center bg-white animate-slideUp">
                       <div className="space-y-5">
                         {/* Subheading & Title */}
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="text-xs font-bold uppercase tracking-widest text-[#0762C8]">
-                              PRODUK KHUSUS MITRA
+                            <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8]">
+                              Produk Khusus Mitra
                             </span>
                             <span className="text-slate-300">•</span>
                             <span className="text-xs font-semibold text-slate-500">
@@ -218,10 +183,10 @@ export default function MitraSpecialPricing() {
                           </h3>
                         </div>
 
-                        {/* Price Callout (Paling Menonjol) */}
+                        {/* Price Callout */}
                         <div className="rounded-2xl bg-[#F4FAFF] border border-[#CCE6FF] p-5">
-                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 block">
-                            Harga Khusus Mitra
+                          <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8] block">
+                            Harga Kulakan Khusus Mitra
                           </span>
                           <div className="flex items-baseline gap-2 mt-1">
                             <span className="text-4xl lg:text-5xl font-black text-[#FA4616] tracking-tight">
@@ -231,9 +196,12 @@ export default function MitraSpecialPricing() {
                               / Pack
                             </span>
                           </div>
+                          <p className="text-xs font-semibold text-slate-500 mt-1">
+                            Setara {item.pricePerBottle} modal pokok
+                          </p>
                         </div>
 
-                        {/* Exact Description Box */}
+                        {/* Description Box */}
                         <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
                           <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
                             Deskripsi Produk
@@ -243,30 +211,28 @@ export default function MitraSpecialPricing() {
                           </p>
                         </div>
 
-                        {/* Keunggulan Pasokan Resmi WINGS Food */}
-                        <div className="pt-2 flex items-center gap-2 text-xs text-slate-500">
+                        {/* Trust Signals */}
+                        <div className="flex items-center gap-2 text-xs text-slate-500">
                           <svg className="w-4 h-4 text-[#0762C8] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span>Pasokan stok resmi terjamin langsung dari pabrik WINGS Food</span>
+                          <span>Pasokan stok terjamin langsung dari jaringan resmi logistik WINGS Food</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  /* INACTIVE COMPACT CARD (Minimal, Clean Product Display) */
+                  /* INACTIVE COMPACT CARD */
                   <div className="w-full h-full p-6 flex flex-col justify-between items-center text-center">
-                    {/* Header */}
                     <div className="w-full flex items-center justify-between">
                       <span className="text-xs font-semibold text-slate-400">
                         {item.code}
                       </span>
-                      <span className="text-xs font-bold text-[#0762C8] bg-[#F0F6FD] px-2.5 py-0.5 rounded border border-[#CCE6FF]">
+                      <span className="text-xs font-bold text-[#0762C8] bg-[#F0F6FD] px-2.5 py-0.5 rounded-lg border border-[#CCE6FF]">
                         {item.sizeLabel}
                       </span>
                     </div>
 
-                    {/* Bottle Visual Stage */}
                     <div className="relative my-auto w-full flex flex-col items-center justify-center py-2">
                       <div className="relative w-36 h-[220px]">
                         <Image
@@ -280,7 +246,6 @@ export default function MitraSpecialPricing() {
                       <div className="w-24 h-2 bg-slate-900/10 rounded-full blur-[2px] -mt-1" />
                     </div>
 
-                    {/* Information Footer */}
                     <div className="w-full pt-4 border-t border-slate-100 space-y-1">
                       <h4 className="text-base font-bold text-[#021D3B] truncate">
                         {highlightAquviva(item.name)}
@@ -294,8 +259,8 @@ export default function MitraSpecialPricing() {
                           /Pack
                         </span>
                       </p>
-                      <span className="text-xs font-semibold text-[#0762C8] pt-1 block group-hover:underline">
-                        Pilih Varian &rarr;
+                      <span className="text-xs font-bold text-[#0762C8] pt-1 block group-hover:underline">
+                        Lihat Detail Varian
                       </span>
                     </div>
                   </div>
@@ -305,7 +270,7 @@ export default function MitraSpecialPricing() {
           })}
         </div>
 
-        {/* 10. MOBILE & TABLET: Vertical Interactive Accordion Cards */}
+        {/* MOBILE & TABLET: Vertical Interactive Accordion Cards */}
         <div className="mt-8 flex lg:hidden flex-col gap-3.5">
           {products.map((item) => {
             const isActive = activeId === item.id;
@@ -319,14 +284,13 @@ export default function MitraSpecialPricing() {
                     : "border-slate-200 hover:border-[#0762C8]/50 shadow-2xs"
                 }`}
               >
-                {/* Header Row (Always visible & clickable to toggle) */}
                 <button
                   type="button"
                   onClick={() => setActiveId(isActive ? "" : item.id)}
                   className="w-full p-4 flex items-center justify-between gap-3 text-left cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="relative w-12 h-14 shrink-0 rounded-lg bg-[#F2F8FE] p-1 border border-[#CCE6FF]/80 flex items-center justify-center">
+                    <div className="relative w-12 h-14 shrink-0 rounded-xl bg-[#F2F8FE] p-1 border border-[#CCE6FF]/80 flex items-center justify-center">
                       <Image
                         src={item.image}
                         alt={`Produk ${item.name}`}
@@ -363,7 +327,6 @@ export default function MitraSpecialPricing() {
                         /Pack
                       </span>
                     </div>
-                    {/* Expand/Collapse Chevron */}
                     <div
                       className={`w-6 h-6 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 transition-transform duration-300 ${
                         isActive ? "rotate-180 bg-[#0762C8] text-white" : ""
@@ -382,11 +345,9 @@ export default function MitraSpecialPricing() {
                   </div>
                 </button>
 
-                {/* Expanded Content for Mobile Accordion */}
                 {isActive && (
                   <div className="px-4 pb-5 pt-2 border-t border-slate-100 space-y-4 animate-fadeIn">
-                    {/* Visual Bottle Studio */}
-                    <div className="bg-gradient-to-b from-[#F2F8FE] to-[#DFECF7] rounded-xl p-4 flex flex-col items-center justify-center border border-[#CCE6FF]/80">
+                    <div className="bg-gradient-to-b from-[#F2F8FE] to-[#DFECF7] rounded-2xl p-4 flex flex-col items-center justify-center border border-[#CCE6FF]/80">
                       <div className="relative my-auto flex flex-col items-center justify-center">
                         <div className={`relative w-44 ${item.bottleHeightClassMobile}`}>
                           <Image
@@ -404,7 +365,6 @@ export default function MitraSpecialPricing() {
                       </span>
                     </div>
 
-                    {/* Exact Description Box */}
                     <div className="rounded-xl bg-[#F4FAFF] border border-[#CCE6FF] p-3.5">
                       <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-1">
                         Deskripsi Produk
@@ -420,9 +380,8 @@ export default function MitraSpecialPricing() {
           })}
         </div>
 
-        {/* 11. Catatan Harga */}
-        <p className="mt-10 text-center text-xs font-normal text-slate-500">
-          Harga berlaku sesuai ketentuan program dan dapat berubah sewaktu-waktu.
+        <p className="mt-8 text-center text-xs font-normal text-slate-500">
+          Harga grosir khusus berlaku bagi mitra yang telah terverifikasi dalam jaringan kemitraan resmi.
         </p>
       </div>
     </section>
