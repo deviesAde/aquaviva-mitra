@@ -8,7 +8,7 @@ interface ProfitCalculatorProps {
 }
 
 export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps) {
-  const [activeSizeTab, setActiveSizeTab] = useState<"all" | "700" | "250" | "1600">("all");
+  const [activeSizeTab, setActiveSizeTab] = useState<"700" | "250" | "1600">("700");
 
   // Daily bottle sales volume
   const [dailyBottles700, setDailyBottles700] = useState<number>(36); // 3 pack
@@ -29,9 +29,9 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
   const profitPerBottle250 = Math.max(0, retailPrice250 - cost250);
   const profitPerBottle1600 = Math.max(0, retailPrice1600 - cost1600);
 
-  const show700 = activeSizeTab === "all" || activeSizeTab === "700";
-  const show250 = activeSizeTab === "all" || activeSizeTab === "250";
-  const show1600 = activeSizeTab === "all" || activeSizeTab === "1600";
+  const show700 = activeSizeTab === "700";
+  const show250 = activeSizeTab === "250";
+  const show1600 = activeSizeTab === "1600";
 
   const dailyProfit700 = show700 ? dailyBottles700 * profitPerBottle700 : 0;
   const dailyProfit250 = show250 ? dailyBottles250 * profitPerBottle250 : 0;
@@ -80,6 +80,16 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
     { price: 7000, label: "Rp7.000" },
   ];
 
+  const sizeFilterOptions: {
+    id: "700" | "250" | "1600";
+    label: string;
+    subLabel: string;
+  }[] = [
+    { id: "700", label: "700 ml", subLabel: "12 Botol / Pack" },
+    { id: "250", label: "250 ml", subLabel: "24 Botol / Pack" },
+    { id: "1600", label: "1,6 Liter", subLabel: "6 Botol / Pack" },
+  ];
+
   const formatRupiah = (val: number) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -92,18 +102,50 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
   const daysToRecoup2M = dailyProfit > 0 ? Math.ceil(2500000 / dailyProfit) : 0;
 
   return (
-    <section id="kalkulator" className="relative py-16 sm:py-24 bg-white border-b border-[#CCE6FF]/70 overflow-hidden">
-      {/* Background Subtle Contour */}
-      <div className="absolute inset-0 pointer-events-none opacity-25 select-none overflow-hidden" aria-hidden="true">
+    <section id="kalkulator" className="relative py-16 sm:py-24 bg-gradient-to-b from-[#F0F8FF] via-[#F6FAFE] to-white border-b border-[#CCE6FF]/40 overflow-hidden">
+      {/* Seamless Top Soft Wave Transition from previous section */}
+      <div className="absolute top-0 inset-x-0 w-full overflow-hidden leading-none pointer-events-none -mt-px z-0" aria-hidden="true">
         <svg
-          className="absolute -top-12 left-1/2 -translate-x-1/2 w-[1300px] h-60 text-[#CCE6FF]"
-          fill="none"
-          viewBox="0 0 1200 200"
+          className="w-full h-8 sm:h-12 lg:h-16 text-[#F0F8FF] fill-current"
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
         >
-          <path
-            d="M0 120 C 350 180 550 40 850 110 C 1050 160 1150 70 1200 90 L 1200 200 L 0 200 Z"
-            fill="currentColor"
-          />
+          <path d="M0,0 L1440,0 L1440,16 C1180,48 940,8 700,32 C460,56 220,12 0,36 Z" />
+        </svg>
+      </div>
+
+      {/* Seamless Full-Width Soft Blue Atmosphere & Ambient Waves */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0" aria-hidden="true">
+        {/* Soft Sky Radial Ambient Glow */}
+        <div className="absolute -top-12 inset-x-0 h-96 bg-[radial-gradient(ellipse_at_top,_rgba(204,230,255,0.45)_0%,_transparent_75%)]" />
+
+        {/* Continuous Organic Soft Wave Layer 1 */}
+        <svg
+          className="absolute top-4 inset-x-0 w-full h-32 sm:h-44 text-[#CCE6FF]/25 fill-current"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+        >
+          <path d="M0,45 C320,95 560,15 840,55 C1120,95 1300,30 1440,65 L1440,0 L0,0 Z" />
+        </svg>
+
+        {/* Continuous Organic Soft Wave Layer 2 (softer, offset) */}
+        <svg
+          className="absolute top-10 inset-x-0 w-full h-28 sm:h-36 text-[#E2F0FD]/40 fill-current"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+        >
+          <path d="M0,30 C260,65 520,10 780,42 C1040,75 1260,20 1440,48 L1440,0 L0,0 Z" />
+        </svg>
+      </div>
+
+      {/* Seamless Bottom Soft Wave Transition to next section (White) */}
+      <div className="absolute bottom-0 inset-x-0 w-full overflow-hidden leading-none pointer-events-none -mb-px z-0" aria-hidden="true">
+        <svg
+          className="w-full h-8 sm:h-12 lg:h-16 text-white fill-current"
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
+        >
+          <path d="M0,60 L1440,60 L1440,16 C1200,48 960,10 720,34 C480,58 240,14 0,38 Z" />
         </svg>
       </div>
 
@@ -128,56 +170,54 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
         {/* Main Interactive Card */}
         <div className="mt-12 max-w-5xl mx-auto rounded-3xl bg-white p-6 sm:p-8 lg:p-10 border border-[#CCE6FF] shadow-lg shadow-[#0762C8]/5">
-          {/* Size Selector Tabs */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-[#CCE6FF]">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#021D3B]">
-              Filter Ukuran Botol:
-            </span>
-            <div className="inline-flex rounded-xl bg-[#F0F6FD] p-1 border border-[#CCE6FF] gap-1 self-start sm:self-auto">
-              <button
-                type="button"
-                onClick={() => setActiveSizeTab("all")}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  activeSizeTab === "all"
-                    ? "bg-[#0762C8] text-white shadow-xs"
-                    : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
-                }`}
-              >
-                Semua Varian
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveSizeTab("700")}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  activeSizeTab === "700"
-                    ? "bg-[#0762C8] text-white shadow-xs"
-                    : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
-                }`}
-              >
-                700 ml
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveSizeTab("250")}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  activeSizeTab === "250"
-                    ? "bg-[#0762C8] text-white shadow-xs"
-                    : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
-                }`}
-              >
-                250 ml
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveSizeTab("1600")}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  activeSizeTab === "1600"
-                    ? "bg-[#0762C8] text-white shadow-xs"
-                    : "text-slate-600 hover:text-[#0762C8] hover:bg-white/60"
-                }`}
-              >
-                1,6 Liter
-              </button>
+          {/* Size Selector Cards / Segmented Control */}
+          <div className="pb-6 border-b border-[#CCE6FF]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0762C8]" />
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#021D3B]">
+                  Pilih Ukuran Botol
+                </span>
+              </div>
+              <span className="text-[11px] sm:text-xs text-slate-500 font-medium">
+                Pilih ukuran untuk menyesuaikan simulasi per botol
+              </span>
+            </div>
+
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              {sizeFilterOptions.map((opt) => {
+                const isSelected = activeSizeTab === opt.id;
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setActiveSizeTab(opt.id)}
+                    className={`group relative flex flex-col justify-center items-center text-center p-2.5 sm:py-3.5 sm:px-4 rounded-xl border transition-all duration-200 min-h-[50px] cursor-pointer select-none ${
+                      isSelected
+                        ? "bg-[#0762C8] text-white border-[#0762C8] shadow-md shadow-[#0762C8]/15 ring-2 ring-[#0762C8]/25"
+                        : "bg-[#F8FBFE] hover:bg-white text-[#021D3B] border-[#CCE6FF] hover:border-[#0762C8]/40 hover:shadow-xs active:scale-[0.98]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 sm:gap-2 justify-center w-full">
+                      <span
+                        className={`w-2 h-2 rounded-full shrink-0 transition-colors ${
+                          isSelected ? "bg-white" : "bg-[#CCE6FF] group-hover:bg-[#0762C8]"
+                        }`}
+                      />
+                      <span className="text-xs sm:text-sm font-bold tracking-tight">
+                        {opt.label}
+                      </span>
+                    </div>
+                    <span
+                      className={`text-[10px] sm:text-[11px] block mt-0.5 sm:mt-1 transition-colors leading-tight ${
+                        isSelected ? "text-blue-100 font-medium" : "text-slate-500"
+                      }`}
+                    >
+                      {opt.subLabel}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -209,7 +249,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
                     <div className="text-right shrink-0">
                       <span className="text-[11px] font-medium text-slate-500 block">Modal Grosir</span>
-                      <span className="inline-block text-xs font-bold text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
+                      <span className="inline-block text-xs font-normal text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
                         Rp1.250 / btl
                       </span>
                     </div>
@@ -220,7 +260,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       <label htmlFor="sales-700" className="font-bold text-[#021D3B]">
                         Target Penjualan Harian:
                       </label>
-                      <span className="font-extrabold text-[#0762C8] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
+                      <span className="font-normal text-[#0762C8] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
                         {dailyBottles700} Botol <span className="text-slate-400 font-normal">({(dailyBottles700 / 12).toFixed(1)} Pack)</span>
                       </span>
                     </div>
@@ -337,7 +377,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
                     <div className="text-right shrink-0">
                       <span className="text-[11px] font-medium text-slate-500 block">Modal Grosir</span>
-                      <span className="inline-block text-xs font-bold text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
+                      <span className="inline-block text-xs font-normal text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
                         Rp500 / btl
                       </span>
                     </div>
@@ -348,7 +388,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       <label htmlFor="sales-250" className="font-bold text-[#021D3B]">
                         Target Penjualan Harian:
                       </label>
-                      <span className="font-extrabold text-[#0762C8] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
+                      <span className="font-normal text-[#0762C8] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
                         {dailyBottles250} Botol <span className="text-slate-400 font-normal">({(dailyBottles250 / 24).toFixed(1)} Pack)</span>
                       </span>
                     </div>
@@ -465,7 +505,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
 
                     <div className="text-right shrink-0">
                       <span className="text-[11px] font-medium text-slate-500 block">Modal Grosir</span>
-                      <span className="inline-block text-xs font-bold text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
+                      <span className="inline-block text-xs font-normal text-[#0762C8] bg-white px-2.5 py-1 rounded-md border border-[#CCE6FF]">
                         Rp4.000 / btl
                       </span>
                     </div>
@@ -476,7 +516,7 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
                       <label htmlFor="sales-1600" className="font-bold text-[#021D3B]">
                         Target Penjualan Harian:
                       </label>
-                      <span className="font-extrabold text-[#0762C8] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
+                      <span className="font-normal text-[#0762C8] bg-white px-3 py-1 rounded-lg border border-[#CCE6FF]">
                         {dailyBottles1600} Botol <span className="text-slate-400 font-normal">({(dailyBottles1600 / 6).toFixed(1)} Pack)</span>
                       </span>
                     </div>
@@ -570,81 +610,138 @@ export default function ProfitCalculator({ onOpenModal }: ProfitCalculatorProps)
             </div>
 
             {/* Right Column: Financial Results Showcase */}
-            <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl bg-[#021D3B] p-6 sm:p-8 text-white shadow-xl border border-[#003875] relative overflow-hidden">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#08BB2C]/20 border border-[#08BB2C]/40 px-3.5 py-1 text-xs font-bold text-[#08BB2C]">
-                  <span className="w-2 h-2 rounded-full bg-[#08BB2C] animate-pulse" />
-                  Estimasi Laba Bersih Toko
+            <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl bg-gradient-to-b from-white via-[#F8FBFE] to-[#F0F7FF] p-6 sm:p-7 border border-[#CCE6FF] shadow-[0_8px_30px_rgba(7,98,200,0.06)] relative overflow-hidden lg:sticky lg:top-24">
+              <div className="space-y-5">
+                {/* 1. Label atau Indikator Estimasi Laba Bersih Toko */}
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-[#EAF8EE] border border-[#08BB2C]/30 px-3 py-1 text-xs font-bold text-[#068A20]">
+                    <span className="w-2 h-2 rounded-full bg-[#08BB2C] animate-pulse" />
+                    Estimasi Laba Bersih Toko
+                  </div>
+                  <span className="text-[11px] font-semibold text-[#0762C8] bg-white px-2.5 py-0.5 rounded-full border border-[#CCE6FF]">
+                    Simulasi 30 Hari
+                  </span>
                 </div>
 
+                {/* 2. Nominal Estimasi Keuntungan Bulanan */}
                 <div className="space-y-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#CCE6FF]">
-                    Estimasi Cuan Tambahan Bulanan (30 Hari)
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0762C8] block">
+                    Estimasi Cuan Tambahan Bulanan
                   </span>
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#FA4616] tracking-tight">
+                  <div className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-[#FA4616] tracking-tight leading-none py-1">
                     {formatRupiah(monthlyProfit)}
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-300 pt-1">
-                    <span>Atau setara</span>
-                    <span className="font-bold text-white bg-white/10 px-2.5 py-0.5 rounded-md border border-white/15">
-                      {formatRupiah(dailyProfit)} / hari
+                  <p className="text-xs text-slate-500">
+                    Proyeksi akumulasi margin keuntungan bersih toko per bulan
+                  </p>
+                </div>
+
+                {/* 3. Informasi Estimasi Keuntungan Per Hari */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-white border border-[#CCE6FF] shadow-2xs">
+                  <span className="text-xs font-semibold text-slate-600">
+                    Estimasi Keuntungan Harian:
+                  </span>
+                  <span className="font-normal text-xs sm:text-sm text-[#0762C8] bg-[#F4FAFF] px-2.5 py-1 rounded-lg border border-[#CCE6FF]">
+                    {formatRupiah(dailyProfit)} <span className="font-normal text-slate-500">/ hari</span>
+                  </span>
+                </div>
+
+                {/* 4. Rincian Penjualan Harian Berdasarkan Ukuran Botol */}
+                <div className="rounded-2xl bg-white p-4 border border-[#CCE6FF] shadow-2xs space-y-2.5">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <span className="text-[11px] font-bold text-[#021D3B] uppercase tracking-wider">
+                      Rincian Penjualan Harian
+                    </span>
+                    <span className="text-[11px] font-semibold text-slate-500">
+                      Margin Toko
+                    </span>
+                  </div>
+
+                  <div className="space-y-2 text-xs">
+                    {show700 && (
+                      <div className="flex justify-between items-center text-slate-700">
+                        <div className="flex items-center gap-1.5 min-w-0 pr-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8] shrink-0" />
+                          <span className="truncate">
+                            700 ml ({dailyBottles700} btl @ {formatRupiah(retailPrice700)})
+                          </span>
+                        </div>
+                        <span className="font-bold text-[#08BB2C] shrink-0">
+                          +{formatRupiah(dailyProfit700)}
+                        </span>
+                      </div>
+                    )}
+                    {show250 && (
+                      <div className="flex justify-between items-center text-slate-700">
+                        <div className="flex items-center gap-1.5 min-w-0 pr-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8] shrink-0" />
+                          <span className="truncate">
+                            250 ml ({dailyBottles250} btl @ {formatRupiah(retailPrice250)})
+                          </span>
+                        </div>
+                        <span className="font-bold text-[#08BB2C] shrink-0">
+                          +{formatRupiah(dailyProfit250)}
+                        </span>
+                      </div>
+                    )}
+                    {show1600 && (
+                      <div className="flex justify-between items-center text-slate-700">
+                        <div className="flex items-center gap-1.5 min-w-0 pr-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0762C8] shrink-0" />
+                          <span className="truncate">
+                            1,6 L ({dailyBottles1600} btl @ {formatRupiah(retailPrice1600)})
+                          </span>
+                        </div>
+                        <span className="font-bold text-[#08BB2C] shrink-0">
+                          +{formatRupiah(dailyProfit1600)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* 5. Total Potensi Keuntungan Harian */}
+                  <div className="pt-2.5 border-t border-slate-100 flex justify-between items-center text-xs">
+                    <span className="font-bold text-[#021D3B]">Total Potensi Keuntungan Harian:</span>
+                    <span className="font-normal text-sm text-[#08BB2C]">
+                      {formatRupiah(dailyProfit)}
                     </span>
                   </div>
                 </div>
 
-                <div className="rounded-2xl bg-white/10 p-4 border border-white/10 space-y-2 text-xs">
-                  <span className="text-[11px] font-bold text-[#CCE6FF] uppercase tracking-wider block mb-1">
-                    Rincian Penjualan Harian
-                  </span>
-                  {show700 && (
-                    <div className="flex justify-between items-center text-slate-200">
-                      <span>700 ml ({dailyBottles700} btl @ {formatRupiah(retailPrice700)})</span>
-                      <span className="font-bold text-white">+{formatRupiah(dailyProfit700)}</span>
-                    </div>
-                  )}
-                  {show250 && (
-                    <div className="flex justify-between items-center text-slate-200">
-                      <span>250 ml ({dailyBottles250} btl @ {formatRupiah(retailPrice250)})</span>
-                      <span className="font-bold text-white">+{formatRupiah(dailyProfit250)}</span>
-                    </div>
-                  )}
-                  {show1600 && (
-                    <div className="flex justify-between items-center text-slate-200">
-                      <span>1,6 L ({dailyBottles1600} btl @ {formatRupiah(retailPrice1600)})</span>
-                      <span className="font-bold text-white">+{formatRupiah(dailyProfit1600)}</span>
-                    </div>
-                  )}
-                  <div className="pt-2 border-t border-white/10 flex justify-between items-center text-xs font-bold">
-                    <span className="text-slate-200">Total Profit Bersih Harian:</span>
-                    <span className="text-[#08BB2C]">{formatRupiah(dailyProfit)}</span>
-                  </div>
-                </div>
-
+                {/* 6. Informasi Produk atau Rekomendasi Peluang Keuntungan */}
                 {dailyProfit > 0 && (
-                  <div className="rounded-xl bg-[#0762C8]/30 border border-[#0762C8]/50 p-4 text-xs text-blue-100 flex items-start gap-2.5">
-                    <svg className="w-5 h-5 text-[#CCE6FF] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                    <div>
-                      <span className="font-bold text-white block">Proyeksi Balik Modal Usaha:</span>
-                      <p className="text-[11px] text-blue-100/90 mt-0.5 leading-relaxed">
-                        Modal Paket Juragan (Rp 2,5 Jt) berpotensi kembali dalam <span className="font-bold text-white">~{daysToRecoup2M} hari</span> penjualan (Paket Pemula ~{daysToRecoup1M} hari).
+                  <div className="rounded-xl bg-[#F0F7FF] border border-[#CCE6FF] p-3.5 text-xs text-[#021D3B] flex items-start gap-2.5">
+                    <div className="p-1 rounded-lg bg-white border border-[#CCE6FF] text-[#0762C8] shrink-0 mt-0.5">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                    </div>
+                    <div className="space-y-0.5">
+                      <span className="font-bold text-[#021D3B] block">Proyeksi Balik Modal Usaha</span>
+                      <p className="text-[11px] text-slate-600 leading-relaxed">
+                        Modal Paket Juragan (Rp 2,5 Jt) berpotensi kembali dalam{" "}
+                        <strong className="font-bold text-[#0762C8]">~{daysToRecoup2M} hari</strong> penjualan (Paket Pemula ~{daysToRecoup1M} hari).
                       </p>
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="pt-6 mt-6 border-t border-white/15">
+              {/* 7. Tombol CTA "Daftar Kemitraan Sekarang" */}
+              <div className="mt-6 pt-5 border-t border-[#CCE6FF]">
                 <button
                   type="button"
-                  onClick={() => onOpenModal ? onOpenModal("PAKET JURAGAN AQUVIVA") : document.getElementById("pilihan-paket")?.scrollIntoView({ behavior: "smooth" })}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] text-white py-4 px-5 text-sm sm:text-base font-bold shadow-lg shadow-[#FA4616]/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  onClick={() =>
+                    onOpenModal
+                      ? onOpenModal("PAKET JURAGAN AQUVIVA")
+                      : document.getElementById("pilihan-paket")?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#FA4616] hover:bg-[#D83508] active:bg-[#C23007] text-white py-4 px-5 text-sm sm:text-base font-bold shadow-md shadow-[#FA4616]/25 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] min-h-[48px] cursor-pointer"
                 >
                   <span>Daftar Kemitraan Sekarang</span>
-                  <span>&rarr;</span>
+                  <span aria-hidden="true">&rarr;</span>
                 </button>
-                <p className="text-center text-[11px] text-slate-400 mt-2">
+                <p className="text-center text-[11px] text-slate-500 mt-2.5">
                   Penempatan showcase di area depan toko memicu pembelian langsung oleh konsumen.
                 </p>
               </div>

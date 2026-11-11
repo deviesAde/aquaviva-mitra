@@ -52,7 +52,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
       price: "Rp2.500.000",
       tagline: "Pilihan Tepat untuk Memperluas Jangkauan dan Mengembangkan Usaha Anda!",
       image: "/Poster/pake 2 1 of 1.png",
-      shortSummary: "Pilihan paling diminati bagi pelaku usaha yang ingin stok lebih banyak dan kapasitas showcase lebih tinggi.",
+      shortSummary: "Pilihan ideal bagi pelaku usaha yang ingin stok lebih banyak dan kapasitas showcase lebih tinggi.",
       cardHighlights: [
         "Showcase Pendingin: 1 pintu dengan 5 rak",
         "AQUVIVA 700 ml: 300 pack",
@@ -129,7 +129,12 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
   };
 
   return (
-    <section id="pilihan-paket" className="relative py-16 sm:py-24 scroll-mt-20 bg-[#FAFCFF] border-b border-[#CCE6FF]/70 overflow-hidden">
+    <section id="pilihan-paket" className="relative py-16 sm:py-24 scroll-mt-20 bg-gradient-to-b from-white via-[#F5FAFF] to-[#F0F8FF] border-b border-[#CCE6FF]/40 overflow-hidden">
+      {/* Background Soft Blue Atmosphere */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0" aria-hidden="true">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[radial-gradient(ellipse_at_center,_rgba(204,230,255,0.3)_0%,_transparent_70%)]" />
+      </div>
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -270,15 +275,6 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
                       : "bg-white border border-[#CCE6FF] shadow-xs hover:border-[#0762C8]/50 hover:shadow-md"
                   }`}
                 >
-                  {/* Juragan Most Popular Badge */}
-                  {isJuragan && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
-                      <span className="bg-[#FA4616] text-white text-[11px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">
-                        Paling Diminati Mitra
-                      </span>
-                    </div>
-                  )}
-
                   <div className="flex flex-col">
                     {/* Top Bar Indicator */}
                     <div className="flex items-center justify-between gap-2 pb-2">
@@ -339,7 +335,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
                           Biaya Investasi:
                         </span>
                         <span
-                          className={`text-xl sm:text-2xl font-black ${
+                          className={`text-xl sm:text-2xl font-normal ${
                             isSelected ? "text-[#FA4616]" : "text-[#0762C8]"
                           }`}
                         >
@@ -399,7 +395,7 @@ export default function PriceCatalog({ onOpenModal }: PriceCatalogProps) {
                       }`}
                     >
                       <span>{isSelected ? "Pilih & Lanjut Daftar" : "Pilih Paket Ini"}</span>
-                      <span className="font-semibold opacity-90">({pkg.price})</span>
+                      <span className="font-normal opacity-90">({pkg.price})</span>
                     </button>
                   </div>
                 </div>

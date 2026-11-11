@@ -179,7 +179,7 @@ export default function PackageDetailModal({
                   <span className="text-xs font-normal text-slate-600 uppercase tracking-wider">
                     Biaya Paket Investasi
                   </span>
-                  <span className="text-2xl sm:text-3xl font-bold text-[#FA4616]">
+                  <span className="text-2xl sm:text-3xl font-normal text-[#FA4616]">
                     {pkg.price}
                   </span>
                 </div>

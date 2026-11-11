@@ -75,20 +75,33 @@ export default function MitraSpecialPricing() {
   return (
     <section
       id="harga-mitra"
-      className="relative py-16 sm:py-24 bg-white overflow-hidden border-b border-[#CCE6FF]/70"
+      className="relative py-16 sm:py-24 bg-gradient-to-b from-[#F0F8FF] via-[#F8FBFE] to-white overflow-hidden border-b border-[#CCE6FF]/40"
     >
-      {/* Background Subtle Wave Texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-30 select-none overflow-hidden" aria-hidden="true">
+      {/* Background Seamless Full-Width Soft Blue Atmosphere */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0" aria-hidden="true">
+        {/* Soft Sky Ambient Radial Glow */}
+        <div className="absolute -top-10 inset-x-0 h-80 bg-[radial-gradient(ellipse_at_top,_rgba(204,230,255,0.45)_0%,_transparent_75%)]" />
+
+        {/* Full-width Continuous Organic Soft Wave Layer 1 */}
         <svg
-          className="absolute -top-10 left-1/2 -translate-x-1/2 w-[1400px] h-64 text-[#CCE6FF]"
-          fill="none"
-          viewBox="0 0 1200 200"
+          className="absolute top-2 inset-x-0 w-full h-32 sm:h-44 text-[#CCE6FF]/25 fill-current"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
         >
-          <path
-            d="M0 100 C 300 160 500 40 800 100 C 1000 150 1150 70 1200 90 L 1200 200 L 0 200 Z"
-            fill="currentColor"
-          />
+          <path d="M0,40 C340,95 580,15 860,55 C1140,95 1320,25 1440,60 L1440,0 L0,0 Z" />
         </svg>
+
+        {/* Full-width Continuous Organic Soft Wave Layer 2 */}
+        <svg
+          className="absolute top-8 inset-x-0 w-full h-28 sm:h-36 text-[#E2F0FD]/40 fill-current"
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+        >
+          <path d="M0,25 C280,60 540,10 800,38 C1060,68 1280,18 1440,42 L1440,0 L0,0 Z" />
+        </svg>
+
+        {/* Soft bottom blend to pure white for seamless transition to next section */}
+        <div className="absolute bottom-0 inset-x-0 h-56 bg-gradient-to-t from-white via-white/80 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -189,7 +202,7 @@ export default function MitraSpecialPricing() {
                             Harga Kulakan Khusus Mitra
                           </span>
                           <div className="flex items-baseline gap-2 mt-1">
-                            <span className="text-4xl lg:text-5xl font-black text-[#FA4616] tracking-tight">
+                            <span className="text-4xl lg:text-5xl font-normal text-[#FA4616] tracking-tight">
                               {item.price}
                             </span>
                             <span className="text-base font-semibold text-slate-600">
@@ -253,7 +266,7 @@ export default function MitraSpecialPricing() {
                       <p className="text-xs text-slate-500 font-medium">
                         {item.bottlesPerPack}
                       </p>
-                      <p className="text-lg font-extrabold text-[#0762C8] group-hover:text-[#FA4616] transition-colors pt-1">
+                      <p className="text-lg font-normal text-[#0762C8] group-hover:text-[#FA4616] transition-colors pt-1">
                         {item.price}
                         <span className="text-xs font-normal text-slate-500 ml-1">
                           /Pack
@@ -320,7 +333,7 @@ export default function MitraSpecialPricing() {
 
                   <div className="flex items-center gap-3 shrink-0">
                     <div className="text-right">
-                      <span className="text-base font-black text-[#FA4616] block">
+                      <span className="text-base font-normal text-[#FA4616] block">
                         {item.price}
                       </span>
                       <span className="text-[11px] text-slate-400 font-normal">

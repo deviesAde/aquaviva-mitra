@@ -27,7 +27,7 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
     {
       id: "juragan",
       name: "PAKET JURAGAN AQUVIVA",
-      badge: "Paling Diminati Mitra",
+      badge: "",
       price: "Rp 2.000.000",
       tagline: "Pilihan Tepat untuk Memperluas Jangkauan dan Mengembangkan Usaha Anda!",
       image: "/Component/3D4E3669-4A6B-4E93-B2ED-E6BEF210887B.PNG",
@@ -92,16 +92,20 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
             >
               <div>
                 {/* Header Badge */}
-                <div className="flex items-center justify-between gap-2">
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide ${
-                      pkg.featured
-                        ? "bg-[#FA4616] text-white"
-                        : "bg-[#ECF5FF] text-[#0762C8] border border-[#CCE6FF]"
-                    }`}
-                  >
-                    {pkg.badge}
-                  </span>
+                <div className="flex items-center justify-between gap-2 min-h-[26px]">
+                  {pkg.badge ? (
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                        pkg.featured
+                          ? "bg-[#FA4616] text-white"
+                          : "bg-[#ECF5FF] text-[#0762C8] border border-[#CCE6FF]"
+                      }`}
+                    >
+                      {pkg.badge}
+                    </span>
+                  ) : (
+                    <span />
+                  )}
                   <span
                     className={`text-xs font-medium ${
                       pkg.featured ? "text-[#CCE6FF]" : "text-[#5F6368]"
@@ -154,7 +158,7 @@ export default function PackagesSection({ onOpenModal }: PackagesSectionProps) {
                     Biaya Paket Investasi
                   </p>
                   <p
-                    className={`text-2xl sm:text-3xl font-black mt-0.5 ${
+                    className={`text-2xl sm:text-3xl font-normal mt-0.5 ${
                       pkg.featured ? "text-[#FA4616]" : "text-[#0762C8]"
                     }`}
                   >

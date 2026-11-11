@@ -48,7 +48,6 @@ export default function RegistrationModal({
       code: "02",
       name: "Paket Juragan",
       price: "Rp2.500.000",
-      badge: "Paling Populer",
       highlight: "Showcase 1 Pintu 5 Rak + 600 Pack",
     },
     {
@@ -206,7 +205,7 @@ export default function RegistrationModal({
                 </div>
                 <div className="flex justify-between items-center pt-2 border-t border-[#CCE6FF]">
                   <span className="text-slate-500">Paket Dipilih:</span>
-                  <span className="font-black text-[#FA4616] text-sm">
+                  <span className="font-normal text-[#FA4616] text-sm">
                     {selectedPkgObj.name} ({selectedPkgObj.price})
                   </span>
                 </div>
@@ -274,7 +273,7 @@ export default function RegistrationModal({
                         <h4 className="font-extrabold text-[#021D3B] text-sm mt-1">
                           {pkg.name}
                         </h4>
-                        <p className="text-sm font-black text-[#FA4616] mt-0.5">
+                        <p className="text-sm font-normal text-[#FA4616] mt-0.5">
                           {pkg.price}
                         </p>
                         <p className="text-[11px] text-slate-500 mt-1 leading-snug">

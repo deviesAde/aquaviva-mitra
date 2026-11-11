@@ -47,15 +47,15 @@ export default function PurificationSection() {
   ];
 
   return (
-    <section id="keunggulan" className="py-16 sm:py-24 bg-[#F8FBFE] border-b border-[#CCE6FF]/70 relative overflow-hidden">
+    <section id="keunggulan" className="py-16 sm:py-24 bg-[#F0F8FF] border-b border-[#CCE6FF]/70 relative overflow-hidden">
       {/* Decorative Wave Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 select-none overflow-hidden" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0" aria-hidden="true">
         <svg
-          className="absolute -top-16 left-1/2 -translate-x-1/2 w-[1400px] h-72 text-[#E2F0FD]"
-          fill="currentColor"
-          viewBox="0 0 1200 200"
+          className="absolute top-0 inset-x-0 w-full h-36 sm:h-52 text-[#CCE6FF]/30 fill-current"
+          viewBox="0 0 1440 140"
+          preserveAspectRatio="none"
         >
-          <path d="M0 100 C 300 160 500 40 800 100 C 1000 150 1150 70 1200 90 L 1200 200 L 0 200 Z" />
+          <path d="M0,50 C360,110 600,15 880,65 C1160,115 1320,35 1440,70 L1440,0 L0,0 Z" />
         </svg>
       </div>
 
@@ -130,7 +130,7 @@ export default function PurificationSection() {
                 >
                   <div className="flex items-start gap-3">
                     <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-xs font-black transition-colors ${
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-xs font-normal transition-colors ${
                         item.isCore
                           ? "bg-[#FA4616] text-white shadow-xs"
                           : "bg-[#0762C8] text-white"

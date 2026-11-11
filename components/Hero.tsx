@@ -134,7 +134,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white min-h-[calc(100vh-5rem)] flex items-center border-b border-[#CCE6FF]/70">
+    <section className="relative overflow-hidden bg-white min-h-[calc(100vh-5rem)] flex items-center border-b border-[#CCE6FF]/40">
       {/* Background Atmosphere: Soft Daylight Luminous Sky Gradient */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-[#EBF5FE]" />
@@ -154,16 +154,16 @@ export default function Hero({ onOpenModal }: HeroProps) {
           <path d="M 0,300 C 160,250 250,350 390,280 C 530,210 610,330 700,270" strokeWidth="1" />
         </svg>
 
-        {/* Soft edge blend */}
-        <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
+        {/* Soft edge blend transitioning to next section (#F0F8FF) */}
+        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-b from-transparent via-[#F4FAFF]/70 to-[#F0F8FF] z-10" />
       </div>
 
       <div className="relative z-20 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-center">
           {/* Left Column: Eyebrow, Main Headline, Script Tagline, Description, CTAs, Trust Proof */}
-          <div className="lg:col-span-6 xl:col-span-6 space-y-6 text-left">
+          <div className="lg:col-span-6 xl:col-span-6 space-y-5 sm:space-y-6 text-left">
             {/* Trust Badges */}
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="inline-flex">
               <div className="inline-flex items-center gap-2 rounded-lg border border-[#CCE6FF] bg-white px-3.5 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#021D3B]">
                   Program Kemitraan Resmi
@@ -171,16 +171,6 @@ export default function Hero({ onOpenModal }: HeroProps) {
                 <span className="h-3.5 w-px bg-[#CCE6FF]" aria-hidden="true" />
                 <span className="text-xs font-black tracking-wide text-[#FA4616]">
                   WINGS FOOD
-                </span>
-              </div>
-
-              <div className="inline-flex items-center gap-2 rounded-lg border border-[#CCE6FF] bg-[#F0F7FF] px-3.5 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
-                <span className="flex h-2 w-2 rounded-full bg-[#0762C8] animate-pulse" />
-                <span className="text-xs font-bold text-[#0762C8]">
-                  7 Tahap Nano Purifikasi:
-                </span>
-                <span className="text-xs text-[#021D3B] font-semibold">
-                  Kemurnian Maksimal
                 </span>
               </div>
             </div>

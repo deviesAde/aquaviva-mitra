@@ -39,8 +39,13 @@ export default function PartnershipFaq() {
   ];
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-[#FAFCFF] border-b border-[#CCE6FF]/70">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="relative py-16 sm:py-24 bg-gradient-to-b from-white via-[#F5FAFF] to-[#F0F8FF] border-b border-[#CCE6FF]/40 overflow-hidden">
+      {/* Background Soft Ambient Mist */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0" aria-hidden="true">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-80 bg-[radial-gradient(ellipse_at_center,_rgba(204,230,255,0.3)_0%,_transparent_70%)]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#CCE6FF] bg-white px-4 py-1.5 shadow-[0_2px_8px_rgba(2,29,59,0.04)]">
