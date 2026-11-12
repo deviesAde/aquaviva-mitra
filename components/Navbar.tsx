@@ -85,7 +85,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
         {/* Desktop Action Buttons */}
         <div className="hidden sm:flex items-center gap-3">
           <a
-            href="https://wa.me/6281181261082?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20tertarik%20untuk%20bergabung%20menjadi%20mitra%20usaha."
+            href="https://wa.me/6285143114914?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20tertarik%20untuk%20bergabung%20menjadi%20mitra%20usaha."
             target="_blank"
             rel="noopener noreferrer"
             className="hidden xl:inline-flex items-center gap-1.5 rounded-xl border border-[#CCE6FF] bg-white hover:bg-[#F4FAFF] px-4 py-2.5 text-sm font-bold text-[#0762C8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0762C8]"
@@ -154,13 +154,13 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                 Daftar Kemitraan Sekarang
               </button>
               <a
-                href="https://wa.me/6281181261082?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20tertarik%20untuk%20bergabung%20menjadi%20mitra%20usaha."
+                href="https://wa.me/6285143114914?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20tertarik%20untuk%20bergabung%20menjadi%20mitra%20usaha."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-[#CCE6FF] bg-[#F4FAFF] px-4 py-3 text-sm font-bold text-[#0762C8]"
               >
                 <span className="h-2 w-2 rounded-full bg-[#08BB2C]" aria-hidden="true" />
-                Hubungi via WhatsApp (+62 811-8126-1082)
+                Hubungi via WhatsApp (+62 851-4311-4914)
               </a>
             </div>
           </div>

@@ -119,12 +119,12 @@ export default function PartnershipFaq() {
             Masih ada pertanyaan lain seputar sistem kemitraan atau rute pengiriman ke area toko Anda?
           </p>
           <a
-            href="https://wa.me/6281181261082?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20ingin%20berkonsultasi%20seputar%20syarat%20dan%20rute%20pengiriman%20kemitraan."
+            href="https://wa.me/6285143114914?text=Halo%20Tim%20Kemitraan%20AQUVIVA,%20saya%20ingin%20berkonsultasi%20seputar%20syarat%20dan%20rute%20pengiriman%20kemitraan."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-[#08BB2C] hover:bg-[#079E25] text-white font-bold text-xs sm:text-sm px-5 py-3 shadow-sm transition-all"
           >
-            <span>Hubungi WhatsApp Care Wings (+62 811-8126-1082)</span>
+            <span>Hubungi WhatsApp Tim Kemitraan (+62 851-4311-4914)</span>
           </a>
         </div>
       </div>
