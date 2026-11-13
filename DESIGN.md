@@ -1,6 +1,6 @@
-# Hasil Reverse Engineering Design & Color Palette Resmi AQUVIVA (aquviva.co.id)
+# Panduan Desain & Color Palette Resmi AQUVIVA
 
-Dokumen ini disusun dari hasil **reverse engineering langsung** terhadap aset, source HTML, dan CSS produksi dari situs resmi [aquviva.co.id](https://aquviva.co.id).
+Dokumen ini merangkum spesifikasi desain sistem, aset, dan standar visual brand resmi AQUVIVA.
 
 ---
 
@@ -22,8 +22,8 @@ Sistem warna resmi AQUVIVA dibangun atas kontras antara energi dinamis (*Sun Ora
 
 ---
 
-## 2. Gradien Resmi (Official Gradients from aquviva.co.id)
-Situs resmi AQUVIVA menggunakan gradien lembut dengan sudut diagonal dinamis:
+## 2. Gradien Resmi (Official Brand Gradients)
+Identitas visual AQUVIVA menggunakan gradien lembut dengan sudut diagonal dinamis:
 1. **Hero & Section Surface:** `linear-gradient(249.73deg, #F4FAFF, #FFFFFF 27.12%, #F4FAFF 54.11%)`
 2. **Product Card Backdrop:** `linear-gradient(214.39deg, #ECF5FF, #FFFFFF 52.89%, #ECF5FF)`
 3. **Accent Card Glow:** `linear-gradient(120deg, #E6F1FB, #C4E0F7 50%, #E6F1FB)`

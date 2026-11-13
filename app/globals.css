@@ -63,7 +63,7 @@ a, button, summary, select, [role="button"], [role="tab"] {
   cursor: not-allowed;
 }
 
-/* Gradients directly reverse-engineered from aquviva.co.id */
+/* Official Brand Gradients */
 .bg-aquaviva-hero {
   background: linear-gradient(249.73deg, #f4faff 0%, #ffffff 27.12%, #ecf5ff 100%);
 }

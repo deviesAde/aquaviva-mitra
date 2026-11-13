@@ -20,7 +20,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#CCE6FF] transition-all">
-      {/* Top Bar Announcement: Credibility and Fraud Prevention from aquviva.co.id */}
+      {/* Top Bar Announcement: Credibility and Fraud Prevention */}
       {bannerVisible && (
         <div className="bg-[#0762C8] text-white px-4 py-2 text-xs sm:text-sm font-medium transition-all">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">

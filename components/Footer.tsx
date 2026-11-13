@@ -126,7 +126,7 @@ export default function Footer() {
                 </a>
               </div>
 
-              {/* General Care & Official Links */}
+              {/* General Care */}
               <div className="pt-2.5 border-t border-slate-100 flex flex-col gap-1.5 text-[11px] text-slate-500">
                 <div className="flex items-center justify-between">
                   <span>Customer Care Wings:</span>
@@ -143,18 +143,6 @@ export default function Footer() {
                   <span>Telepon Kantor:</span>
                   <span className="font-semibold text-slate-700">+62 21-5095-7907</span>
                 </div>
-              </div>
-
-              <div className="pt-2.5 border-t border-slate-100">
-                <a
-                  href="https://aquviva.co.id"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-[#FA4616] hover:underline font-bold inline-flex items-center gap-1 group"
-                >
-                  <span>Kunjungi Website Resmi: aquviva.co.id</span>
-                  <span className="transition-transform group-hover:translate-x-0.5" aria-hidden="true">&rarr;</span>
-                </a>
               </div>
             </div>
           </div>
