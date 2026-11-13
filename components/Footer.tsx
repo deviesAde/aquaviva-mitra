@@ -77,9 +77,9 @@ export default function Footer() {
               Pusat informasi, pendaftaran mitra, dan layanan distribusi AQUVIVA:
             </p>
             <div className="rounded-2xl bg-white p-4 sm:p-5 border border-[#CCE6FF] shadow-xs text-xs space-y-3.5">
-              {/* WhatsApp Form & Mitra Coordinator */}
+              {/* No. Telepon & WhatsApp Resmi */}
               <div>
-                <p className="text-slate-500 text-[11px] font-medium">WhatsApp Layanan &amp; Pendaftaran Mitra:</p>
+                <p className="text-slate-500 text-[11px] font-medium">No. Telepon &amp; WhatsApp Resmi:</p>
                 <a
                   href="https://wa.me/6285143114914"
                   target="_blank"
@@ -124,25 +124,6 @@ export default function Footer() {
                     </span>
                   </span>
                 </a>
-              </div>
-
-              {/* General Care */}
-              <div className="pt-2.5 border-t border-slate-100 flex flex-col gap-1.5 text-[11px] text-slate-500">
-                <div className="flex items-center justify-between">
-                  <span>Customer Care Wings:</span>
-                  <a
-                    href="https://wa.me/6281181261082"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-slate-700 hover:text-[#08BB2C]"
-                  >
-                    +62 811-8126-1082
-                  </a>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Telepon Kantor:</span>
-                  <span className="font-semibold text-slate-700">+62 21-5095-7907</span>
-                </div>
               </div>
             </div>
           </div>
